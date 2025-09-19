@@ -15,13 +15,32 @@ const FinalCTASection = () => {
             </p>
           </div>
           
-          <Button 
-            size="lg" 
-            className="hero-gradient hover:opacity-90 transition-opacity shadow-brand-lg text-lg px-12 py-6 group"
-          >
-            Browse Local Instructors
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="https://play.google.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block hover:opacity-90 transition-opacity"
+            >
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                alt="Get it on Google Play"
+                className="h-14 w-auto"
+              />
+            </a>
+            <a 
+              href="https://www.apple.com/app-store/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block hover:opacity-90 transition-opacity"
+            >
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
+                alt="Download on the App Store"
+                className="h-14 w-auto"
+              />
+            </a>
+          </div>
           
           <p className="text-sm text-muted-foreground">
             Join thousands of confident drivers who started with LocalDrive

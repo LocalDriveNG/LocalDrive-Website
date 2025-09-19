@@ -13,9 +13,9 @@ const Footer = () => {
                 alt="LocalDrive Icon" 
                 className="h-10 w-auto"
               />
-              <div>
-                <h3 className="text-2xl font-bold text-gradient">LocalDrive</h3>
-                <p className="text-neutral-300">Your local driving school, reimagined.</p>
+              <div className="flex flex-col justify-center">
+                <h3 className="text-2xl font-bold text-gradient leading-none">LocalDrive</h3>
+                <p className="text-neutral-300 text-sm mt-1">Your local driving school, reimagined.</p>
               </div>
             </div>
             <p className="text-neutral-400 max-w-md">
