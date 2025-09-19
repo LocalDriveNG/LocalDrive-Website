@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import logoIcon from "@/assets/localdrive-icon.png";
 
 const Footer = () => {
   return (
@@ -6,9 +7,16 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2 space-y-4">
-            <div className="space-y-2">
-              <h3 className="text-2xl font-bold text-gradient">LocalDrive</h3>
-              <p className="text-neutral-300">Your local driving school, reimagined.</p>
+            <div className="space-y-2 flex items-center gap-3">
+              <img 
+                src={logoIcon} 
+                alt="LocalDrive Icon" 
+                className="h-10 w-auto"
+              />
+              <div>
+                <h3 className="text-2xl font-bold text-gradient">LocalDrive</h3>
+                <p className="text-neutral-300">Your local driving school, reimagined.</p>
+              </div>
             </div>
             <p className="text-neutral-400 max-w-md">
               Connecting learners with certified instructors for a modern, 
