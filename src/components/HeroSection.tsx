@@ -21,8 +21,12 @@ const HeroSection = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="hero-gradient hover:opacity-90 transition-opacity shadow-brand text-lg px-8 py-6">
-                Find Your Instructor
+              <Button 
+                size="lg" 
+                className="hero-gradient hover:opacity-90 transition-opacity shadow-brand text-lg px-8 py-6"
+                onClick={() => document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Download App
               </Button>
               <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6">
                 Become an Instructor

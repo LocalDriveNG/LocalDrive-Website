@@ -29,7 +29,7 @@ const FeaturesSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800">
-            Why Choose LocalDrive?
+            Why Us?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Everything you need for a modern, efficient driving education experience.

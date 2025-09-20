@@ -20,7 +20,7 @@ const Header = () => {
               <img 
                 src={logoFull} 
                 alt="LocalDrive - Your local driving school, reimagined"
-                className="h-10 w-auto font-bold filter contrast-125"
+                className="h-12 w-auto font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
               />
             </a>
           </div>
@@ -31,13 +31,7 @@ const Header = () => {
               href="#how-it-works" 
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
-              How It Works
-            </a>
-            <a 
-              href="#features" 
-              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-            >
-              Features
+              For Learners
             </a>
             <a 
               href="#instructors" 
@@ -50,6 +44,18 @@ const Header = () => {
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               About Us
+            </a>
+            <a 
+              href="/contact" 
+              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+            >
+              Contact Us
+            </a>
+            <a 
+              href="#faq" 
+              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+            >
+              FAQ
             </a>
           </div>
 
@@ -92,14 +98,7 @@ const Header = () => {
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
-              How It Works
-            </a>
-            <a
-              href="#features"
-              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Features
+              For Learners
             </a>
             <a
               href="#instructors"
@@ -114,6 +113,20 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
+            </a>
+            <a
+              href="/contact"
+              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact Us
+            </a>
+            <a
+              href="#faq"
+              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              FAQ
             </a>
             <div className="pt-4 pb-2 border-t border-border mt-4">
               <div className="flex flex-col space-y-2">

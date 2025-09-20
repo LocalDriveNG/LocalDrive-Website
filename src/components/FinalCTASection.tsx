@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const FinalCTASection = () => {
   return (
-    <section className="py-16 lg:py-24 bg-white">
+    <section id="downloads" className="py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4">

@@ -48,10 +48,11 @@ const Footer = () => {
         <div className="border-t border-neutral-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-wrap gap-6 text-sm text-neutral-400">
-              <a href="#" className="hover:text-primary transition-colors">About Us</a>
-              <a href="#" className="hover:text-primary transition-colors">Contact</a>
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+              <a href="/about" className="hover:text-primary transition-colors">About Us</a>
+              <a href="/contact" className="hover:text-primary transition-colors">Contact</a>
+              <a href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</a>
+              <a href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</a>
+              <a href="/cookies-policy" className="hover:text-primary transition-colors">Cookies Policy</a>
             </div>
             
             <div className="flex gap-4">
