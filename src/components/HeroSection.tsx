@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-driving-lesson.jpg";
+import heroImage from "@/assets/hero-nigerian-driving-lesson.jpg";
 
 const HeroSection = () => {
   return (
@@ -26,9 +26,14 @@ const HeroSection = () => {
                 className="hero-gradient hover:opacity-90 transition-opacity shadow-brand text-lg px-8 py-6"
                 onClick={() => document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Download App
+                Find Your Instructor
               </Button>
-              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6"
+                onClick={() => document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Become an Instructor
               </Button>
             </div>
@@ -38,7 +43,7 @@ const HeroSection = () => {
             <div className="relative overflow-hidden rounded-2xl shadow-brand-lg">
               <img 
                 src={heroImage} 
-                alt="Happy student and instructor during driving lesson in a sunny suburban setting"
+                alt="Nigerian driving instructor and student during a driving lesson in Lagos"
                 className="w-full h-auto object-cover"
               />
             </div>

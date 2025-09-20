@@ -40,6 +40,12 @@ const Header = () => {
               For Instructors
             </a>
             <a 
+              href="#features" 
+              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+            >
+              Why Us?
+            </a>
+            <a 
               href="/about" 
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
@@ -61,8 +67,11 @@ const Header = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex md:items-center md:space-x-3">
-            <Button className="hero-gradient hover:opacity-90 transition-opacity">
-              Get Started
+            <Button 
+              className="hero-gradient hover:opacity-90 transition-opacity"
+              onClick={() => document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Download App
             </Button>
           </div>
 
@@ -108,6 +117,13 @@ const Header = () => {
               For Instructors
             </a>
             <a
+              href="#features"
+              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Why Us?
+            </a>
+            <a
               href="/about"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
@@ -130,8 +146,14 @@ const Header = () => {
             </a>
             <div className="pt-4 pb-2 border-t border-border mt-4">
               <div className="flex flex-col space-y-2">
-                <Button className="hero-gradient hover:opacity-90 transition-opacity" onClick={() => setIsMenuOpen(false)}>
-                  Get Started
+                <Button 
+                  className="hero-gradient hover:opacity-90 transition-opacity" 
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Download App
                 </Button>
               </div>
             </div>

@@ -36,8 +36,8 @@ const FutureVisionSection = () => {
               </div>
             </div>
             
-            <div className="absolute -top-2 -right-2 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
-              Coming Soon
+            <div className="absolute -top-3 -right-3 bg-gradient-to-r from-primary to-secondary text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg animate-pulse">
+              🚀 Coming Soon
             </div>
           </div>
         </div>

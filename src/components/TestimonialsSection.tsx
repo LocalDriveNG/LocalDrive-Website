@@ -1,23 +1,29 @@
 import { Star } from "lucide-react";
+import sarahImage from "@/assets/testimonial-sarah.jpg";
+import jamesImage from "@/assets/testimonial-james.jpg";
+import emilyImage from "@/assets/testimonial-emily.jpg";
 
 const testimonials = [
   {
     name: "Sarah T.",
-    location: "Leeds",
+    location: "Lekki, Lagos",
     content: "I was so nervous to start driving, but my instructor from LocalDrive was incredibly patient and made me feel at ease. Booking lessons around my uni schedule was a breeze!",
-    rating: 5
+    rating: 5,
+    image: sarahImage
   },
   {
     name: "James M.",
-    location: "Manchester", 
+    location: "Ikeja, Lagos", 
     content: "Passed my test first time thanks to LocalDrive! The progress tracking helped me focus on areas I needed to improve. Highly recommend!",
-    rating: 5
+    rating: 5,
+    image: jamesImage
   },
   {
     name: "Emily R.",
-    location: "Birmingham",
+    location: "Maryland, Lagos",
     content: "The flexibility to book lessons when it suited me was perfect. My instructor knew all the local test routes which gave me so much confidence.",
-    rating: 5
+    rating: 5,
+    image: emilyImage
   }
 ];
 
@@ -56,10 +62,12 @@ const TestimonialsSection = () => {
                 </blockquote>
                 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-                    <span className="text-white font-semibold text-lg">
-                      {testimonial.name.charAt(0)}
-                    </span>
+                  <div className="w-12 h-12 rounded-full overflow-hidden">
+                    <img 
+                      src={testimonial.image} 
+                      alt={`${testimonial.name} profile picture`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <div className="font-semibold text-neutral-800">

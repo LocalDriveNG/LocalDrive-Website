@@ -46,6 +46,7 @@ const InstructorCTASection = () => {
             size="lg" 
             variant="secondary"
             className="bg-white text-secondary hover:bg-neutral-100 text-lg px-8 py-6 shadow-lg"
+            onClick={() => document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Teach with LocalDrive
           </Button>

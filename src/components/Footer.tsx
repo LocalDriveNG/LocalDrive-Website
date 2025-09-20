@@ -72,7 +72,7 @@ const Footer = () => {
           </div>
           
           <div className="text-center text-sm text-neutral-400 mt-8">
-            © 2024 LocalDrive. All rights reserved.
+            © 2025 LocalDrive. All rights reserved.
           </div>
         </div>
       </div>
