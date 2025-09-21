@@ -1,125 +1,169 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Target, MapPin, Users, Smartphone, Shield, Heart, Lightbulb, Clock } from "lucide-react";
+import { Users, MapPin, Award, Target, BookOpen, Shield } from "lucide-react";
 
 const AboutUs = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center space-y-6 mb-12">
+      
+      <main>
+        {/* Hero Section */}
+        <section className="py-16 lg:py-24 bg-gradient-to-br from-neutral-50 to-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-800">
                 About <span className="text-gradient">LocalDrive</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-                Revolutionizing driver education by connecting learners with certified instructors in their local community.
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                We're revolutionizing driving education in Nigeria by connecting learners 
+                with certified instructors through our modern, technology-driven platform.
               </p>
             </div>
+          </div>
+        </section>
 
-            <div className="space-y-16">
-              <section className="bg-white p-8 rounded-2xl shadow-sm">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
-                    <Target className="w-6 h-6 text-white" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-neutral-800">Our Mission</h2>
+        {/* Mission & Vision */}
+        <section className="py-16 lg:py-20">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <Target className="h-8 w-8 text-primary" />
+                  <h2 className="text-3xl font-bold text-neutral-800">Our Mission</h2>
                 </div>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  At LocalDrive, we believe that learning to drive should be convenient, affordable, and stress-free. 
-                  Our platform connects aspiring drivers with experienced, certified instructors in their neighborhood, 
-                  making quality driving education accessible to everyone across Nigeria.
+                <p className="text-lg text-muted-foreground">
+                  To make quality driving education accessible to every Nigerian by connecting 
+                  learners with certified, professional driving instructors in their local area. 
+                  We believe everyone deserves safe, convenient, and effective driving lessons.
                 </p>
-              </section>
-
-              <section className="bg-white p-8 rounded-2xl shadow-sm">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center">
-                    <Smartphone className="w-6 h-6 text-white" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-neutral-800">What We Do</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <Award className="h-8 w-8 text-primary" />
+                  <h2 className="text-3xl font-bold text-neutral-800">Our Vision</h2>
                 </div>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  LocalDrive is a modern platform that streamlines the entire driving lesson experience. We carefully 
-                  vet our instructors, provide digital progress tracking, and offer flexible scheduling to fit your 
-                  busy lifestyle. Whether you're a complete beginner or need a refresher course, we connect you with 
-                  the right instructor for your needs in Lagos and beyond.
+                <p className="text-lg text-muted-foreground">
+                  To become Nigeria's leading platform for driving education, creating a 
+                  community of confident, safe drivers while empowering certified instructors 
+                  to build successful teaching businesses.
                 </p>
-              </section>
-
-              <section className="bg-white p-8 rounded-2xl shadow-sm">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-white" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-neutral-800">Our Values</h2>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <Shield className="w-4 h-4 text-primary" />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold text-neutral-800">Safety First</h3>
-                      <p className="text-muted-foreground">
-                        All our instructors are fully certified and background-checked to ensure your safety and peace of mind.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <MapPin className="w-4 h-4 text-secondary" />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold text-neutral-800">Local Expertise</h3>
-                      <p className="text-muted-foreground">
-                        Our instructors know the local roads, test routes, and driving conditions in your area.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <Lightbulb className="w-4 h-4 text-accent" />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold text-neutral-800">Modern Approach</h3>
-                      <p className="text-muted-foreground">
-                        We use technology to make booking, payment, and progress tracking simple and transparent.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-trust/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <Clock className="w-4 h-4 text-trust" />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold text-neutral-800">Flexible Learning</h3>
-                      <p className="text-muted-foreground">
-                        Learn at your own pace with flexible scheduling that works around your commitments.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section className="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl text-white">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold">Join Our Community</h2>
-                </div>
-                <p className="text-lg opacity-90 leading-relaxed">
-                  Thousands of confident drivers have started their journey with LocalDrive. Whether you're looking 
-                  to learn or teach, we're here to support you every step of the way. Join our growing community 
-                  and experience the future of driver education in Nigeria.
-                </p>
-              </section>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Our Story */}
+        <section className="py-16 lg:py-20 bg-neutral-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center space-y-6 mb-12">
+                <div className="flex items-center justify-center gap-3">
+                  <BookOpen className="h-8 w-8 text-primary" />
+                  <h2 className="text-3xl md:text-4xl font-bold text-neutral-800">Our Story</h2>
+                </div>
+              </div>
+              
+              <div className="prose prose-lg mx-auto text-muted-foreground">
+                <p className="text-lg leading-relaxed mb-6">
+                  LocalDrive was founded with a simple observation: finding quality driving 
+                  instructors in Nigeria was often challenging, time-consuming, and unreliable. 
+                  Many learners struggled to find certified instructors in their area, while 
+                  qualified instructors had difficulty reaching potential students.
+                </p>
+                
+                <p className="text-lg leading-relaxed mb-6">
+                  Our team recognized the opportunity to bridge this gap using technology. 
+                  We developed a platform that makes it easy for learners to discover, 
+                  connect with, and book lessons from verified driving instructors in 
+                  their neighborhood.
+                </p>
+                
+                <p className="text-lg leading-relaxed">
+                  Today, LocalDrive serves communities across Lagos, Abuja, and other major 
+                  Nigerian cities, helping thousands of people begin their journey to 
+                  confident, safe driving.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className="py-16 lg:py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center space-y-6 mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800">
+                Why Choose LocalDrive?
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                We're committed to providing the best driving education experience in Nigeria
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <Shield className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-800">Certified Instructors</h3>
+                <p className="text-muted-foreground">
+                  All our instructors are professionally certified and thoroughly vetted 
+                  to ensure the highest quality instruction.
+                </p>
+              </div>
+              
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <MapPin className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-800">Local Convenience</h3>
+                <p className="text-muted-foreground">
+                  Find instructors in your neighborhood across Lagos, Abuja, and other 
+                  major Nigerian cities for maximum convenience.
+                </p>
+              </div>
+              
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <Users className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-800">Community Focused</h3>
+                <p className="text-muted-foreground">
+                  We're building a community of confident drivers and successful 
+                  instructors across Nigeria.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <section className="py-16 lg:py-20 bg-gradient-to-r from-primary to-secondary text-white">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-4 gap-8 text-center">
+              <div className="space-y-2">
+                <div className="text-4xl md:text-5xl font-bold">1000+</div>
+                <div className="text-lg opacity-90">Happy Learners</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl md:text-5xl font-bold">200+</div>
+                <div className="text-lg opacity-90">Certified Instructors</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl md:text-5xl font-bold">5</div>
+                <div className="text-lg opacity-90">Major Cities</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl md:text-5xl font-bold">4.9/5</div>
+                <div className="text-lg opacity-90">Average Rating</div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+      
       <Footer />
     </div>
   );

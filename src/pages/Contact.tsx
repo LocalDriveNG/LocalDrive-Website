@@ -1,31 +1,17 @@
-import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Form submission logic would go here
-    console.log("Form submitted:", formData);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    alert("Thank you for your message. We'll get back to you soon!");
   };
 
   return (
@@ -36,134 +22,217 @@ const Contact = () => {
         {/* Hero Section */}
         <section className="py-16 lg:py-24 bg-gradient-to-br from-neutral-50 to-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <h1 className="text-4xl md:text-5xl font-bold text-neutral-800">
-                Contact <span className="text-gradient">LocalDrive</span>
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-800">
+                Get in <span className="text-gradient">Touch</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground">
-                Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Have questions about LocalDrive? We're here to help. Reach out to us 
+                and we'll respond as soon as possible.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section className="py-16 lg:py-24">
+        {/* Contact Form & Info */}
+        <section className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
               {/* Contact Form */}
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <h2 className="text-3xl font-bold text-neutral-800">Get in Touch</h2>
-                  <p className="text-muted-foreground">
-                    Fill out the form below and we'll get back to you within 24 hours.
-                  </p>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Name *</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email *</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject *</Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      type="text"
-                      required
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="What's this about?"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us more about your inquiry..."
-                      rows={6}
-                    />
-                  </div>
-                  
-                  <Button type="submit" size="lg" className="hero-gradient hover:opacity-90 transition-opacity w-full md:w-auto">
-                    Send Message
-                  </Button>
-                </form>
+              <div>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-2xl font-bold text-neutral-800">
+                      Send Us a Message
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">First Name *</Label>
+                          <Input 
+                            id="firstName" 
+                            name="firstName"
+                            type="text" 
+                            required 
+                            placeholder="Enter your first name"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Last Name *</Label>
+                          <Input 
+                            id="lastName" 
+                            name="lastName"
+                            type="text" 
+                            required 
+                            placeholder="Enter your last name"
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email Address *</Label>
+                        <Input 
+                          id="email" 
+                          name="email"
+                          type="email" 
+                          required 
+                          placeholder="Enter your email address"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input 
+                          id="phone" 
+                          name="phone"
+                          type="tel" 
+                          placeholder="Enter your phone number"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="subject">Subject *</Label>
+                        <Input 
+                          id="subject" 
+                          name="subject"
+                          type="text" 
+                          required 
+                          placeholder="What is this regarding?"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Message *</Label>
+                        <Textarea 
+                          id="message" 
+                          name="message"
+                          required 
+                          placeholder="Tell us how we can help you..."
+                          rows={6}
+                        />
+                      </div>
+                      
+                      <Button 
+                        type="submit" 
+                        className="w-full hero-gradient hover:opacity-90 transition-opacity"
+                        size="lg"
+                      >
+                        Send Message
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
               </div>
 
               {/* Contact Information */}
               <div className="space-y-8">
-                <div className="space-y-4">
-                  <h2 className="text-3xl font-bold text-neutral-800">Contact Information</h2>
-                  <p className="text-muted-foreground">
-                    Reach out to us through any of these channels. We're here to help!
+                <div>
+                  <h2 className="text-3xl font-bold text-neutral-800 mb-6">
+                    Contact Information
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-8">
+                    We're here to assist you with any questions about LocalDrive, 
+                    whether you're a learner looking for an instructor or an instructor 
+                    wanting to join our platform.
                   </p>
                 </div>
 
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4 p-6 bg-neutral-50 rounded-xl">
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="space-y-1">
-                      <h3 className="font-semibold text-neutral-800">Email Us</h3>
-                      <p className="text-muted-foreground">support@localdrive.com</p>
-                      <p className="text-sm text-muted-foreground">We'll respond within 24 hours</p>
-                    </div>
-                  </div>
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <MapPin className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg text-neutral-800 mb-2">Address</h3>
+                          <p className="text-muted-foreground">
+                            123 Victoria Island<br />
+                            Lagos, Nigeria<br />
+                            101001
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
 
-                  <div className="flex items-start gap-4 p-6 bg-neutral-50 rounded-xl">
-                    <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="space-y-1">
-                      <h3 className="font-semibold text-neutral-800">Call Us</h3>
-                      <p className="text-muted-foreground">+44 20 1234 5678</p>
-                      <p className="text-sm text-muted-foreground">Mon-Fri 9am-6pm GMT</p>
-                    </div>
-                  </div>
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Phone className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg text-neutral-800 mb-2">Phone</h3>
+                          <p className="text-muted-foreground">
+                            +234 (0) 123 456 7890<br />
+                            +234 (0) 987 654 3210
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
 
-                  <div className="flex items-start gap-4 p-6 bg-neutral-50 rounded-xl">
-                    <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="space-y-1">
-                      <h3 className="font-semibold text-neutral-800">Visit Us</h3>
-                      <p className="text-muted-foreground">123 Driving Lane<br />London, UK SW1A 1AA</p>
-                      <p className="text-sm text-muted-foreground">Headquarters & Support Center</p>
-                    </div>
-                  </div>
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Mail className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg text-neutral-800 mb-2">Email</h3>
+                          <p className="text-muted-foreground">
+                            support@localdrive.ng<br />
+                            info@localdrive.ng
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Clock className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg text-neutral-800 mb-2">Business Hours</h3>
+                          <p className="text-muted-foreground">
+                            Monday - Friday: 8:00 AM - 6:00 PM<br />
+                            Saturday: 9:00 AM - 4:00 PM<br />
+                            Sunday: Closed
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ CTA */}
+        <section className="py-16 lg:py-20 bg-neutral-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Before reaching out, check our FAQ section for quick answers to common questions.
+              </p>
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                onClick={() => window.location.href = '/#faq'}
+              >
+                View FAQ
+              </Button>
             </div>
           </div>
         </section>

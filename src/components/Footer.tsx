@@ -27,20 +27,18 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">For Learners</h4>
             <ul className="space-y-2 text-neutral-300">
-              <li><a href="#" className="hover:text-primary transition-colors">Find Instructors</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">How It Works</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Support</a></li>
+              <li><a href={window.location.pathname === '/' ? "#how-it-works" : "/#how-it-works"} className="hover:text-primary transition-colors">Find Instructors</a></li>
+              <li><a href={window.location.pathname === '/' ? "#how-it-works" : "/#how-it-works"} className="hover:text-primary transition-colors">How It Works</a></li>
+              <li><a href="/contact" className="hover:text-primary transition-colors">Support</a></li>
             </ul>
           </div>
           
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">For Instructors</h4>
             <ul className="space-y-2 text-neutral-300">
-              <li><a href="#" className="hover:text-primary transition-colors">Join LocalDrive</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Instructor Resources</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Getting Started</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Instructor Support</a></li>
+              <li><a href={window.location.pathname === '/' ? "#downloads" : "/#downloads"} className="hover:text-primary transition-colors">Join LocalDrive</a></li>
+              <li><a href={window.location.pathname === '/' ? "#instructors" : "/#instructors"} className="hover:text-primary transition-colors">Getting Started</a></li>
+              <li><a href="/contact" className="hover:text-primary transition-colors">Instructor Support</a></li>
             </ul>
           </div>
         </div>

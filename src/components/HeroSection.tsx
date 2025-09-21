@@ -10,7 +10,7 @@ const HeroSection = () => {
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-neutral-800">
                 Your Journey to{" "}
-                <span className="text-gradient">Confident Driving</span>{" "}
+                <span className="text-gradient hover:text-primary cursor-default transition-colors duration-300">Confident Driving</span>{" "}
                 Starts Here
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-lg">

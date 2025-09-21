@@ -20,7 +20,7 @@ const Header = () => {
               <img 
                 src={logoFull} 
                 alt="LocalDrive - Your local driving school, reimagined"
-                className="h-12 w-auto font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
+                className="h-12 w-auto max-w-[180px] font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
               />
             </a>
           </div>
@@ -28,19 +28,19 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             <a 
-              href="#how-it-works" 
+              href={window.location.pathname === '/' ? "#how-it-works" : "/#how-it-works"}
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               For Learners
             </a>
             <a 
-              href="#instructors" 
+              href={window.location.pathname === '/' ? "#instructors" : "/#instructors"}
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               For Instructors
             </a>
             <a 
-              href="#features" 
+              href={window.location.pathname === '/' ? "#features" : "/#features"}
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               Why Us?
@@ -58,7 +58,7 @@ const Header = () => {
               Contact Us
             </a>
             <a 
-              href="#faq" 
+              href={window.location.pathname === '/' ? "#faq" : "/#faq"}
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               FAQ
@@ -69,7 +69,13 @@ const Header = () => {
           <div className="hidden md:flex md:items-center md:space-x-3">
             <Button 
               className="hero-gradient hover:opacity-90 transition-opacity"
-              onClick={() => document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                if (window.location.pathname === '/') {
+                  document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.href = '/#downloads';
+                }
+              }}
             >
               Download App
             </Button>
@@ -101,23 +107,23 @@ const Header = () => {
           }`}
           id="mobile-menu"
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
             <a
-              href="#how-it-works"
+              href={window.location.pathname === '/' ? "#how-it-works" : "/#how-it-works"}
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
               For Learners
             </a>
             <a
-              href="#instructors"
+              href={window.location.pathname === '/' ? "#instructors" : "/#instructors"}
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
               For Instructors
             </a>
             <a
-              href="#features"
+              href={window.location.pathname === '/' ? "#features" : "/#features"}
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -138,7 +144,7 @@ const Header = () => {
               Contact Us
             </a>
             <a
-              href="#faq"
+              href={window.location.pathname === '/' ? "#faq" : "/#faq"}
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -150,7 +156,11 @@ const Header = () => {
                   className="hero-gradient hover:opacity-90 transition-opacity" 
                   onClick={() => {
                     setIsMenuOpen(false);
-                    document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' });
+                    if (window.location.pathname === '/') {
+                      document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      window.location.href = '/#downloads';
+                    }
                   }}
                 >
                   Download App

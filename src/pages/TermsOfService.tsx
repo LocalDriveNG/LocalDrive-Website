@@ -18,7 +18,7 @@ const TermsOfService = () => {
                   This page is under construction. Please check back later.
                 </p>
                 <p className="text-sm text-muted-foreground mt-8">
-                  For immediate terms-related inquiries, please contact us at legal@localdrive.com
+                  For immediate terms-related inquiries, please contact us at legal@localdrive.ng
                 </p>
               </div>
             </div>
