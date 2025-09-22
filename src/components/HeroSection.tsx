@@ -1,14 +1,15 @@
 import { Button } from "@/components/ui/button";
+import { HashLink } from "react-router-hash-link";
 import heroImage from "@/assets/hero-nigerian-driving-lesson.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-neutral-50 to-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-neutral-50 to-white dark:from-neutral-50 dark:to-neutral-100">
       <div className="container mx-auto px-4 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-neutral-800">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-neutral-800 dark:text-neutral-800">
                 Your Journey to{" "}
                 <span className="text-gradient hover:text-primary cursor-default transition-colors duration-300">Confident Driving</span>{" "}
                 Starts Here
@@ -21,21 +22,23 @@ const HeroSection = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="hero-gradient hover:opacity-90 transition-opacity shadow-brand text-lg px-8 py-6"
-                onClick={() => document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Find Your Instructor
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6"
-                onClick={() => document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Become an Instructor
-              </Button>
+              <HashLink to="/#downloads">
+                <Button 
+                  size="lg" 
+                  className="hero-gradient hover:opacity-90 transition-opacity shadow-brand text-lg px-8 py-6"
+                >
+                  Find Your Instructor
+                </Button>
+              </HashLink>
+              <HashLink to="/#downloads">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6"
+                >
+                  Become an Instructor
+                </Button>
+              </HashLink>
             </div>
           </div>
           

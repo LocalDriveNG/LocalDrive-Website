@@ -67,50 +67,50 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 215 28% 17%;
-    --foreground: 0 0% 100%;
+    --background: 215 28% 10%;
+    --foreground: 210 20% 98%;
 
-    --card: 215 25% 19%;
-    --card-foreground: 0 0% 100%;
+    --card: 215 28% 12%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 215 25% 19%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 215 28% 12%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 195 88% 39%;
+    --primary: 195 88% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 195 88% 45%;
+    --primary-hover: 195 88% 50%;
 
-    --secondary: 208 100% 33%;
+    --secondary: 208 100% 38%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-hover: 208 100% 38%;
+    --secondary-hover: 208 100% 43%;
 
-    --accent: 208 100% 35%;
+    --accent: 208 100% 40%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 215 28% 15%;
+    --muted-foreground: 210 20% 70%;
 
-    --destructive: 0 63% 31%;
+    --destructive: 0 63% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 195 88% 39%;
+    --border: 215 28% 18%;
+    --input: 215 28% 18%;
+    --ring: 195 88% 45%;
 
-    --hero-gradient: linear-gradient(135deg, hsl(195 88% 39%), hsl(208 100% 33%));
-    --trust-badge: 142 76% 36%;
-    --neutral-50: 217 33% 15%;
-    --neutral-100: 217 33% 18%;
-    --neutral-200: 217 33% 22%;
-    --neutral-800: 0 0% 100%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --hero-gradient: linear-gradient(135deg, hsl(195 88% 45%), hsl(208 100% 38%));
+    --trust-badge: 142 76% 40%;
+    --neutral-50: 215 28% 8%;
+    --neutral-100: 215 28% 12%;
+    --neutral-200: 215 28% 18%;
+    --neutral-800: 210 20% 98%;
+    --sidebar-background: 215 28% 10%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 195 88% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 215 28% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 28% 18%;
+    --sidebar-ring: 195 88% 45%;
   }
 }
 
@@ -121,6 +121,7 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4rem; /* Account for sticky header height */
   }
 
   body {

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import logoFull from "@/assets/localdrive-logo.png";
@@ -44,53 +46,47 @@ const Header = () => {
         <nav className="flex items-center justify-between h-16" role="navigation" aria-label="Main navigation">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center" aria-label="LocalDrive Home">
+            <Link to="/" className="flex items-center" aria-label="LocalDrive Home">
               <img 
                 src={logoFull} 
                 alt="LocalDrive - Your local driving school, reimagined"
-                className="h-12 w-auto max-w-[220px] font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
+                className="h-12 w-auto max-w-[280px] font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
               />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <a 
-              href={window.location.pathname === '/' ? "#how-it-works" : "/#how-it-works"}
+            <HashLink 
+              to="/#how-it-works"
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               For Learners
-            </a>
-            <a 
-              href={window.location.pathname === '/' ? "#instructors" : "/#instructors"}
+            </HashLink>
+            <HashLink 
+              to="/#instructors"
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               For Instructors
-            </a>
-            <a 
-              href={window.location.pathname === '/' ? "#features" : "/#features"}
+            </HashLink>
+            <HashLink 
+              to="/#features"
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               Why Us?
-            </a>
-            <a 
-              href="/about" 
+            </HashLink>
+            <Link 
+              to="/about" 
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               About Us
-            </a>
-            <a 
-              href="/contact" 
+            </Link>
+            <Link 
+              to="/contact" 
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               Contact Us
-            </a>
-            <a 
-              href={window.location.pathname === '/' ? "#faq" : "/#faq"}
-              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-            >
-              FAQ
-            </a>
+            </Link>
           </div>
 
           {/* Desktop CTA Buttons */}
@@ -106,18 +102,11 @@ const Header = () => {
                 <Moon className="h-5 w-5" />
               )}
             </button>
-            <Button 
-              className="hero-gradient hover:opacity-90 transition-opacity"
-              onClick={() => {
-                if (window.location.pathname === '/') {
-                  document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                  window.location.href = '/#downloads';
-                }
-              }}
-            >
-              Download App
-            </Button>
+            <HashLink to="/#downloads">
+              <Button className="hero-gradient hover:opacity-90 transition-opacity">
+                Download App
+              </Button>
+            </HashLink>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -147,48 +136,41 @@ const Header = () => {
           id="mobile-menu"
         >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
-            <a
-              href={window.location.pathname === '/' ? "#how-it-works" : "/#how-it-works"}
+            <HashLink
+              to="/#how-it-works"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
               For Learners
-            </a>
-            <a
-              href={window.location.pathname === '/' ? "#instructors" : "/#instructors"}
+            </HashLink>
+            <HashLink
+              to="/#instructors"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
               For Instructors
-            </a>
-            <a
-              href={window.location.pathname === '/' ? "#features" : "/#features"}
+            </HashLink>
+            <HashLink
+              to="/#features"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
               Why Us?
-            </a>
-            <a
-              href="/about"
+            </HashLink>
+            <Link
+              to="/about"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact Us
-            </a>
-            <a
-              href={window.location.pathname === '/' ? "#faq" : "/#faq"}
-              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              FAQ
-            </a>
+            </Link>
             <div className="pt-4 pb-2 border-t border-border mt-4">
               <div className="flex flex-col space-y-2">
                 <div className="flex items-center justify-between mb-2">
@@ -205,19 +187,11 @@ const Header = () => {
                     )}
                   </button>
                 </div>
-                <Button 
-                  className="hero-gradient hover:opacity-90 transition-opacity" 
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    if (window.location.pathname === '/') {
-                      document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      window.location.href = '/#downloads';
-                    }
-                  }}
-                >
-                  Download App
-                </Button>
+                <HashLink to="/#downloads" onClick={() => setIsMenuOpen(false)}>
+                  <Button className="hero-gradient hover:opacity-90 transition-opacity w-full">
+                    Download App
+                  </Button>
+                </HashLink>
               </div>
             </div>
           </div>

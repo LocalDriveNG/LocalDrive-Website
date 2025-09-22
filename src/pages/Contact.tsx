@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { HashLink } from "react-router-hash-link";
 
 const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -225,14 +226,15 @@ const Contact = () => {
               <p className="text-lg text-muted-foreground">
                 Before reaching out, check our FAQ section for quick answers to common questions.
               </p>
-              <Button 
-                size="lg"
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                onClick={() => window.location.href = '/#faq'}
-              >
-                View FAQ
-              </Button>
+              <HashLink to="/#faq">
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  View FAQ
+                </Button>
+              </HashLink>
             </div>
           </div>
         </section>

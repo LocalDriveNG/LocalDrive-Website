@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { HashLink } from "react-router-hash-link";
 import { GraduationCap, Clock, TrendingUp } from "lucide-react";
 
 const InstructorCTASection = () => {
@@ -42,14 +43,15 @@ const InstructorCTASection = () => {
             </div>
           </div>
           
-          <Button 
-            size="lg" 
-            variant="secondary"
-            className="bg-white text-secondary hover:bg-neutral-100 text-lg px-8 py-6 shadow-lg"
-            onClick={() => document.getElementById('downloads')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Teach with LocalDrive
-          </Button>
+          <HashLink to="/#downloads">
+            <Button 
+              size="lg" 
+              variant="secondary"
+              className="bg-white text-secondary hover:bg-neutral-100 text-lg px-8 py-6 shadow-lg"
+            >
+              Teach with LocalDrive
+            </Button>
+          </HashLink>
         </div>
       </div>
     </section>

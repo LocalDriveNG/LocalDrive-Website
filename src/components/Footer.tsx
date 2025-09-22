@@ -1,4 +1,6 @@
 import { Instagram, Linkedin } from "lucide-react";
+import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 
 // X (Twitter) icon component
 const XIcon = ({ className }: { className?: string }) => (
@@ -34,18 +36,18 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">For Learners</h4>
             <ul className="space-y-2 text-neutral-300">
-              <li><a href={window.location.pathname === '/' ? "#find-instructors" : "/#find-instructors"} className="hover:text-primary transition-colors">Find Instructors</a></li>
-              <li><a href={window.location.pathname === '/' ? "#for-learners" : "/#for-learners"} className="hover:text-primary transition-colors">How It Works</a></li>
-              <li><a href="/contact" className="hover:text-primary transition-colors">Support</a></li>
+              <li><HashLink to="/#find-instructors" className="hover:text-primary transition-colors">Find Instructors</HashLink></li>
+              <li><HashLink to="/#how-it-works" className="hover:text-primary transition-colors">How It Works</HashLink></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Support</Link></li>
             </ul>
           </div>
           
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">For Instructors</h4>
             <ul className="space-y-2 text-neutral-300">
-              <li><a href={window.location.pathname === '/' ? "#downloads" : "/#downloads"} className="hover:text-primary transition-colors">Join LocalDrive</a></li>
-              <li><a href={window.location.pathname === '/' ? "#for-instructors" : "/#for-instructors"} className="hover:text-primary transition-colors">Getting Started</a></li>
-              <li><a href="/contact" className="hover:text-primary transition-colors">Instructor Support</a></li>
+              <li><HashLink to="/#downloads" className="hover:text-primary transition-colors">Join LocalDrive</HashLink></li>
+              <li><HashLink to="/#instructors" className="hover:text-primary transition-colors">Getting Started</HashLink></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Instructor Support</Link></li>
             </ul>
           </div>
         </div>
@@ -53,11 +55,10 @@ const Footer = () => {
         <div className="border-t border-neutral-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-wrap gap-6 text-sm text-neutral-400">
-              <a href="/about" className="hover:text-primary transition-colors">About Us</a>
-              <a href="/contact" className="hover:text-primary transition-colors">Contact</a>
-              <a href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</a>
-              <a href="/cookies-policy" className="hover:text-primary transition-colors">Cookies Policy</a>
+              <Link to="/about" className="hover:text-primary transition-colors">About Us</Link>
+              <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
+              <Link to="/cookies-policy" className="hover:text-primary transition-colors">Cookies Policy</Link>
             </div>
             
             <div className="flex gap-4">

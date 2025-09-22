@@ -4,13 +4,13 @@ import readyToDriveImage from "@/assets/ready-to-drive.jpg";
 
 const FinalCTASection = () => {
   return (
-    <section id="downloads" className="py-16 lg:py-24 bg-white">
+    <section id="downloads" className="py-16 lg:py-24 bg-white dark:bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left space-y-8">
               <div className="space-y-4">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 dark:text-foreground">
                   Ready to Take the Wheel?
                 </h2>
                 <p className="text-lg md:text-xl text-muted-foreground">
