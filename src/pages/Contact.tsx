@@ -184,8 +184,8 @@ const Contact = () => {
                         <div>
                           <h3 className="font-semibold text-lg text-neutral-800 mb-2">Email</h3>
                           <p className="text-muted-foreground">
-                            support@localdrive.ng<br />
-                            info@localdrive.ng
+                            support@localdriveapp.com<br />
+                            info@localdriveapp.com
                           </p>
                         </div>
                       </div>

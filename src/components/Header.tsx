@@ -1,13 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import logoFull from "@/assets/localdrive-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Check for saved theme preference or default to system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setIsDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
   };
 
   return (
@@ -20,7 +48,7 @@ const Header = () => {
               <img 
                 src={logoFull} 
                 alt="LocalDrive - Your local driving school, reimagined"
-                className="h-12 w-auto max-w-[180px] font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
+                className="h-12 w-auto max-w-[220px] font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
               />
             </a>
           </div>
@@ -67,6 +95,17 @@ const Header = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex md:items-center md:space-x-3">
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDarkMode ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </button>
             <Button 
               className="hero-gradient hover:opacity-90 transition-opacity"
               onClick={() => {
@@ -152,6 +191,20 @@ const Header = () => {
             </a>
             <div className="pt-4 pb-2 border-t border-border mt-4">
               <div className="flex flex-col space-y-2">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-foreground">Theme</span>
+                  <button
+                    onClick={toggleDarkMode}
+                    className="p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
+                    aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                  >
+                    {isDarkMode ? (
+                      <Sun className="h-5 w-5" />
+                    ) : (
+                      <Moon className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
                 <Button 
                   className="hero-gradient hover:opacity-90 transition-opacity" 
                   onClick={() => {

@@ -1,4 +1,11 @@
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
+
+// X (Twitter) icon component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+);
 import logoIcon from "@/assets/localdrive-icon.png";
 
 const Footer = () => {
@@ -27,8 +34,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">For Learners</h4>
             <ul className="space-y-2 text-neutral-300">
-              <li><a href={window.location.pathname === '/' ? "#how-it-works" : "/#how-it-works"} className="hover:text-primary transition-colors">Find Instructors</a></li>
-              <li><a href={window.location.pathname === '/' ? "#how-it-works" : "/#how-it-works"} className="hover:text-primary transition-colors">How It Works</a></li>
+              <li><a href={window.location.pathname === '/' ? "#find-instructors" : "/#find-instructors"} className="hover:text-primary transition-colors">Find Instructors</a></li>
+              <li><a href={window.location.pathname === '/' ? "#for-learners" : "/#for-learners"} className="hover:text-primary transition-colors">How It Works</a></li>
               <li><a href="/contact" className="hover:text-primary transition-colors">Support</a></li>
             </ul>
           </div>
@@ -37,7 +44,7 @@ const Footer = () => {
             <h4 className="font-semibold text-lg">For Instructors</h4>
             <ul className="space-y-2 text-neutral-300">
               <li><a href={window.location.pathname === '/' ? "#downloads" : "/#downloads"} className="hover:text-primary transition-colors">Join LocalDrive</a></li>
-              <li><a href={window.location.pathname === '/' ? "#instructors" : "/#instructors"} className="hover:text-primary transition-colors">Getting Started</a></li>
+              <li><a href={window.location.pathname === '/' ? "#for-instructors" : "/#for-instructors"} className="hover:text-primary transition-colors">Getting Started</a></li>
               <li><a href="/contact" className="hover:text-primary transition-colors">Instructor Support</a></li>
             </ul>
           </div>
@@ -54,16 +61,31 @@ const Footer = () => {
             </div>
             
             <div className="flex gap-4">
-              <a href="#" className="text-neutral-400 hover:text-primary transition-colors">
-                <Facebook className="w-5 h-5" />
+              <a 
+                href="https://x.com/getlocaldrive" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-neutral-400 hover:text-primary transition-colors"
+                aria-label="Follow us on X"
+              >
+                <XIcon className="w-5 h-5" />
               </a>
-              <a href="#" className="text-neutral-400 hover:text-primary transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-neutral-400 hover:text-primary transition-colors">
+              <a 
+                href="https://www.instagram.com/getlocaldrive/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-neutral-400 hover:text-primary transition-colors"
+                aria-label="Follow us on Instagram"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-neutral-400 hover:text-primary transition-colors">
+              <a 
+                href="https://www.linkedin.com/company/localdriveapp/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-neutral-400 hover:text-primary transition-colors"
+                aria-label="Follow us on LinkedIn"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>

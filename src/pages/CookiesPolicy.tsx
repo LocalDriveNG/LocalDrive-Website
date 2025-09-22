@@ -18,7 +18,7 @@ const CookiesPolicy = () => {
                   This page is under construction. Please check back later.
                 </p>
                 <p className="text-sm text-muted-foreground mt-8">
-                  For immediate cookie-related inquiries, please contact us at privacy@localdrive.ng
+                  For immediate cookie-related inquiries, please contact us at privacy@localdriveapp.com
                 </p>
               </div>
             </div>
