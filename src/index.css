@@ -167,3 +167,65 @@ All colors MUST be HSL.
     box-shadow: 0 20px 40px -15px hsl(var(--primary) / 0.4);
   }
 }
+
+/* Animation utilities */
+.story-link {
+  @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+}
+
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-105;
+}
+
+/* Dark mode text fixes */
+.dark footer {
+  color: #000000 !important;
+}
+
+.dark footer a {
+  color: #111111 !important;
+}
+
+.dark #faq h2 {
+  color: #000000 !important;
+}
+
+.dark #faq .text-neutral-800 {
+  color: #000000 !important;
+}
+
+.dark #faq button:hover {
+  color: #ffffff !important;
+  background-color: hsl(var(--primary)) !important;
+}
+
+.dark .section-future h2 {
+  color: #000000 !important;
+}
+
+.dark .section-future .text-neutral-800 {
+  color: #000000 !important;
+}
+
+.dark #testimonials h2 {
+  color: #000000 !important;
+}
+
+.dark #features h2 {
+  color: #000000 !important;
+}
+
+.dark #how-it-works h2 {
+  color: #000000 !important;
+}
+
+.dark .contact-hero-description {
+  color: #000000 !important;
+}
+
+/* Mobile scroll precision - increase for mobile */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 6rem; /* Increased padding for mobile sticky header */
+  }
+}
