@@ -36,7 +36,6 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">For Learners</h4>
             <ul className="space-y-2 text-neutral-300">
-              <li><HashLink to="/#find-instructors" className="hover:text-primary transition-colors">Find Instructors</HashLink></li>
               <li><HashLink to="/#how-it-works" className="hover:text-primary transition-colors">How It Works</HashLink></li>
               <li><Link to="/contact" className="hover:text-primary transition-colors">Support</Link></li>
             </ul>
@@ -45,7 +44,6 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">For Instructors</h4>
             <ul className="space-y-2 text-neutral-300">
-              <li><HashLink to="/#downloads" className="hover:text-primary transition-colors">Join LocalDrive</HashLink></li>
               <li><HashLink to="/#instructors" className="hover:text-primary transition-colors">Getting Started</HashLink></li>
               <li><Link to="/contact" className="hover:text-primary transition-colors">Instructor Support</Link></li>
             </ul>
@@ -93,7 +91,7 @@ const Footer = () => {
           </div>
           
           <div className="text-center text-sm text-neutral-400 mt-8">
-            © 2025 LocalDrive. All rights reserved.
+            © {new Date().getFullYear()} LocalDrive. All rights reserved.
           </div>
         </div>
       </div>

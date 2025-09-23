@@ -27,7 +27,7 @@ const Contact = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-800">
                 Get in <span className="text-gradient">Touch</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto contact-hero-description">
                 Have questions about LocalDrive? We're here to help. Reach out to us 
                 and we'll respond as soon as possible.
               </p>

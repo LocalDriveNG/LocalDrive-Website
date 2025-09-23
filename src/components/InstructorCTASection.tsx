@@ -43,15 +43,17 @@ const InstructorCTASection = () => {
             </div>
           </div>
           
-          <HashLink to="/#downloads">
-            <Button 
-              size="lg" 
-              variant="secondary"
-              className="bg-white text-secondary hover:bg-neutral-100 text-lg px-8 py-6 shadow-lg"
-            >
-              Teach with LocalDrive
-            </Button>
-          </HashLink>
+          <div className="mt-10">
+            <HashLink to="/#downloads">
+              <Button 
+                size="lg" 
+                variant="secondary"
+                className="bg-white text-secondary hover:bg-neutral-100 text-lg px-8 py-6 shadow-lg"
+              >
+                Teach with LocalDrive
+              </Button>
+            </HashLink>
+          </div>
         </div>
       </div>
     </section>
