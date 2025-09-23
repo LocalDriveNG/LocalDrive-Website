@@ -1,3 +1,11 @@
+@layer utilities {
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -119,6 +127,12 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+
+@layer utilities {
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+}
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem; /* Enhanced for better mobile precision */
