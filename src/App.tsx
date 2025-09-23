@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { usePageTracking } from "@/hooks/usePageTracking";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
@@ -15,6 +16,9 @@ import NotFound from "./pages/NotFound";
 // Page transition wrapper
 const PageTransition = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
+  
+  // Track page visits
+  usePageTracking();
   
   useEffect(() => {
     window.scrollTo(0, 0);

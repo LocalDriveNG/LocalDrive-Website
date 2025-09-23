@@ -267,15 +267,17 @@ const Contact = () => {
               <p className="text-lg text-muted-foreground">
                 Before reaching out, check our FAQ section for quick answers to common questions.
               </p>
-              <HashLink to="/#faq">
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                >
-                  View FAQ
-                </Button>
-              </HashLink>
+              <div className="mt-10">
+                <HashLink to="/#faq">
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  >
+                    View FAQ
+                  </Button>
+                </HashLink>
+              </div>
             </div>
           </div>
         </section>

@@ -121,7 +121,7 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 4rem; /* Account for sticky header height */
+    scroll-padding-top: 5rem; /* Enhanced for better mobile precision */
   }
 
   body {
@@ -223,9 +223,15 @@ All colors MUST be HSL.
   color: #000000 !important;
 }
 
-/* Mobile scroll precision - increase for mobile */
-@media (max-width: 768px) {
+/* Enhanced mobile scroll precision */
+@media (max-width: 767px) {
   html {
-    scroll-padding-top: 6rem; /* Increased padding for mobile sticky header */
+    scroll-padding-top: 6.5rem; /* Enhanced mobile precision */
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 5.5rem; /* Desktop precision */
   }
 }

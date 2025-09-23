@@ -1,31 +1,62 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
-const faqs = [
-  {
-    question: "How do I book my first driving lesson?",
-    answer: "Booking your first lesson is easy! Simply enter your location on our platform, browse available certified instructors, select a time that works for you, and pay securely online. You'll receive instant confirmation and your instructor's contact details."
-  },
-  {
-    question: "Are all LocalDrive instructors certified?",
-    answer: "Yes, absolutely! All our instructors are fully qualified, certified driving instructors who have passed rigorous background checks. They're also familiar with local roads and test routes in your area."
-  },
-  {
-    question: "Can I change or cancel my lesson?",
-    answer: "Yes, you can reschedule or cancel lessons through our app or website. We require at least 24 hours notice for changes to avoid cancellation fees. Same-day changes may be subject to charges."
-  },
-  {
-    question: "What payment methods do you accept?",
-    answer: "We accept all major credit and debit cards, as well as digital wallets like Apple Pay and Google Pay. All payments are processed securely, and you'll receive an instant receipt."
-  },
-  {
-    question: "Do you offer lesson packages or discounts?",
-    answer: "Yes! We offer flexible lesson packages that provide better value than individual lessons. The more lessons you book, the more you save. We also offer student discounts and seasonal promotions."
-  }
-];
+interface FAQ {
+  question: string;
+  answer: string;
+}
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [faqs, setFaqs] = useState<FAQ[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchFAQs = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('faqs')
+          .select('question, answer')
+          .order('created_at', { ascending: true });
+
+        if (error) {
+          console.error('Error fetching FAQs:', error);
+          // Fallback to default FAQs
+          setFaqs([
+            {
+              question: "How do I book my first driving lesson?",
+              answer: "Booking your first lesson is easy! Simply enter your location on our platform, browse available certified instructors, select a time that works for you, and pay securely online. You'll receive instant confirmation and your instructor's contact details."
+            },
+            {
+              question: "Are all LocalDrive instructors certified?",
+              answer: "Yes, absolutely! All our instructors are fully qualified, certified driving instructors who have passed rigorous background checks. They're also familiar with local roads and test routes in your area."
+            },
+            {
+              question: "Can I change or cancel my lesson?",
+              answer: "Yes, you can reschedule or cancel lessons through our app or website. We require at least 24 hours notice for changes to avoid cancellation fees. Same-day changes may be subject to charges."
+            },
+            {
+              question: "What payment methods do you accept?",
+              answer: "We accept all major credit and debit cards, as well as digital wallets like Apple Pay and Google Pay. All payments are processed securely, and you'll receive an instant receipt."
+            },
+            {
+              question: "Do you offer lesson packages or discounts?",
+              answer: "Yes! We offer flexible lesson packages that provide better value than individual lessons. The more lessons you book, the more you save. We also offer student discounts and seasonal promotions."
+            }
+          ]);
+        } else {
+          setFaqs(data || []);
+        }
+      } catch (error) {
+        console.error('Error fetching FAQs:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFAQs();
+  }, []);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -45,7 +76,12 @@ const FAQSection = () => {
           </div>
 
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
+            {loading ? (
+              <div className="text-center py-8">
+                <p className="text-muted-foreground">Loading FAQs...</p>
+              </div>
+            ) : (
+              faqs.map((faq, index) => (
               <div key={index} className="bg-white rounded-xl shadow-sm overflow-hidden">
                 <button
                   onClick={() => toggleFAQ(index)}
@@ -73,7 +109,8 @@ const FAQSection = () => {
                   </p>
                 </div>
               </div>
-            ))}
+              ))
+            )}
           </div>
 
           <div className="text-center mt-12">

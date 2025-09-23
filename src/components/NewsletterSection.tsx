@@ -2,18 +2,75 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      // Newsletter subscription logic would go here
-      console.log("Newsletter subscription:", email);
-      setIsSubscribed(true);
+    
+    if (!email) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscribers')
+        .insert({ email });
+
+      if (error) {
+        if (error.code === '23505') {
+          toast({
+            title: "Already subscribed",
+            description: "You're already subscribed to our newsletter!",
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        setIsSubscribed(true);
+        toast({
+          title: "Successfully subscribed!",
+          description: "Thank you for subscribing to our newsletter.",
+        });
+      }
+      
       setEmail("");
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      toast({
+        title: "Subscription failed",
+        description: "There was an error subscribing. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -46,9 +103,10 @@ const NewsletterSection = () => {
                 />
                 <Button
                   type="submit"
-                  className="bg-white text-primary hover:bg-white/90 font-semibold px-8 whitespace-nowrap"
+                  disabled={isSubmitting}
+                  className="bg-white text-primary hover:bg-white/90 font-semibold px-8 whitespace-nowrap disabled:opacity-50"
                 >
-                  Subscribe
+                  {isSubmitting ? "Subscribing..." : "Subscribe"}
                 </Button>
               </div>
             </form>
