@@ -8,6 +8,7 @@ import logoFull from "@/assets/localdrive-logo.png";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     // Check for saved theme preference or default to system preference
@@ -21,6 +22,18 @@ const Header = () => {
       setIsDarkMode(false);
       document.documentElement.classList.remove('dark');
     }
+
+    // Handle scroll effect for sticky header
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -41,8 +54,12 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full max-w-full overflow-hidden bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-      <div className="container mx-auto px-4 max-w-full overflow-hidden">
+    <header className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-200 ${
+      isScrolled 
+        ? 'bg-background/95 backdrop-blur-md shadow-lg border-b border-border' 
+        : 'bg-background/80 backdrop-blur-sm border-b border-border/50'
+    }`}>
+      <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-16" role="navigation" aria-label="Main navigation">
           {/* Logo */}
           <div className="flex-shrink-0">
