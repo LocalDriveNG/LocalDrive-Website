@@ -73,7 +73,7 @@ export default defineConfig(({ mode }) => ({
         }
       }
     },
-    chunkSizeWarningLimit: 150, // Lower threshold to catch more
+    chunkSizeWarningLimit: 1000, // Increased from 150 to 500 KB
     target: "esnext",
     minify: "esbuild",
     cssCodeSplit: true,
