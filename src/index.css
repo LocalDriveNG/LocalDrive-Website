@@ -260,6 +260,12 @@ All colors MUST be HSL.
   @apply text-white;
 }
 
+/* Global overflow fix */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 /* Enhanced responsive scroll precision */
 :root {
   --header-height: 4rem; /* 64px */
@@ -272,7 +278,14 @@ All colors MUST be HSL.
   }
   
   html {
-    scroll-padding-top: var(--header-height);
+    scroll-padding-top: 70px; /* Fixed mobile offset */
+  }
+  
+  /* Target specific section anchors for mobile */
+  #how-it-works,
+  #instructors,
+  #features {
+    scroll-margin-top: 70px;
   }
   
   /* Improve mobile spacing and text sizing */

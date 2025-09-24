@@ -7,20 +7,9 @@ export const usePageTracking = () => {
 
   useEffect(() => {
     const trackPageVisit = async () => {
-      try {
-        const { error } = await supabase
-          .from('page_visits')
-          .insert({
-            page_url: location.pathname,
-            user_ip: null, // Will be handled server-side if needed
-          });
-
-        if (error && error.code !== '23505') { // Ignore duplicate entries
-          console.error('Error tracking page visit:', error);
-        }
-      } catch (error) {
-        console.error('Error tracking page visit:', error);
-      }
+      // Temporarily disabled to prevent RLS policy errors
+      // TODO: Fix RLS policies for page_visits table
+      return;
     };
 
     trackPageVisit();
