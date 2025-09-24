@@ -12,7 +12,7 @@ import logoIcon from "@/assets/localdrive-icon.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-800 text-white py-16">
+    <footer className="bg-neutral-800 dark:bg-transparent text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2 space-y-4">
@@ -36,16 +36,16 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">For Learners</h4>
             <ul className="space-y-2 text-neutral-300">
-              <li><HashLink to="/#how-it-works" className="hover:text-primary transition-colors">How It Works</HashLink></li>
-              <li><Link to="/contact" className="hover:text-primary transition-colors">Support</Link></li>
+              <li><HashLink to="/#how-it-works" className="hover:text-primary hover:underline transition-all duration-200">How It Works</HashLink></li>
+              <li><Link to="/contact" className="hover:text-primary hover:underline transition-all duration-200">Support</Link></li>
             </ul>
           </div>
           
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">For Instructors</h4>
             <ul className="space-y-2 text-neutral-300">
-              <li><HashLink to="/#instructors" className="hover:text-primary transition-colors">Getting Started</HashLink></li>
-              <li><Link to="/contact" className="hover:text-primary transition-colors">Instructor Support</Link></li>
+              <li><HashLink to="/#instructors" className="hover:text-primary hover:underline transition-all duration-200">Getting Started</HashLink></li>
+              <li><Link to="/contact" className="hover:text-primary hover:underline transition-all duration-200">Instructor Support</Link></li>
             </ul>
           </div>
         </div>
@@ -53,10 +53,10 @@ const Footer = () => {
         <div className="border-t border-neutral-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-wrap gap-6 text-sm text-neutral-400">
-              <Link to="/about" className="hover:text-primary transition-colors">About Us</Link>
-              <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-              <Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
-              <Link to="/cookies-policy" className="hover:text-primary transition-colors">Cookies Policy</Link>
+              <Link to="/about" className="hover:text-primary hover:underline transition-all duration-200">About Us</Link>
+              <Link to="/privacy-policy" className="hover:text-primary hover:underline transition-all duration-200">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="hover:text-primary hover:underline transition-all duration-200">Terms of Service</Link>
+              <Link to="/cookies-policy" className="hover:text-primary hover:underline transition-all duration-200">Cookies Policy</Link>
             </div>
             
             <div className="flex gap-4">
@@ -64,7 +64,7 @@ const Footer = () => {
                 href="https://x.com/getlocaldrive" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-primary transition-colors"
+                className="text-neutral-400 hover:text-primary hover:scale-110 transition-all duration-200"
                 aria-label="Follow us on X"
               >
                 <XIcon className="w-5 h-5" />
@@ -73,7 +73,7 @@ const Footer = () => {
                 href="https://www.instagram.com/getlocaldrive/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-primary transition-colors"
+                className="text-neutral-400 hover:text-primary hover:scale-110 transition-all duration-200"
                 aria-label="Follow us on Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -82,7 +82,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/localdriveapp/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-primary transition-colors"
+                className="text-neutral-400 hover:text-primary hover:scale-110 transition-all duration-200"
                 aria-label="Follow us on LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />

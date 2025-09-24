@@ -223,15 +223,98 @@ All colors MUST be HSL.
   color: #000000 !important;
 }
 
-/* Enhanced mobile scroll precision */
+/* Dark mode styles for sections */
+.dark #how-it-works {
+  @apply bg-neutral-800;
+}
+
+.dark #how-it-works h2,
+.dark #how-it-works h3 {
+  @apply text-white;
+}
+
+.dark #features {
+  @apply bg-neutral-900;
+}
+
+.dark #features h2,
+.dark #features h3 {
+  @apply text-white;
+}
+
+.dark #features .bg-white {
+  @apply bg-neutral-800;
+}
+
+/* Footer dark mode fixes */
+.dark footer {
+  @apply bg-transparent text-white;
+}
+
+.dark footer a {
+  @apply text-neutral-300 hover:text-primary transition-colors;
+}
+
+.dark footer h3,
+.dark footer h4 {
+  @apply text-white;
+}
+
+/* Enhanced responsive scroll precision */
+:root {
+  --header-height: 4rem; /* 64px */
+}
+
+/* Mobile responsiveness improvements */
 @media (max-width: 767px) {
+  :root {
+    --header-height: 5rem; /* 80px for mobile with expanded menu */
+  }
+  
   html {
-    scroll-padding-top: 6.5rem; /* Enhanced mobile precision */
+    scroll-padding-top: var(--header-height);
+  }
+  
+  /* Improve mobile spacing and text sizing */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Better mobile grid handling */
+  .grid {
+    gap: 1.5rem;
   }
 }
 
-@media (min-width: 768px) {
+/* Tablet responsiveness */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --header-height: 4.5rem; /* 72px for tablet */
+  }
+  
   html {
-    scroll-padding-top: 5.5rem; /* Desktop precision */
+    scroll-padding-top: var(--header-height);
+  }
+  
+  /* Tablet-specific grid improvements */
+  .grid.md\\:grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .grid.lg\\:grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop responsiveness */
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+  
+  /* Ensure proper spacing on large screens */
+  .container {
+    max-width: 1200px;
   }
 }
