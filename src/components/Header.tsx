@@ -50,7 +50,7 @@ const Header = () => {
               <img 
                 src={logoFull} 
                 alt="LocalDrive - Your local driving way, reimagined"
-                className="h-12 w-auto max-w-[5000px] font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
+                className="h-24 w-auto max-w-[320px] font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
               />
             </Link>
           </div>
