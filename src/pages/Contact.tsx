@@ -207,7 +207,7 @@ const Contact = () => {
                         <div>
                           <h3 className="font-semibold text-lg text-neutral-800 mb-2">Phone</h3>
                           <p className="text-muted-foreground">
-                            +234 (0) 809 925 040<br />
+                            +234 (0) 808 992 5040<br />
                             {/* +234 (0) 987 654 3210 */}
                           </p>
                         </div>
