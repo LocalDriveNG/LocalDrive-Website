@@ -41,7 +41,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
+    <header className="fixed top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-16" role="navigation" aria-label="Main navigation">
           {/* Logo */}
@@ -49,15 +49,15 @@ const Header = () => {
             <Link to="/" className="flex items-center" aria-label="LocalDrive Home">
               <img 
                 src={logoFull} 
-                alt="LocalDrive - Your local driving school, reimagined"
-                className="h-12 w-auto max-w-[320px] font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
+                alt="LocalDrive - Your local driving way, reimagined"
+                className="h-12 w-auto max-w-[5000px] font-bold filter contrast-125 hover:scale-105 transition-transform duration-200"
               />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <HashLink 
+            {/* <HashLink 
               to="/#how-it-works"
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
@@ -68,7 +68,7 @@ const Header = () => {
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               For Instructors
-            </HashLink>
+            </HashLink> */}
             <HashLink 
               to="/#features"
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
@@ -136,7 +136,7 @@ const Header = () => {
           id="mobile-menu"
         >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
-            <HashLink
+            {/* <HashLink
               to="/#how-it-works"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
@@ -149,7 +149,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               For Instructors
-            </HashLink>
+            </HashLink> */}
             <HashLink
               to="/#features"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
