@@ -23,7 +23,7 @@ LocalDrive is a modern driving education platform connecting learners with certi
 
 ### Prerequisites
 
-- Node.js 16+ 
+- Node.js 18+ 
 - npm or yarn
 
 ### Installation
@@ -114,10 +114,6 @@ The project is ready for deployment on platforms like:
 - Any static hosting service
 
 Ensure environment variables are configured in your deployment platform.
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2ee8f6a1-f34e-4fb7-9909-6a84a72649e6) and click on Share -> Publish.
 
 ## Contributing
 
