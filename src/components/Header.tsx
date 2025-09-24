@@ -57,23 +57,23 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            {/* <HashLink 
+            <HashLink 
               to="/#how-it-works"
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               For Learners
             </HashLink>
             <HashLink 
-              to="/#instructors"
-              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-            >
-              For Instructors
-            </HashLink> */}
-            <HashLink 
               to="/#features"
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
               Why Us?
+            </HashLink>
+            <HashLink 
+              to="/#instructors"
+              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+            >
+              For Instructors
             </HashLink>
             <Link 
               to="/about" 
@@ -136,7 +136,7 @@ const Header = () => {
           id="mobile-menu"
         >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
-            {/* <HashLink
+            <HashLink
               to="/#how-it-works"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
@@ -144,18 +144,18 @@ const Header = () => {
               For Learners
             </HashLink>
             <HashLink
-              to="/#instructors"
-              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              For Instructors
-            </HashLink> */}
-            <HashLink
               to="/#features"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
               Why Us?
+            </HashLink>
+            <HashLink
+              to="/#instructors"
+              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              For Instructors
             </HashLink>
             <Link
               to="/about"
