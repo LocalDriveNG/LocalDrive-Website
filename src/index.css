@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -235,3 +236,338 @@ All colors MUST be HSL.
     scroll-padding-top: 5.5rem; /* Desktop precision */
   }
 }
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 28% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    /* LocalDrive Brand Colors */
+    --primary: 195 88% 39%; /* #0D9DB9 */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 195 88% 32%;
+
+    --secondary: 208 100% 33%; /* #0064A9 */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 208 100% 28%;
+
+    --accent: 208 100% 35%; /* #0062A8 */
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 195 88% 39%;
+
+    /* Custom LocalDrive tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(195 88% 39%), hsl(208 100% 33%));
+    --trust-badge: 142 76% 36%;
+    --neutral-50: 210 20% 98%;
+    --neutral-100: 220 14% 96%;
+    --neutral-200: 220 13% 91%;
+    --neutral-800: 215 28% 17%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 28% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 215 28% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 215 28% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 195 88% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 195 88% 50%;
+
+    --secondary: 208 100% 38%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 208 100% 43%;
+
+    --accent: 208 100% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 215 28% 15%;
+    --muted-foreground: 210 20% 70%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 28% 18%;
+    --input: 215 28% 18%;
+    --ring: 195 88% 45%;
+
+    --hero-gradient: linear-gradient(135deg, hsl(195 88% 45%), hsl(208 100% 38%));
+    --trust-badge: 142 76% 40%;
+    --neutral-50: 215 28% 8%;
+    --neutral-100: 215 28% 12%;
+    --neutral-200: 215 28% 18%;
+    --neutral-800: 210 20% 98%;
+    --sidebar-background: 215 28% 10%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 195 88% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 28% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 28% 18%;
+    --sidebar-ring: 195 88% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Enhanced for better mobile precision */
+  }
+
+  body {
+    @apply bg-background text-foreground font-montserrat;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-semibold;
+  }
+
+  /* Focus styles for accessibility */
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply outline-none ring-2 ring-primary ring-offset-2;
+  }
+
+  /* Skip to content link for screen readers */
+  .skip-to-content {
+    @apply absolute -top-10 left-0 bg-primary text-primary-foreground px-4 py-2 rounded-md focus:top-4 z-50;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+  
+  .text-gradient {
+    background: var(--hero-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-brand {
+    box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+  }
+  
+  .shadow-brand-lg {
+    box-shadow: 0 20px 40px -15px hsl(var(--primary) / 0.4);
+  }
+}
+
+/* Animation utilities */
+.story-link {
+  @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+}
+
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-105;
+}
+
+/* Dark mode text fixes */
+.dark footer {
+  color: #000000 !important;
+}
+
+.dark footer a {
+  color: #111111 !important;
+}
+
+.dark #faq h2 {
+  color: #000000 !important;
+}
+
+.dark #faq .text-neutral-800 {
+  color: #000000 !important;
+}
+
+.dark #faq button:hover {
+  color: #ffffff !important;
+  background-color: hsl(var(--primary)) !important;
+}
+
+.dark .section-future h2 {
+  color: #000000 !important;
+}
+
+.dark .section-future .text-neutral-800 {
+  color: #000000 !important;
+}
+
+.dark #testimonials h2 {
+  color: #000000 !important;
+}
+
+.dark #features h2 {
+  color: #000000 !important;
+}
+
+.dark #how-it-works h2 {
+  color: #000000 !important;
+}
+
+.dark .contact-hero-description {
+  color: #000000 !important;
+}
+
+/* Dark mode styles for sections */
+.dark #how-it-works {
+  @apply bg-neutral-800;
+}
+
+.dark #how-it-works h2,
+.dark #how-it-works h3 {
+  @apply text-white;
+}
+
+.dark #features {
+  @apply bg-neutral-900;
+}
+
+.dark #features h2,
+.dark #features h3 {
+  @apply text-white;
+}
+
+.dark #features .bg-white {
+  @apply bg-neutral-800;
+}
+
+/* Footer dark mode fixes */
+.dark footer {
+  @apply bg-transparent text-white;
+}
+
+.dark footer a {
+  @apply text-neutral-300 hover:text-primary transition-colors;
+}
+
+.dark footer h3,
+.dark footer h4 {
+  @apply text-white;
+}
+
+/* Global overflow fix */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Enhanced responsive scroll precision */
+:root {
+  --header-height: 4rem; /* 64px */
+}
+
+/* Mobile responsiveness improvements */
+@media (max-width: 767px) {
+  :root {
+    --header-height: 5rem; /* 80px for mobile with expanded menu */
+  }
+  
+  html {
+    scroll-padding-top: 70px; /* Fixed mobile offset */
+  }
+  
+  /* Target specific section anchors for mobile */
+  #how-it-works,
+  #instructors,
+  #features {
+    scroll-margin-top: 70px;
+  }
+  
+  /* Improve mobile spacing and text sizing */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Better mobile grid handling */
+  .grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --header-height: 4.5rem; /* 72px for tablet */
+  }
+  
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+  
+  /* Tablet-specific grid improvements */
+  .grid.md\\:grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .grid.lg\\:grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop responsiveness */
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+  
+  /* Ensure proper spacing on large screens */
+  .container {
+    max-width: 1200px;
+  }
+}
+>>>>>>> 784f2bf7ba1d8f7b5216fb6e8c3dccb5fb0abbcb
