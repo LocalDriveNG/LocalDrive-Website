@@ -22,7 +22,7 @@ const FutureVisionSection = () => {
               >
                 <Sparkles className="w-8 h-8 text-primary" />
               </motion.div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 dark:text-white">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white">
                 The Future of Driver Licensing is Coming
               </h2>
             </div>

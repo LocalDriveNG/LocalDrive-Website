@@ -51,7 +51,7 @@ const HeroSection = () => {
                 className="w-full h-auto object-cover"
               />
             </div>
-            <div className="hero-gradient absolute -bottom-4 -right-4 bg-trust text-white px-6 py-3 rounded-full shadow-lg">
+            <div className="absolute -top-3 -right-3 bg-gradient-to-r from-primary to-secondary text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg animate-pulse">
               <span className="text-sm font-semibold">4.9/5 ⭐ Rating</span>
             </div>
           </div>

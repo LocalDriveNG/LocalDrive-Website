@@ -174,7 +174,7 @@ const Header = () => {
             <div className="pt-4 pb-2 border-t border-border mt-4">
               <div className="flex flex-col space-y-2">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-foreground">Theme</span>
+                  {/* <span className="text-sm font-medium text-foreground">Theme</span> */}
                   <button
                     onClick={toggleDarkMode}
                     className="p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
