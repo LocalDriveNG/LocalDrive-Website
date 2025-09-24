@@ -88,7 +88,7 @@ All colors MUST be HSL.
     --accent-foreground: 0 0% 100%;
 
     --muted: 215 28% 15%;
-    --muted-foreground: 210 20% 70%;
+    --muted-foreground: 215 16% 47%;
 
     --destructive: 0 63% 50%;
     --destructive-foreground: 0 0% 100%;
@@ -181,14 +181,10 @@ All colors MUST be HSL.
 .dark footer {
   color: #000000 !important;
 }
-
-.dark footer a {
-  color: #111111 !important;
-}
-
+/* 
 .dark #faq h2 {
   color: #000000 !important;
-}
+} */
 
 .dark #faq .text-neutral-800 {
   color: #000000 !important;
@@ -199,21 +195,21 @@ All colors MUST be HSL.
   background-color: hsl(var(--primary)) !important;
 }
 
-.dark .section-future h2 {
+/* .dark .section-future h2 {
   color: #000000 !important;
-}
+} */
 
 .dark .section-future .text-neutral-800 {
   color: #000000 !important;
 }
 
-.dark #testimonials h2 {
+/* .dark #testimonials h2 {
   color: #000000 !important;
-}
+} */
 
-.dark #features h2 {
+/* .dark #features h2 {
   color: #000000 !important;
-}
+} */
 
 .dark #how-it-works h2 {
   color: #000000 !important;

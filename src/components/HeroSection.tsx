@@ -25,7 +25,7 @@ const HeroSection = () => {
               <HashLink to="/#downloads">
                 <Button 
                   size="lg" 
-                  className="hero-gradient hover:opacity-90 transition-opacity shadow-brand text-lg px-8 py-6"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6"
                 >
                   Find Your Instructor
                 </Button>

@@ -36,16 +36,16 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg text-white dark:text-white">For Learners</h4>
             <ul className="space-y-2 text-neutral-300 dark:text-neutral-300">
-              <li><HashLink to="/#how-it-works" className="text-neutral-300 dark:text-white hover:text-primary dark:hover:text-primary hover:underline transition-all duration-200">How It Works</HashLink></li>
-              <li><Link to="/contact" className="text-neutral-300 dark:text-white hover:text-primary dark:hover:text-primary hover:underline transition-all duration-200">Support</Link></li>
+              <li><HashLink to="/#how-it-works" className="text-neutral-300 dark:text-white hover:text-primary dark:hover:text-primary transition-all duration-200">How It Works</HashLink></li>
+              <li><Link to="/contact" className="text-neutral-300 dark:text-white hover:text-primary dark:hover:text-primary transition-all duration-200">Support</Link></li>
             </ul>
           </div>
           
           <div className="space-y-4">
             <h4 className="font-semibold text-lg text-white dark:text-white">For Instructors</h4>
             <ul className="space-y-2 text-neutral-300 dark:text-neutral-300">
-              <li><HashLink to="/#instructors" className="text-neutral-300 dark:text-white hover:text-primary dark:hover:text-primary hover:underline transition-all duration-200">Getting Started</HashLink></li>
-              <li><Link to="/contact" className="text-neutral-300 dark:text-white hover:text-primary dark:hover:text-primary hover:underline transition-all duration-200">Instructor Support</Link></li>
+              <li><HashLink to="/#instructors" className="text-neutral-300 dark:text-white hover:text-primary dark:hover:text-primary transition-all duration-200">Getting Started</HashLink></li>
+              <li><Link to="/contact" className="text-neutral-300 dark:text-white hover:text-primary dark:hover:text-primary transition-all duration-200">Instructor Support</Link></li>
             </ul>
           </div>
         </div>
@@ -53,10 +53,10 @@ const Footer = () => {
         <div className="border-t border-neutral-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-wrap gap-6 text-sm text-neutral-400 dark:text-neutral-400">
-              <Link to="/about" className="text-neutral-400 dark:text-white hover:text-primary dark:hover:text-primary hover:underline transition-all duration-200">About Us</Link>
-              <Link to="/privacy-policy" className="text-neutral-400 dark:text-white hover:text-primary dark:hover:text-primary hover:underline transition-all duration-200">Privacy Policy</Link>
-              <Link to="/terms-of-service" className="text-neutral-400 dark:text-white hover:text-primary dark:hover:text-primary hover:underline transition-all duration-200">Terms of Service</Link>
-              <Link to="/cookies-policy" className="text-neutral-400 dark:text-white hover:text-primary dark:hover:text-primary hover:underline transition-all duration-200">Cookies Policy</Link>
+              <Link to="/about" className="text-neutral-400 dark:text-white hover:text-primary dark:hover:text-primary transition-all duration-200">About Us</Link>
+              <Link to="/privacy-policy" className="text-neutral-400 dark:text-white hover:text-primary dark:hover:text-primary transition-all duration-200">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="text-neutral-400 dark:text-white hover:text-primary dark:hover:text-primary transition-all duration-200">Terms of Service</Link>
+              <Link to="/cookies-policy" className="text-neutral-400 dark:text-white hover:text-primary dark:hover:text-primary transition-all duration-200">Cookies Policy</Link>
             </div>
             
             <div className="flex gap-4">

@@ -191,9 +191,7 @@ const Contact = () => {
                         <div>
                           <h3 className="font-semibold text-lg text-neutral-800 mb-2">Address</h3>
                           <p className="text-muted-foreground">
-                            123 Victoria Island<br />
                             Lagos, Nigeria<br />
-                            101001
                           </p>
                         </div>
                       </div>
@@ -209,8 +207,8 @@ const Contact = () => {
                         <div>
                           <h3 className="font-semibold text-lg text-neutral-800 mb-2">Phone</h3>
                           <p className="text-muted-foreground">
-                            +234 (0) 123 456 7890<br />
-                            +234 (0) 987 654 3210
+                            +234 (0) 809 925 040<br />
+                            {/* +234 (0) 987 654 3210 */}
                           </p>
                         </div>
                       </div>
