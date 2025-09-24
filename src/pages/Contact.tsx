@@ -29,13 +29,14 @@ const Contact = () => {
     message: formData.get('message') as string,
   };
 
+  // Store the form element reference before the async operation
+  const formElement = e.currentTarget;
+
   try {
     const { error } = await supabase
       .from('contact_submissions')
       .insert(contactData);
 
-      console.log('Insert result - error:', error);
-    // Only throw error if it actually exists
     if (error) {
       throw error;
     }
@@ -45,8 +46,8 @@ const Contact = () => {
       description: "Thank you for contacting us. We'll get back to you soon.",
     });
     
-    // Reset form
-    e.currentTarget.reset();
+    // Use the stored form reference instead of e.currentTarget
+    formElement.reset();
   } catch (error) {
     console.error('Error submitting contact form:', error);
     toast({
