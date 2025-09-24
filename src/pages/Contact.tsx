@@ -34,6 +34,7 @@ const Contact = () => {
       .from('contact_submissions')
       .insert(contactData);
 
+      console.log('Insert result - error:', error);
     // Only throw error if it actually exists
     if (error) {
       throw error;
