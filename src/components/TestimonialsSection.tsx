@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
               <div className="space-y-6">
                 <div className="flex">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-trust text-trust text-red-500" />
+                    <Star key={i} className="w-5 h-5 fill-current text-trust text-red-500" />
                   ))}
                 </div>
                 

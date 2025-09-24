@@ -138,7 +138,7 @@ const Header = () => {
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
             <HashLink
               to="/#how-it-works"
-              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
+              className="block px-3 py-2 text-base font-medium text-foreground hover:bg-muted rounded-md transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
               For Learners
