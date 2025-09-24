@@ -32,12 +32,10 @@ const Contact = () => {
   try {
     const { error } = await supabase
       .from('contact_submissions')
-      .insert(contactData)
-      .select();
+      .insert(contactData);
 
-    // Check if error exists and has a message
-    if (error && error.message) {
-      console.error('Supabase error:', error);
+    // Only throw error if it actually exists
+    if (error) {
       throw error;
     }
 
