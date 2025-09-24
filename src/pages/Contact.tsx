@@ -44,6 +44,7 @@ const Contact = () => {
     toast({
       title: "Message sent successfully!",
       description: "Thank you for contacting us. We'll get back to you soon.",
+      className: "bg-green-600 border-black-200 text-white",
     });
     
     // Use the stored form reference instead of e.currentTarget
