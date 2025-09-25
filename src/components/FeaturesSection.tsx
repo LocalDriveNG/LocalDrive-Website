@@ -62,7 +62,7 @@ const FeaturesSection = () => {
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-neutral-800 dark:text-white">
+                  <h3 className="text-xl font-semibold text-neutral-800">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
