@@ -238,6 +238,10 @@ All colors MUST be HSL.
   @apply text-white;
 }
 
+.dark #features h3 {
+  @apply text-black;
+}
+
 .dark #features .bg-white {
   @apply bg-neutral-800;
 }
