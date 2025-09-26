@@ -20,7 +20,7 @@ const InstructorCTASection = () => {
             </h2>
             <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
               Join our platform to grow your business, manage your schedule effortlessly, 
-              and get paid on time. Reach more students in your local area.
+              and get paid on time. Reach more driving enthusiats in your locale.
             </p>
           </motion.div>
           

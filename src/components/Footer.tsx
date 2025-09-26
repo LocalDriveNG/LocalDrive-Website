@@ -24,7 +24,7 @@ const Footer = () => {
               />
               <div className="flex flex-col justify-center">
                 <h3 className="text-2xl font-bold text-gradient leading-none">LocalDrive</h3>
-                <p className="text-neutral-300 dark:text-neutral-300 text-sm mt-1">Your local driving school, reimagined.</p>
+                <p className="text-neutral-300 dark:text-neutral-300 text-sm mt-1">Your Journey to Confident Driving Start Here.</p>
               </div>
             </div>
             <p className="text-neutral-400 dark:text-neutral-400 max-w-md">

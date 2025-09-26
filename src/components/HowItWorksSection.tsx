@@ -1,4 +1,4 @@
-import { MapPin, Calendar, Car } from "lucide-react";
+import { MapPin, Calendar, Car, Package } from "lucide-react";
 import { motion } from "framer-motion";
 
 const steps = [
@@ -7,10 +7,15 @@ const steps = [
     title: "Find & Match",
     description: "Enter your location and instantly see available, top-rated instructors near you."
   },
+    {
+    icon: Package,
+    title: "Select & Pay", 
+    description: "Choose a package that fits your schedule and pay securely online."
+  },
   {
     icon: Calendar,
-    title: "Book & Pay", 
-    description: "Choose a time that fits your schedule and pay securely online."
+    title: "Book & Schedule", 
+    description: "Book a suitable time and schedule your lessons."
   },
   {
     icon: Car,

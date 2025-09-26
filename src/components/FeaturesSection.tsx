@@ -10,17 +10,17 @@ const features = [
   {
     icon: Package,
     title: "Flexible Packages",
-    description: "Buy single lessons or discounted bundles that suit your pace and budget."
+    description: "Pay for different packages that suit your pace and budget."
   },
   {
     icon: TrendingUp,
     title: "Digital Progress Tracking",
-    description: "See your skills improve with every lesson. Track milestones and get ready for your test."
+    description: "See your skills improve with every lesson. Track milestones and get ready for the road."
   },
   {
     icon: CreditCard,
     title: "Secure Payment",
-    description: "No cash hassles. Pay easily and securely with your card or digital wallet."
+    description: "No cash hassles. Pay easily and securely with your card or digital wallet through our seamless payment system."
   }
 ];
 

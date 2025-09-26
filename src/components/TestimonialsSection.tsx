@@ -8,7 +8,7 @@ const testimonials = [
   {
     name: "Sarah T.",
     location: "Lekki, Lagos",
-    content: "I was so nervous to start driving, but my instructor from LocalDrive was incredibly patient and made me feel at ease. Booking lessons around my uni schedule was a breeze!",
+    content: "I was so nervous to start driving, but my instructor from LocalDrive was incredibly patient and made me feel at ease. Booking lessons around my school schedule was a breeze!",
     rating: 5,
     image: sarahImage
   },

@@ -86,7 +86,7 @@ const NewsletterSection = () => {
               Stay in the Driver's Seat!
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-              Get the latest updates, driving tips, and exclusive offers delivered straight to your inbox.
+              Get the latest updates, driving tips, and exclusive offers delivered straight to you.
             </p>
           </div>
 

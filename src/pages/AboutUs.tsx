@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Users, MapPin, Award, Target, BookOpen, Shield } from "lucide-react";
+import { Users, MapPin, Award, Target, BookOpen, Shield, TabletSmartphone, ShieldCheck } from "lucide-react";
 
 const AboutUs = () => {
   return (
@@ -76,13 +76,12 @@ const AboutUs = () => {
                 <p className="text-lg leading-relaxed mb-6">
                   Our team recognized the opportunity to bridge this gap using technology. 
                   We developed a platform that makes it easy for learners to discover, 
-                  connect with, and book lessons from verified driving instructors in 
+                  connect with, book and schedule lessons with verified driving instructors in 
                   their neighborhood.
                 </p>
                 
                 <p className="text-lg leading-relaxed">
-                  Today, LocalDrive serves communities across Lagos, Abuja, and other major 
-                  Nigerian cities, helping thousands of people begin their journey to 
+                  Today, LocalDrive serves communities across Lagos, helping thousands of people begin their journey to 
                   confident, safe driving.
                 </p>
               </div>
@@ -101,7 +100,18 @@ const AboutUs = () => {
                 We're committed to providing the best driving education experience in Nigeria
               </p>
             </div>
-            
+                        
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <TabletSmartphone className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">Innovation First</h3>
+                <p className="text-muted-foreground">
+                  Leveraging technology to continuously improve our platform to create a seamless learning experience.
+                </p>
+              </div>
+
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               <div className="text-center space-y-4">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
@@ -120,8 +130,17 @@ const AboutUs = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-foreground">Local Convenience</h3>
                 <p className="text-muted-foreground">
-                  Find instructors in your neighborhood across Lagos, Abuja, and other 
-                  major Nigerian cities for maximum convenience.
+                  Find instructors in your neighborhood across Lagos for maximum convenience.
+                </p>
+              </div>
+
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <ShieldCheck className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">Safety First</h3>
+                <p className="text-muted-foreground">
+                  Every lesson prioritizes safety, ensuring learners develop responsible driving habits from day one.
                 </p>
               </div>
               
@@ -136,6 +155,7 @@ const AboutUs = () => {
                 </p>
               </div>
             </div>
+          </div>
           </div>
         </section>
 
