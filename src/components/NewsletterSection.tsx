@@ -49,6 +49,7 @@ const NewsletterSection = () => {
           toast({
             title: "Already subscribed",
             description: "You're already subscribed to our newsletter!",
+            className: "bg-yellow-600 border-black-200 text-white",
           });
         } else {
           throw error;
@@ -58,6 +59,7 @@ const NewsletterSection = () => {
         toast({
           title: "Successfully subscribed!",
           description: "Thank you for subscribing to our newsletter.",
+          className: "bg-green-600 border-black-200 text-white",
         });
       }
       
