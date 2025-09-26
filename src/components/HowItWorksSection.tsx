@@ -39,11 +39,11 @@ const HowItWorksSection = () => {
             Learn to Drive, Your Way
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our simple three-step process gets you behind the wheel quickly and confidently.
+            Our simple four-step process gets you behind the wheel quickly and confidently.
           </p>
         </motion.div>
         
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {steps.map((step, index) => (
             <motion.div 
               key={index} 
