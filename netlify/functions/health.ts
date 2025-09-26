@@ -6,10 +6,9 @@ const SUPABASE_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
-export const handler: Handler = async () => {
+exports.handler = async () => {
   try {
-    // Simple test: fetch 1 row from the test table
-    const { data, error } = await supabase.from("test").select("id").limit(1);
+    const { data, error } = await supabase.auth.getSession();
 
     if (error) {
       return {
@@ -22,12 +21,11 @@ export const handler: Handler = async () => {
       statusCode: 200,
       body: JSON.stringify({
         status: "ok",
-        message: "Supabase connection successful ✅",
-        sample: data,
+        message: "Supabase reachable ✅",
+        session: data.session ? "active" : "no active session",
       }),
     };
   } catch (err) {
-    // fallback, just convert the error to a string
     return {
       statusCode: 500,
       body: JSON.stringify({ status: "error", message: String(err) }),
