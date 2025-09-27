@@ -23,29 +23,34 @@ LocalDrive is a modern driving education platform connecting learners with certi
 
 ### Prerequisites
 
-- Node.js 16+ 
+- Node.js 16+
 - npm or yarn
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd localdrive
 ```
 
-2. Install dependencies:
+2.Install dependencies:
+
 ```bash
 npm install
 ```
 
-3. Set up environment variables:
+3.Set up environment variables:
+
 ```bash
 cp .env.example .env
 ```
+
 Add your Supabase credentials to the `.env` file.
 
-4. Start development server:
+4.Start development server:
+
 ```bash
 npm run dev
 ```
@@ -64,7 +69,8 @@ npm run preview
 
 ## Project Structure
 
-```
+```'
+
 src/
 ├── components/          # Reusable UI components
 ├── pages/              # Page components
@@ -84,22 +90,26 @@ Required environment variables:
 
 ## Features Implementation
 
-### Responsive Design
+## Responsive Design
+
 - Mobile-first approach with Tailwind CSS
 - Optimized for mobile, tablet, and desktop
 - Precision section scrolling with header offset
 
-### Animations
+## Animations
+
 - Framer Motion integration for smooth animations
 - Scroll-triggered animations for better UX
 - Hover effects and micro-interactions
 
-### Dark Mode
+## Dark Mode
+
 - System preference detection
 - Manual toggle with persistent storage
 - Comprehensive dark mode coverage for all components
 
-### Backend Integration
+## Backend Integration
+
 - Supabase for real-time data
 - Form submissions with validation
 - Newsletter subscriptions
@@ -107,17 +117,12 @@ Required environment variables:
 
 ## Deployment
 
-The project is ready for deployment on platforms like:
-- Vercel
+The project is deployed on
+
 - Netlify
-- AWS Amplify
-- Any static hosting service
+?branch=[![Netlify Status](https://api.netlify.com/api/v1/badges/6063d7c2-61de-405e-a8d9-5a0d9ddafc76/deploy-status)](https://app.netlify.com/projects/localdriveapp/deploys)
 
 Ensure environment variables are configured in your deployment platform.
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2ee8f6a1-f34e-4fb7-9909-6a84a72649e6) and click on Share -> Publish.
 
 ## Contributing
 
