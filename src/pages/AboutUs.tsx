@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Users, MapPin, Award, Target, BookOpen, Shield, TabletSmartphone, ShieldCheck } from "lucide-react";
+import { Users, MapPin, Award, Target, BookOpen, Shield, TabletSmartphone, ShieldCheck, CreditCard } from "lucide-react";
 
 const AboutUs = () => {
   return (
@@ -112,7 +112,6 @@ const AboutUs = () => {
                 </p>
               </div>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               <div className="text-center space-y-4">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <Shield className="h-8 w-8 text-primary" />
@@ -136,6 +135,16 @@ const AboutUs = () => {
 
               <div className="text-center space-y-4">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <CreditCard className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">Seamless Payment</h3>
+                <p className="text-muted-foreground">
+                  Make seamsless payments through our secure platform with multiple payment options.
+                </p>
+              </div>
+
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <ShieldCheck className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground">Safety First</h3>
@@ -154,7 +163,6 @@ const AboutUs = () => {
                   instructors across Nigeria.
                 </p>
               </div>
-            </div>
           </div>
           </div>
         </section>
