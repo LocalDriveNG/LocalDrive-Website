@@ -88,7 +88,7 @@ const TestimonialsSection = () => {
                     />
                   </div>
                   <div>
-                    <div className="font-semibold text-neutral-800">
+                    <div className="font-semibold text-neutral-800 dark:text-black">
                       {testimonial.name}
                     </div>
                     <div className="text-sm text-muted-foreground">
