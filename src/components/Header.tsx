@@ -187,11 +187,11 @@ const Header = () => {
                     )}
                   </button>
                 </div>
-                <HashLink to="/#downloads" onClick={() => setIsMenuOpen(false)}>
+                {/* <HashLink to="/#downloads" onClick={() => setIsMenuOpen(false)}>
                   <Button className="hero-gradient hover:opacity-90 transition-opacity w-full">
                     Download App
                   </Button>
-                </HashLink>
+                </HashLink> */}
               </div>
             </div>
           </div>

@@ -119,8 +119,7 @@ Required environment variables:
 
 The project is deployed on
 
-- Netlify
-?branch=[![Netlify Status](https://api.netlify.com/api/v1/badges/6063d7c2-61de-405e-a8d9-5a0d9ddafc76/deploy-status)](https://app.netlify.com/projects/localdriveapp/deploys)
+- Netlify [![Netlify Status](https://api.netlify.com/api/v1/badges/6063d7c2-61de-405e-a8d9-5a0d9ddafc76/deploy-status)](https://app.netlify.com/projects/localdriveapp/deploys)
 
 Ensure environment variables are configured in your deployment platform.
 

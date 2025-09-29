@@ -7,7 +7,7 @@ import InstructorCTASection from "@/components/InstructorCTASection";
 import FutureVisionSection from "@/components/FutureVisionSection";
 import FAQSection from "@/components/FAQSection";
 import NewsletterSection from "@/components/NewsletterSection";
-import FinalCTASection from "@/components/FinalCTASection";
+// import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -22,7 +22,7 @@ const Index = () => {
       <FutureVisionSection />
       <FAQSection />
       <NewsletterSection />
-      <FinalCTASection />
+      {/* <FinalCTASection /> */}
       <Footer />
     </div>
   );

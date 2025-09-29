@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { HashLink } from "react-router-hash-link";
+// import { Button } from "@/components/ui/button";
+// import { HashLink } from "react-router-hash-link";
 import heroImage from "@/assets/hero-nigerian-driving-lesson.jpg";
 
 const HeroSection = () => {
@@ -21,7 +21,7 @@ const HeroSection = () => {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* <div className="flex flex-col sm:flex-row gap-4">
               <HashLink to="/#downloads">
                 <Button 
                   variant="outline" 
@@ -40,7 +40,7 @@ const HeroSection = () => {
                   Become an Instructor
                 </Button>
               </HashLink>
-            </div>
+            </div> */}
           </div>
           
           <div className="relative">
