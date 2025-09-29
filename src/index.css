@@ -224,10 +224,10 @@ All colors MUST be HSL.
   @apply bg-neutral-800;
 }
 
-.dark #how-it-works h2,
+/* .dark #how-it-works h2,
 .dark #how-it-works h3 {
   @apply text-white;
-}
+} */
 
 .dark #features {
   @apply bg-neutral-900;
