@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import logoFull from "@/assets/localdrive-logo.png";
 
@@ -102,11 +102,11 @@ const Header = () => {
                 <Moon className="h-5 w-5" />
               )}
             </button>
-            <HashLink to="/#downloads">
+            {/* <HashLink to="/#downloads">
               <Button className="hero-gradient hover:opacity-90 transition-opacity">
                 Download App
               </Button>
-            </HashLink>
+            </HashLink> */}
           </div>
 
           {/* Mobile Hamburger Button */}
