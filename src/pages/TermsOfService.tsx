@@ -170,10 +170,10 @@ const TermsOfService = () => {
 
                   <h2>Amendments to Terms</h2>
                   <p>
-                    We may revise these Terms at any time. Updates will be published at 
+                    We may revise these Terms at any time. Updates will be published at  
                       <Link 
-                        to="/CookiesPolicy"
-                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200">
+                        to="/terms-of-service"
+                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200"> 
                         Terms Of Service. 
                       </Link>
                     By continuing to use LocalDrive after changes, you accept the revised Terms.

@@ -92,7 +92,8 @@ const CookiesPolicy = () => {
                     </p>
                 </div>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  For immediate cookie-related inquiries, please email us at 📧 <a href="mailto:privacy@localdriveapp.com">privacy@localdriveapp.com</a>
+                  For immediate cookie-related inquiries, <br />
+                  please email us at 📧 <a href="mailto:privacy@localdriveapp.com">privacy@localdriveapp.com</a>
                 </p>
               </div>
             </div>

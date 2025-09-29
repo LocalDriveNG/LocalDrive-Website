@@ -139,8 +139,8 @@ const PrivacyPolicy = () => {
                     <p>
                       You may disable cookies in your browser, but doing so may limit certain features of our Services. For details, please review our 
                       <Link 
-                        to="/CookiesPolicy"
-                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200">
+                        to="/cookies-policy"
+                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200"> 
                           Cookies Policy
                       </Link>.
                     </p>
