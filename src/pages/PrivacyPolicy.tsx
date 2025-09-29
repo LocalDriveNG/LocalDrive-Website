@@ -137,10 +137,10 @@ const PrivacyPolicy = () => {
                       Like many websites, we use cookies to distinguish you from other users, improve functionality, and customize your experience.
                     </p>
                     <p>
-                      You may disable cookies in your browser, but doing so may limit certain features of our Services. For details, please review our 
+                      You may disable cookies in your browser, but doing so may limit certain features of our Services. For details, please review our  
                       <Link 
                         to="/cookies-policy"
-                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200"> 
+                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200">
                           Cookies Policy
                       </Link>.
                     </p>
