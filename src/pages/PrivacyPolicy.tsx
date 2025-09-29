@@ -140,8 +140,7 @@ const PrivacyPolicy = () => {
                       You may disable cookies in your browser, but doing so may limit certain features of our Services. For details, please review our  
                       <Link 
                         to="/cookies-policy"
-                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200">
-                          Cookies Policy
+                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200">Cookies Policy
                       </Link>.
                     </p>
 
@@ -157,7 +156,7 @@ const PrivacyPolicy = () => {
                     <h2>Contact Us</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   For immediate privacy-related inquiries, access requests, questions, comments, and complaints please contact us at 
-                  <a href="mailto:support@localdriveapp.com">support@localdriveapp.com</a>
+                  <a href="mailto:support@localdriveapp.com"> support@localdriveapp.com</a>
                 </p>
                 </div>
               </div>

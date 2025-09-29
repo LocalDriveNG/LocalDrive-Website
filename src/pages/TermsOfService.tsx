@@ -173,8 +173,7 @@ const TermsOfService = () => {
                     We may revise these Terms at any time. Updates will be published at 
                         <Link 
                         to="/terms-of-service"
-                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200">
-                          Terms Of Service.
+                        className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200">Terms Of Service.
                         </Link>
                     By continuing to use LocalDrive after changes, you accept the revised Terms.
                   </p>
@@ -184,7 +183,7 @@ const TermsOfService = () => {
                   <h2>Account Security</h2>
                   <p>
                     You are responsible for safeguarding your account credentials. Report any unauthorized access immediately to 
-                    <a href="mailto:support@localdriveapp.com">support@localdriveapp.com</a>.
+                    <a href="mailto:support@localdriveapp.com"> support@localdriveapp.com</a>.
                   </p>
 
                   <hr />
@@ -241,7 +240,8 @@ const TermsOfService = () => {
                 </div>
                 <h2>Contact Us</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  For questions or issues regarding these Terms, email us at 📧 <a href="mailto:support@localdriveapp.com">support@localdriveapp.com</a>                
+                  For questions or issues regarding these Terms, <br />
+                  email us at 📧 <a href="mailto:support@localdriveapp.com">support@localdriveapp.com</a>                
                 </p>
               </div>
             </div>
