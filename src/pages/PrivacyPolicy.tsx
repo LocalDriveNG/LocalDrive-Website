@@ -14,8 +14,8 @@ const PrivacyPolicy = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-foreground">
                 Privacy Policy
               </h1>
-              <div className="prose prose-lg mx-auto">
-                <div className="text-lg text-muted-foreground">
+              <div className="prose prose-lg mx-auto text-muted-foreground">
+                <div className="text-lg leading-relaxed mb-6">
                   <h2>LocalDrive Privacy Notice</h2>
                     <p><strong>Last Updated:</strong> September 2025</p>
 
@@ -155,7 +155,7 @@ const PrivacyPolicy = () => {
                     <hr />
 
                     <h2>Contact Us</h2>
-                <p className="text-sm text-muted-foreground mt-8">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   For immediate privacy-related inquiries, access requests, questions, comments, and complaints please contact us at 
                   <a href="mailto:support@localdriveapp.com">support@localdriveapp.com</a>
                 </p>

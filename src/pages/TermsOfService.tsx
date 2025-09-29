@@ -14,8 +14,8 @@ const TermsOfService = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-neutral-800">
                 Terms of Service
               </h1>
-              <div className="prose prose-lg mx-auto">
-                <div className="text-lg text-muted-foreground">
+              <div className="prose prose-lg mx-auto text-muted-foreground">
+                <div className="text-lg leading-relaxed mb-6">
                   <h2>LocalDrive Terms and Conditions</h2>
                   <p><strong>Last Modified:</strong> 25 September 2025</p>
 
@@ -240,7 +240,7 @@ const TermsOfService = () => {
                   <p><strong>🔹 Motto:</strong> “Your Journey to Confident Driving Starts Here 🚗 Learn, Book, Drive Smarter.”</p>
                 </div>
                 <h2>Contact Us</h2>
-                <p className="text-sm text-muted-foreground mt-8">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   For questions or issues regarding these Terms, email us at 📧 <a href="mailto:support@localdriveapp.com">support@localdriveapp.com</a>                
                 </p>
               </div>

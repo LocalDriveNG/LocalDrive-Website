@@ -13,8 +13,8 @@ const CookiesPolicy = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-neutral-800">
                 Cookies Policy
               </h1>
-              <div className="prose prose-lg mx-auto">
-                <div className="text-lg text-muted-foreground">
+              <div className="prose prose-lg mx-auto text-muted-foreground">
+                <div className="text-lg leading-relaxed mb-6">
                     <h2>Cookie Policy</h2>
                     <p><strong>Last Updated:</strong> September 2025</p>
 
@@ -91,7 +91,7 @@ const CookiesPolicy = () => {
                       bound by this Cookie Policy as well as our Privacy Policy.
                     </p>
                 </div>
-                <p className="text-sm text-muted-foreground mt-8">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   For immediate cookie-related inquiries, please email us at 📧 <a href="mailto:privacy@localdriveapp.com">privacy@localdriveapp.com</a>
                 </p>
               </div>
