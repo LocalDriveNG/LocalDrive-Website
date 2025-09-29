@@ -61,7 +61,7 @@ const HowItWorksSection = () => {
                 <step.icon className="w-10 h-10 text-white" />
               </div>
               <div className="space-y-3">
-                <h3 className="text-xl md:text-2xl font-semibold text-neutral-800 dark:text-white">
+                <h3 className="text-xl md:text-2xl font-semibold text-black">
                   {step.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
