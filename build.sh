@@ -11,4 +11,4 @@ do
     sleep 5
 done
 
-npx vite build
+npm run build

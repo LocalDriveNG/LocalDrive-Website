@@ -5,7 +5,6 @@ import { componentTagger } from "lovable-tagger"
 import sitemap from "vite-plugin-sitemap"
 
 export default defineConfig(({ mode }) => ({
-  base: "./",
   server: {
     host: "::",
     port: 8080,

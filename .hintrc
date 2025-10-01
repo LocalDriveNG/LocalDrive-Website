@@ -8,8 +8,6 @@
       {
         "aria-valid-attr-value": "off"
       }
-    ],
-    "no-inline-styles": "off",
-    "typescript-config/consistent-casing": "off"
+    ]
   }
 }
