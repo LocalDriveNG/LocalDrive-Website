@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 import { usePageTracking } from "@/hooks/usePageTracking.ts";
 import ErrorBoundary from "@/components/ErrorBoundary.tsx";
+import CookieConsent from "@/components/CookieConsent.tsx";
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index.tsx"));
@@ -94,6 +95,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <CookieConsent />
         <BrowserRouter>
           <Suspense fallback={<MainLoading />}>
             <PageTransition>
