@@ -41,7 +41,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-background/95 dark:bg-background/98 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 dark:supports-[backdrop-filter]:bg-background/80 border-b border-border dark:border-neutral-700 shadow-sm dark:shadow-md">
+    <header className="fixed top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-16" role="navigation" aria-label="Main navigation">
           {/* Logo */}
@@ -172,30 +172,27 @@ const Header = () => {
               Contact Us
             </Link>
             <div className="pt-4 pb-2 border-t border-border mt-4">
-              {/* Add opening curly brace to return JSX */}
-              {
-                <div className="flex flex-col space-y-2">
-                  <div className="flex items-center justify-between mb-2">
-                    {/* <span className="text-sm font-medium text-foreground">Theme</span> */}
-                    <button
-                      onClick={toggleDarkMode}
-                      className="p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
-                      aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                    >
-                      {isDarkMode ? (
-                        <Sun className="h-5 w-5" />
-                      ) : (
-                        <Moon className="h-5 w-5" />
-                      )}
-                    </button>
-                  </div>
-                  {/* <HashLink to="/#downloads" onClick={() => setIsMenuOpen(false)}>
-                    <Button className="hero-gradient hover:opacity-90 transition-opacity w-full">
-                      Download App
-                    </Button>
-                  </HashLink> */}
+              <div className="flex flex-col space-y-2">
+                <div className="flex items-center justify-between mb-2">
+                  {/* <span className="text-sm font-medium text-foreground">Theme</span> */}
+                  <button
+                    onClick={toggleDarkMode}
+                    className="p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
+                    aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                  >
+                    {isDarkMode ? (
+                      <Sun className="h-5 w-5" />
+                    ) : (
+                      <Moon className="h-5 w-5" />
+                    )}
+                  </button>
                 </div>
-              }
+                {/* <HashLink to="/#downloads" onClick={() => setIsMenuOpen(false)}>
+                  <Button className="hero-gradient hover:opacity-90 transition-opacity w-full">
+                    Download App
+                  </Button>
+                </HashLink> */}
+              </div>
             </div>
           </div>
         </div>

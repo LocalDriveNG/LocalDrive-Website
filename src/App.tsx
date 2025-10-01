@@ -1,20 +1,20 @@
-import { Toaster } from "@/components/ui/toaster.tsx";
-import { Toaster as Sonner } from "@/components/ui/sonner.tsx";
-import { TooltipProvider } from "@/components/ui/tooltip.tsx";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
-import { usePageTracking } from "@/hooks/usePageTracking.ts";
-import ErrorBoundary from "@/components/ErrorBoundary.tsx";
+import { usePageTracking } from "@/hooks/usePageTracking";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 // Lazy load all pages
-const Index = lazy(() => import("./pages/Index.tsx"));
-const AboutUs = lazy(() => import("./pages/AboutUs.tsx"));
-const Contact = lazy(() => import("./pages/Contact.tsx"));
-const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
-const TermsOfService = lazy(() => import("./pages/TermsOfService.tsx"));
-const CookiesPolicy = lazy(() => import("./pages/CookiesPolicy.tsx"));
-const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+const Index = lazy(() => import("./pages/Index"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Contact = lazy(() => import("./pages/Contact"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const CookiesPolicy = lazy(() => import("./pages/CookiesPolicy"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Loading components
 const MainLoading = () => (
