@@ -1,14 +1,14 @@
-import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
-import HowItWorksSection from "@/components/HowItWorksSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import InstructorCTASection from "@/components/InstructorCTASection";
-import FutureVisionSection from "@/components/FutureVisionSection";
-import FAQSection from "@/components/FAQSection";
-import NewsletterSection from "@/components/NewsletterSection";
+import Header from "@/components/Header.tsx";
+import HeroSection from "@/components/HeroSection.tsx";
+import HowItWorksSection from "@/components/HowItWorksSection.tsx";
+import FeaturesSection from "@/components/FeaturesSection.tsx";
+import TestimonialsSection from "@/components/TestimonialsSection.tsx";
+import InstructorCTASection from "@/components/InstructorCTASection.tsx";
+import FutureVisionSection from "@/components/FutureVisionSection.tsx";
+import FAQSection from "@/components/FAQSection.tsx";
+import NewsletterSection from "@/components/NewsletterSection.tsx";
 // import FinalCTASection from "@/components/FinalCTASection";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer.tsx";
 
 const Index = () => {
   return (

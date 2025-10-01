@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/Header.tsx";
+import Footer from "@/components/Footer.tsx";
 import { Users, MapPin, Award, Target, BookOpen, Shield, TabletSmartphone, ShieldCheck, CreditCard } from "lucide-react";
 
 const AboutUs = () => {

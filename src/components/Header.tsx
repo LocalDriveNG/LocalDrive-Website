@@ -172,27 +172,30 @@ const Header = () => {
               Contact Us
             </Link>
             <div className="pt-4 pb-2 border-t border-border mt-4">
-              <div className="flex flex-col space-y-2">
-                <div className="flex items-center justify-between mb-2">
-                  {/* <span className="text-sm font-medium text-foreground">Theme</span> */}
-                  <button
-                    onClick={toggleDarkMode}
-                    className="p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
-                    aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                  >
-                    {isDarkMode ? (
-                      <Sun className="h-5 w-5" />
-                    ) : (
-                      <Moon className="h-5 w-5" />
-                    )}
-                  </button>
+              {/* Add opening curly brace to return JSX */}
+              {
+                <div className="flex flex-col space-y-2">
+                  <div className="flex items-center justify-between mb-2">
+                    {/* <span className="text-sm font-medium text-foreground">Theme</span> */}
+                    <button
+                      onClick={toggleDarkMode}
+                      className="p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
+                      aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                    >
+                      {isDarkMode ? (
+                        <Sun className="h-5 w-5" />
+                      ) : (
+                        <Moon className="h-5 w-5" />
+                      )}
+                    </button>
+                  </div>
+                  {/* <HashLink to="/#downloads" onClick={() => setIsMenuOpen(false)}>
+                    <Button className="hero-gradient hover:opacity-90 transition-opacity w-full">
+                      Download App
+                    </Button>
+                  </HashLink> */}
                 </div>
-                {/* <HashLink to="/#downloads" onClick={() => setIsMenuOpen(false)}>
-                  <Button className="hero-gradient hover:opacity-90 transition-opacity w-full">
-                    Download App
-                  </Button>
-                </HashLink> */}
-              </div>
+              }
             </div>
           </div>
         </div>

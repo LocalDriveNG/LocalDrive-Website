@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button.tsx";
 import { HashLink } from "react-router-hash-link";
 import { GraduationCap, Clock, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
