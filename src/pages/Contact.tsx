@@ -42,9 +42,10 @@ const Contact = () => {
     }
 
     toast({
-      title: "Message sent successfully!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-      className: "bg-green-600 border-black-200 text-white",
+      title: "✓ Message Sent Successfully!",
+      description: "Thank you for contacting us. We'll get back to you within 24-48 hours.",
+      className: "border-2 border-primary/20 bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm text-foreground shadow-brand-lg",
+      duration: 5000,
     });
     
     // Use the stored form reference instead of e.currentTarget
