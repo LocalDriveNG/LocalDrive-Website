@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 
 interface FAQ {
@@ -118,12 +117,12 @@ const FAQSection = () => {
             <p className="text-muted-foreground mb-4">
               Still have questions? We're here to help!
             </p>
-            <Link
-              to="/contact"
+            <a         
+              href="mailto:support@localdriveapp.com"
               className="inline-flex items-center text-primary hover:text-primary-hover font-medium transition-colors duration-200"
             >
               Contact our support team
-            </Link>
+            </a>
           </div>
         </div>
       </div>

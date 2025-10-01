@@ -67,13 +67,13 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 215 28% 10%;
+    --background: 215 28% 12%;
     --foreground: 210 20% 98%;
 
-    --card: 215 28% 12%;
+    --card: 215 28% 14%;
     --card-foreground: 210 20% 98%;
 
-    --popover: 215 28% 12%;
+    --popover: 215 28% 14%;
     --popover-foreground: 210 20% 98%;
 
     --primary: 195 88% 45%;
@@ -122,10 +122,14 @@ All colors MUST be HSL.
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem; /* Enhanced for better mobile precision */
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground font-montserrat;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -297,6 +301,48 @@ html, body {
   /* Better mobile grid handling */
   .grid {
     gap: 1.5rem;
+  }
+}
+
+/* Landscape orientation fixes for mobile devices */
+@media (max-height: 500px) and (orientation: landscape) {
+  html {
+    scroll-padding-top: 60px;
+  }
+  
+  /* Reduce header height in landscape */
+  header {
+    min-height: 3.5rem;
+  }
+  
+  /* Adjust spacing for landscape */
+  .py-16 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .py-24 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  /* Ensure content remains accessible */
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+/* Orientation change smoothing */
+@media (orientation: portrait) {
+  body {
+    transition: none;
+  }
+}
+
+@media (orientation: landscape) {
+  body {
+    transition: none;
   }
 }
 
