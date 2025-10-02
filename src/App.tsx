@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import ErrorBoundary from "@/components/ErrorBoundary";
@@ -96,7 +96,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <CookieConsent />
-        <BrowserRouter>
+        {/* <BrowserRouter> */}
           <Suspense fallback={<MainLoading />}>
             <PageTransition>
               <div className="min-h-screen pt-16">
@@ -112,7 +112,7 @@ const App = () => (
               </div>
             </PageTransition>
           </Suspense>
-        </BrowserRouter>
+        {/* </BrowserRouter> */}
       </TooltipProvider>
     </QueryClientProvider>
   </ErrorBoundary>
