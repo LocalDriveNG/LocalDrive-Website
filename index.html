@@ -44,6 +44,11 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
+      // Default to denied until user consents
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
+
       gtag('config', 'G-9NTXFF6XF7');
     </script>
     

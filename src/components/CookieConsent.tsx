@@ -3,26 +3,115 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 
+// Types for cookie consent
+type ConsentStatus = 'accepted' | 'rejected' | null;
+
+// Properly typed gtag function
+type GtagParams = 
+  | ['consent', 'default' | 'update', ConsentParams]
+  | ['config', string, ConfigParams?]
+  | ['js', Date]
+  | ['event', string, EventParams?];
+
+interface ConsentParams {
+  analytics_storage: 'granted' | 'denied';
+}
+
+interface ConfigParams {
+  page_title?: string;
+  page_location?: string;
+}
+
+interface EventParams {
+  event_category?: string;
+  event_label?: string;
+  value?: number;
+}
+
+// Extend Window interface for gtag
+declare global {
+  interface Window {
+    gtag: (...args: GtagParams) => void;
+    dataLayer: unknown[];
+  }
+}
+
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
+  // Initialize consent status and check existing preference
   useEffect(() => {
-    const consent = localStorage.getItem("cookieConsent");
-    if (!consent) {
-      // Delay showing banner slightly for better UX
+    const savedConsent = localStorage.getItem("cookieConsent") as ConsentStatus;
+    
+    if (!savedConsent) {
       const timer = setTimeout(() => setIsVisible(true), 1000);
       return () => clearTimeout(timer);
+    } else {
+      // If consent already exists, initialize analytics based on preference
+      initializeAnalytics(savedConsent);
     }
   }, []);
 
+  // Google Analytics initialization and tracking
+  const initializeAnalytics = (status: ConsentStatus) => {
+    if (status === 'accepted') {
+      // Enable Google Analytics tracking
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+        console.log('Google Analytics enabled: User accepted cookies');
+        
+        // Track the page view with granted consent
+        window.gtag('config', 'G-9NTXFF6XF7', {
+          'page_title': document.title,
+          'page_location': window.location.href
+        });
+      }
+    } else if (status === 'rejected') {
+      // Disable Google Analytics
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('consent', 'update', {
+          'analytics_storage': 'denied'
+        });
+        console.log('Google Analytics disabled: User rejected cookies');
+      }
+    }
+  };
+
+  // Track consent decision in Google Analytics
+  const trackConsentDecision = (decision: 'accepted' | 'rejected') => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'cookie_consent', {
+        'event_category': 'privacy',
+        'event_label': decision,
+        'value': 1
+      });
+    }
+  };
+
   const handleAccept = () => {
-    localStorage.setItem("cookieConsent", "accepted");
+    const decision: ConsentStatus = 'accepted';
+    localStorage.setItem("cookieConsent", decision);
     setIsVisible(false);
+    
+    // Initialize analytics and track decision
+    initializeAnalytics(decision);
+    trackConsentDecision(decision);
+    
+    console.log('Cookies accepted - preferences saved');
   };
 
   const handleReject = () => {
-    localStorage.setItem("cookieConsent", "rejected");
+    const decision: ConsentStatus = 'rejected';
+    localStorage.setItem("cookieConsent", decision);
     setIsVisible(false);
+    
+    // Disable analytics and track decision
+    initializeAnalytics(decision);
+    trackConsentDecision(decision);
+    
+    console.log('Cookies rejected - preferences saved');
   };
 
   if (!isVisible) return null;
