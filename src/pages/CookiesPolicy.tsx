@@ -86,7 +86,7 @@ const CookiesPolicy = () => {
           For more details on how we collect, use, store, and protect information gathered by cookies and other tracking
           technologies, please refer to our{" "}
           <Link 
-            to="/privacy"
+            to="/privacy-policy"
             className="text-primary hover:text-primary-hover font-medium transition-colors"
           >
             Privacy Policy
