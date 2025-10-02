@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    console.log("CookieConsent mounted");
     const timer = setTimeout(() => {
-      console.log("Setting visible to true");
       setIsVisible(true);
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
   const handleAccept = () => {
-    console.log("Accepted");
+    localStorage.setItem("cookieConsent", "accepted");
+    setIsVisible(false);
+  };
+
+  const handleReject = () => {
+    localStorage.setItem("cookieConsent", "rejected");
     setIsVisible(false);
   };
 
@@ -30,7 +34,13 @@ const CookieConsent = () => {
       border: '1px solid #ccc',
       zIndex: 50
     }}>
-      <p>We use cookies</p>
+      <p>
+        We use cookies.{" "}
+        <Link to="/privacy-policy">Privacy Policy</Link>
+        {" and "}
+        <Link to="/cookies-policy">Cookies Policy</Link>
+      </p>
+      <button onClick={handleReject}>Reject</button>
       <button onClick={handleAccept}>Accept</button>
     </div>
   );
