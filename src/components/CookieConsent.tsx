@@ -134,14 +134,14 @@ const CookieConsent = () => {
               By clicking "Accept", you consent to our use of cookies.{" "}
               <Link 
                 to="/privacy-policy" 
-                className="text-primary hover:text-primary-hover underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                className="text-primary hover:text-primary-hover none underline-offset-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
               >
                 Privacy Policy
               </Link>
               {" and "}
               <Link 
                 to="/cookies-policy" 
-                className="text-primary hover:text-primary-hover underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                className="text-primary hover:text-primary-hover none underline-offset-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
               >
                 Cookies Policy
               </Link>
