@@ -15,9 +15,9 @@
   "strict": true,
   "noUnusedLocals": false,
   "noUnusedParameters": false,
-  "allowSyntheticDefaultImports": true,
   "forceConsistentCasingInFileNames": true,
-  "noFallthroughCasesInSwitch": true
+  "noFallthroughCasesInSwitch": true,
+  "allowSyntheticDefaultImports": true 
   },
   "include": ["vite.config.ts"]
 }
