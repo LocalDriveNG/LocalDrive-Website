@@ -25,58 +25,42 @@ const CookieConsent = () => {
   if (!isVisible) return null;
 
   return (
-    <div style={{
-      position: 'fixed',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      background: 'white',
-      padding: '1rem',
-      border: '1px solid #ccc',
-      zIndex: 50
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', position: 'relative' }}>
-        <div style={{ flex: 1 }}>
-          <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', fontWeight: 'bold' }}>
+    <div className="fixed bottom-4 left-4 right-4 z-40 bg-white border border-gray-300 rounded-lg shadow-lg p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 relative">
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">
             We value your privacy
           </h3>
-          <p style={{ margin: 0, fontSize: '0.9rem', color: '#666' }}>
+          <p className="text-sm text-gray-600 leading-relaxed">
             We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. 
             By clicking "Accept", you consent to our use of cookies.{" "}
-            <Link to="/privacy-policy" style={{ color: '#2563eb', textDecoration: 'underline' }}>
+            <Link 
+              to="/privacy-policy" 
+              className="text-blue-600 hover:text-blue-700 underline underline-offset-2"
+            >
               Privacy Policy
             </Link>
             {" and "}
-            <Link to="/cookies-policy" style={{ color: '#2563eb', textDecoration: 'underline' }}>
+            <Link 
+              to="/cookies-policy" 
+              className="text-blue-600 hover:text-blue-700 underline underline-offset-2"
+            >
               Cookies Policy
             </Link>
           </p>
         </div>
         
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <button
             onClick={handleReject}
-            style={{
-              padding: '0.5rem 1rem',
-              border: '1px solid #d1d5db',
-              borderRadius: '0.375rem',
-              background: 'white',
-              cursor: 'pointer'
-            }}
+            className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             aria-label="Reject cookies"
           >
             Reject
           </button>
           <button
             onClick={handleAccept}
-            style={{
-              padding: '0.5rem 1rem',
-              border: 'none',
-              borderRadius: '0.375rem',
-              background: '#2563eb',
-              color: 'white',
-              cursor: 'pointer'
-            }}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             aria-label="Accept cookies"
           >
             Accept
@@ -85,20 +69,10 @@ const CookieConsent = () => {
 
         <button
           onClick={handleReject}
-          style={{
-            position: 'absolute',
-            top: '-0.5rem',
-            right: '-0.5rem',
-            padding: '0.5rem',
-            borderRadius: '50%',
-            border: 'none',
-            background: 'transparent',
-            cursor: 'pointer'
-          }}
-          aria-label="Close cookie banner"  // Added this line
-          title="Close"  // Added this line for extra accessibility
+          className="absolute top-2 right-2 p-2 rounded-full hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          aria-label="Close cookie banner"
         >
-          <X size={16} />
+          <X className="h-4 w-4 text-gray-500" />
         </button>
       </div>
     </div>
