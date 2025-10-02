@@ -25,7 +25,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "allowSyntheticDefaultImports": true /* For compatibility with non-ESM packages */
   },
   "include": ["src"],
   // "references": [{ "path": "./tsconfig.node.json" }]
