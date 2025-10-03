@@ -7,6 +7,7 @@ import { useEffect, lazy, Suspense } from "react";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
+import SEO from "@/components/SEO"
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -100,6 +101,7 @@ const App = () => (
           <Suspense fallback={<MainLoading />}>
             <PageTransition>
               <div className="min-h-screen pt-16">
+              <SEO />
               <Routes>
                 <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
                 <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
