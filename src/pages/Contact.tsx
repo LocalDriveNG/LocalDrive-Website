@@ -54,7 +54,7 @@ const Contact = () => {
     console.error('Error submitting contact form:', error);
     toast({
       title: "Error sending message",
-      description: "Please try again later or email us directly at contact@localdriveapp.com",
+      description: "Please try again later or email us directly at support@localdriveapp.com",
       variant: "destructive",
     });
   } finally {
