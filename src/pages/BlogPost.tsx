@@ -158,7 +158,7 @@ const BlogPost = () => {
               name: "LocalDrive",
               logo: {
                 "@type": "ImageObject",
-                url: "https://localdrive.lovable.app/logo.png",
+                url: "https://localdriveapp.com/localdrive-logo.png",
               },
             },
             mainEntityOfPage: {
