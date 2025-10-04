@@ -14,33 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
-      contact_inquiries: {
+      blog_posts: {
         Row: {
+          author: string
+          canonical_url: string | null
+          content: string
           created_at: string | null
-          email: string
-          id: number
-          message: string
-          name: string
-          phone_number: string | null
-          subject: string
+          description: string
+          keywords: string[] | null
+          meta_description: string | null
+          meta_title: string | null
+          og_image: string | null
+          published_at: string | null
+          slug: string
+          structured_data: Json | null
+          title: string
+          updated_at: string | null
         }
         Insert: {
+          author: string
+          canonical_url?: string | null
+          content: string
           created_at?: string | null
-          email: string
-          id?: never
-          message: string
-          name: string
-          phone_number?: string | null
-          subject: string
+          description: string
+          keywords?: string[] | null
+          meta_description?: string | null
+          meta_title?: string | null
+          og_image?: string | null
+          published_at?: string | null
+          slug: string
+          structured_data?: Json | null
+          title: string
+          updated_at?: string | null
         }
         Update: {
+          author?: string
+          canonical_url?: string | null
+          content?: string
           created_at?: string | null
-          email?: string
-          id?: never
-          message?: string
-          name?: string
-          phone_number?: string | null
-          subject?: string
+          description?: string
+          keywords?: string[] | null
+          meta_description?: string | null
+          meta_title?: string | null
+          og_image?: string | null
+          published_at?: string | null
+          slug?: string
+          structured_data?: Json | null
+          title?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -82,22 +103,28 @@ export type Database = {
           answer: string
           created_at: string | null
           id: string
+          inserted_by: string | null
           question: string
           updated_at: string | null
+          updated_by: string | null
         }
         Insert: {
           answer: string
           created_at?: string | null
           id?: string
+          inserted_by?: string | null
           question: string
           updated_at?: string | null
+          updated_by?: string | null
         }
         Update: {
           answer?: string
           created_at?: string | null
           id?: string
+          inserted_by?: string | null
           question?: string
           updated_at?: string | null
+          updated_by?: string | null
         }
         Relationships: []
       }
@@ -119,27 +146,6 @@ export type Database = {
           email?: string
           id?: string
           subscription_preferences?: Json | null
-        }
-        Relationships: []
-      }
-      page_visits: {
-        Row: {
-          id: string
-          page_url: string
-          user_ip: string | null
-          visited_at: string | null
-        }
-        Insert: {
-          id?: string
-          page_url: string
-          user_ip?: string | null
-          visited_at?: string | null
-        }
-        Update: {
-          id?: string
-          page_url?: string
-          user_ip?: string | null
-          visited_at?: string | null
         }
         Relationships: []
       }

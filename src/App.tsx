@@ -13,6 +13,8 @@ import SEO from "@/components/SEO"
 const Index = lazy(() => import("./pages/Index"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const CookiesPolicy = lazy(() => import("./pages/CookiesPolicy"));
@@ -106,6 +108,8 @@ const App = () => (
                 <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
                 <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
                 <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+                <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
                 <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
                 <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
                 <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />

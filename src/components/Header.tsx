@@ -76,6 +76,12 @@ const Header = () => {
               For Instructors
             </HashLink>
             <Link 
+              to="/blog" 
+              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+            >
+              Blog
+            </Link>
+            <Link 
               to="/about" 
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
             >
@@ -157,6 +163,13 @@ const Header = () => {
             >
               For Instructors
             </HashLink>
+            <Link
+              to="/blog"
+              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </Link>
             <Link
               to="/about"
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
