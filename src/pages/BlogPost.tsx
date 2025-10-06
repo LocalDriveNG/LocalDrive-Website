@@ -173,42 +173,50 @@ const BlogPost = () => {
       
       <main className="min-h-screen bg-background">
         {/* Breadcrumbs */}
-        <div className="bg-muted/30 border-b border-border py-4">
+        <div className="bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 border-b border-border/50 py-5">
           <div className="container max-w-4xl mx-auto px-4">
-            <nav className="flex items-center gap-2 text-sm text-muted-foreground" aria-label="Breadcrumb">
-              <Link to="/" className="hover:text-foreground transition-colors">
+            <nav className="flex items-center gap-2 text-sm font-medium" aria-label="Breadcrumb">
+              <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">
                 Home
               </Link>
-              <span>/</span>
-              <Link to="/blog" className="hover:text-foreground transition-colors">
+              <span className="text-muted-foreground">/</span>
+              <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors">
                 Blog
               </Link>
-              <span>/</span>
-              <span className="text-foreground">{post.title}</span>
+              <span className="text-muted-foreground">/</span>
+              <span className="text-foreground line-clamp-1">{post.title}</span>
             </nav>
           </div>
         </div>
 
         {/* Article */}
-        <article className="py-12 md:py-20">
+        <article className="py-12 md:py-20 relative">
+          {/* Background decoration */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
+          
           <div className="container max-w-4xl mx-auto px-4">
             {/* Back Button */}
-            <Link to="/blog" className="inline-block mb-8">
-              <Button variant="ghost" className="gap-2">
+            <Link to="/blog" className="inline-block mb-8 animate-fade-in">
+              <Button variant="outline" className="gap-2 hover:gap-3 transition-all hover:border-primary hover:text-primary">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Blog
               </Button>
             </Link>
 
             {/* Article Header */}
-            <header className="mb-12">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground leading-tight">
-                {post.title}
-              </h1>
+            <header className="mb-12 animate-fade-in">
+              {/* Title with gradient accent */}
+              <div className="relative mb-6">
+                <div className="absolute -left-4 top-0 bottom-0 w-1.5 hero-gradient rounded-full" />
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight pl-4">
+                  {post.title}
+                </h1>
+              </div>
               
-              <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4" />
+              {/* Meta information with icons */}
+              <div className="flex flex-wrap items-center gap-4 text-sm mb-8 bg-muted/30 rounded-lg p-4 border border-border/50">
+                <div className="flex items-center gap-2 text-foreground font-medium">
+                  <Calendar className="h-4 w-4 text-primary" />
                   <time dateTime={post.published_at || undefined}>
                     {post.published_at && new Date(post.published_at).toLocaleDateString("en-US", {
                       month: "long",
@@ -217,27 +225,33 @@ const BlogPost = () => {
                     })}
                   </time>
                 </div>
-                <span>•</span>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
+                <span className="text-muted-foreground">•</span>
+                <div className="flex items-center gap-2 text-foreground font-medium">
+                  <Clock className="h-4 w-4 text-primary" />
                   <span>{calculateReadTime(post.content)} min read</span>
                 </div>
-                <span>•</span>
-                <span>By {post.author}</span>
+                <span className="text-muted-foreground">•</span>
+                <span className="text-foreground font-medium">By {post.author}</span>
               </div>
 
-              <div className="flex flex-wrap gap-2 mb-6">
+              {/* Keywords with gradient style */}
+              <div className="flex flex-wrap gap-2 mb-8">
                 {post.keywords?.map((keyword) => (
-                  <Badge key={keyword} variant="secondary">
+                  <Badge 
+                    key={keyword} 
+                    variant="secondary"
+                    className="px-4 py-1.5 bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors font-medium"
+                  >
                     {keyword}
                   </Badge>
                 ))}
               </div>
 
+              {/* Share button with enhanced style */}
               <Button
                 onClick={handleShare}
                 variant="outline"
-                className="gap-2"
+                className="gap-2 border-2 hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all shadow-md hover:shadow-brand"
               >
                 <Share2 className="h-4 w-4" />
                 Share Article
@@ -248,16 +262,18 @@ const BlogPost = () => {
 
             {/* Article Content */}
             <div
-              className="prose prose-lg dark:prose-invert max-w-none
-                prose-headings:font-bold prose-headings:text-foreground
-                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
-                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-4
-                prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-foreground prose-strong:font-semibold
-                prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
-                prose-ol:my-6 prose-ol:list-decimal prose-ol:pl-6
-                prose-li:text-muted-foreground prose-li:mb-2
+              className="prose prose-lg dark:prose-invert max-w-none animate-fade-in
+                prose-headings:font-bold prose-headings:text-foreground prose-headings:scroll-mt-20
+                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-primary/20
+                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-primary
+                prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6 prose-p:text-base
+                prose-a:text-primary prose-a:no-underline prose-a:font-medium hover:prose-a:underline prose-a:transition-all
+                prose-strong:text-foreground prose-strong:font-bold prose-strong:bg-primary/5 prose-strong:px-1 prose-strong:rounded
+                prose-ul:my-6 prose-ul:space-y-2 prose-ul:list-disc prose-ul:pl-6
+                prose-ol:my-6 prose-ol:space-y-2 prose-ol:list-decimal prose-ol:pl-6
+                prose-li:text-muted-foreground prose-li:leading-relaxed
+                prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:italic
+                prose-code:text-primary prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono
                 prose-lead:text-xl prose-lead:text-foreground prose-lead:font-medium prose-lead:mb-8"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
@@ -265,18 +281,24 @@ const BlogPost = () => {
             <Separator className="my-12" />
 
             {/* Call to Action */}
-            <div className="bg-primary/5 rounded-lg p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4 text-foreground">
-                Ready to Start Your Driving Journey?
-              </h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Connect with certified driving instructors and begin learning with LocalDrive today.
-              </p>
-              <Link to="/">
-                <Button size="lg" className="hero-gradient">
-                  Get Started
-                </Button>
-              </Link>
+            <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10 rounded-2xl p-10 text-center border-2 border-primary/20 shadow-brand-lg animate-fade-in">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-secondary/10 rounded-full blur-3xl" />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gradient">
+                  Ready to Start Your Driving Journey?
+                </h3>
+                <p className="text-muted-foreground mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+                  Connect with certified driving instructors and begin learning with LocalDrive today. Your journey to confident driving starts here.
+                </p>
+                <Link to="/">
+                  <Button size="lg" className="hero-gradient hover:shadow-brand-lg transition-all hover:scale-105 text-lg px-8 py-6">
+                    Get Started Now
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </article>
