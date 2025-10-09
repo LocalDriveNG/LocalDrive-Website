@@ -134,9 +134,32 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="cookies">
-        <h2>Cookies</h2>
+        <h2>Cookies and Advertising</h2>
         <p>
           Like many websites, we use cookies to distinguish you from other users, improve functionality, and customize your experience.
+        </p>
+        <p>
+          <strong>Third-Party Advertising:</strong> We partner with Google AdSense to display advertisements on our website. Google and its partners may use cookies and similar technologies to serve ads based on your prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.
+        </p>
+        <p>
+          You may opt out of personalized advertising by visiting{" "}
+          <a 
+            href="https://www.google.com/settings/ads" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary-hover font-medium transition-colors underline"
+          >
+            Google Ads Settings
+          </a>
+          {" "}or by visiting{" "}
+          <a 
+            href="http://www.aboutads.info/choices/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary-hover font-medium transition-colors underline"
+          >
+            www.aboutads.info
+          </a>.
         </p>
         <p>
           You may disable cookies in your browser, but doing so may limit certain features of our Services. For details, please review our{" "}
