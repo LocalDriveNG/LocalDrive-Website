@@ -88,7 +88,7 @@ const TestimonialsSection = () => {
                     />
                   </div>
                   <div>
-                    <div className="font-semibold text-black dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors duration-300">
+                    <div className="font-semibold text-black group-hover:text-primary dark:group-hover:text-primary transition-colors duration-300">
                       {testimonial.name}
                     </div>
                     <div className="text-sm text-muted-foreground">

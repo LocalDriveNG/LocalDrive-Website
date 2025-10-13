@@ -61,7 +61,7 @@ const HowItWorksSection = () => {
                 <step.icon className="w-10 h-10 text-white group-hover:rotate-12 transition-transform duration-500" />
               </div>
               <div className="space-y-3 group-hover:translate-y-[-4px] transition-transform duration-300">
-                <h3 className="text-xl md:text-2xl font-semibold text-black dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl md:text-2xl font-semibold text-black group-hover:text-primary dark:group-hover:text-primary transition-colors duration-300">
                   {step.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed group-hover:text-foreground dark:group-hover:text-neutral-300 transition-colors duration-300">
