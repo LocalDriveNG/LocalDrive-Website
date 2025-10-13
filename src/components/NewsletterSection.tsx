@@ -106,7 +106,7 @@ const NewsletterSection = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-white text-black hover:bg-neutral-100 hover:text-black dark:hover:text-white font-semibold px-8 whitespace-nowrap disabled:opacity-50"
+                  className="bg-white text-secondary hover:bg-neutral-100 text-lg px-8 py-6 shadow-lg hover:scale-105 transition-all duration-200"
                 >
                   {isSubmitting ? "Subscribing..." : "Subscribe"}
                 </Button>
