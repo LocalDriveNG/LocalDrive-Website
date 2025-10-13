@@ -55,17 +55,17 @@ const FeaturesSection = () => {
                 delay: index * 0.1,
                 ease: "easeOut"
               }}
-              className="bg-white dark:bg-neutral-800 p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-brand transition-all duration-300 group"
+              className="bg-white dark:bg-neutral-800 p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-brand-lg border border-transparent hover:border-primary/20 dark:hover:border-primary/30 transition-all duration-500 group cursor-pointer hover:translate-y-[-8px]"
             >
               <div className="space-y-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center group-hover:scale-125 group-hover:rotate-6 transition-all duration-500 group-hover:shadow-lg">
+                  <feature.icon className="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-neutral-800">
+                  <h3 className="text-xl font-semibold text-neutral-800 dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors duration-300">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed group-hover:text-foreground dark:group-hover:text-neutral-300 transition-colors duration-300">
                     {feature.description}
                   </p>
                 </div>

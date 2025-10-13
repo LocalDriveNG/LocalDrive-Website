@@ -40,13 +40,13 @@ const InstructorCTASection = () => {
                   delay: index * 0.15,
                   ease: "easeOut"
                 }}
-                className="flex flex-col items-center space-y-3"
+                className="flex flex-col items-center space-y-3 group cursor-pointer"
               >
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                  <feature.icon className="w-8 h-8" />
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 group-hover:scale-125 group-hover:shadow-xl transition-all duration-500">
+                  <feature.icon className="w-8 h-8 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500" />
                 </div>
-                <h3 className="font-semibold">{feature.title}</h3>
-                <p className="text-sm opacity-80">{feature.desc}</p>
+                <h3 className="font-semibold group-hover:scale-110 transition-transform duration-300">{feature.title}</h3>
+                <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">{feature.desc}</p>
               </motion.div>
             ))}
           </div>

@@ -55,16 +55,16 @@ const HowItWorksSection = () => {
                 delay: index * 0.2,
                 ease: "easeOut"
               }}
-              className="text-center space-y-6 group"
+              className="text-center space-y-6 group cursor-pointer"
             >
-              <div className="mx-auto w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-brand group-hover:scale-110 transition-transform duration-300">
-                <step.icon className="w-10 h-10 text-white" />
+              <div className="mx-auto w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-brand group-hover:shadow-brand-lg group-hover:scale-125 transition-all duration-500 ease-out">
+                <step.icon className="w-10 h-10 text-white group-hover:rotate-12 transition-transform duration-500" />
               </div>
-              <div className="space-y-3">
-                <h3 className="text-xl md:text-2xl font-semibold text-black">
+              <div className="space-y-3 group-hover:translate-y-[-4px] transition-transform duration-300">
+                <h3 className="text-xl md:text-2xl font-semibold text-black dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors duration-300">
                   {step.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed group-hover:text-foreground dark:group-hover:text-neutral-300 transition-colors duration-300">
                   {step.description}
                 </p>
               </div>

@@ -66,7 +66,7 @@ const TestimonialsSection = () => {
                 delay: index * 0.15,
                 ease: "easeOut"
               }}
-              className="bg-neutral-50 dark:bg-neutral-800 p-6 md:p-8 rounded-2xl hover:shadow-brand transition-all duration-300 group"
+              className="bg-neutral-50 dark:bg-neutral-800 p-6 md:p-8 rounded-2xl hover:shadow-brand-lg border border-transparent hover:border-primary/20 dark:hover:border-primary/30 transition-all duration-500 group cursor-pointer hover:translate-y-[-8px] hover:bg-white dark:hover:bg-neutral-700"
             >
               <div className="space-y-6">
                 <div className="flex">
@@ -75,12 +75,12 @@ const TestimonialsSection = () => {
                   ))}
                 </div>
                 
-                <blockquote className="text-muted-foreground leading-relaxed">
+                <blockquote className="text-muted-foreground leading-relaxed group-hover:text-foreground dark:group-hover:text-neutral-300 transition-colors duration-300">
                   "{testimonial.content}"
                 </blockquote>
                 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-full overflow-hidden group-hover:scale-125 transition-transform duration-500 ring-2 ring-transparent group-hover:ring-primary/30">
                     <img 
                       src={testimonial.image} 
                       alt={`${testimonial.name} profile picture`}
@@ -88,7 +88,7 @@ const TestimonialsSection = () => {
                     />
                   </div>
                   <div>
-                    <div className="font-semibold text-black">
+                    <div className="font-semibold text-black dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors duration-300">
                       {testimonial.name}
                     </div>
                     <div className="text-sm text-muted-foreground">
