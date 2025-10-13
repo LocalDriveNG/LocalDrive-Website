@@ -149,47 +149,7 @@ INSERT INTO public.blog_posts (
     </section>
 
     <section class="case-studies">
-      <h2>Real Impact: LocalDrive Success Stories</h2>
-      
-      <h3>Chioma''s Story: Quality Instruction in a Busy Schedule</h3>
-      <p>Chioma is a 28-year-old marketing manager in Lagos Island who had put off learning to drive for years. The traditional driving school near her office required lessons during business hours, and the one near her Lekki home had terrible reviews online.</p>
-      
-      <p>"I downloaded LocalDrive on a Friday, found an instructor with a 4.9-star rating who taught in Lekki on weekends, and had my first lesson that Sunday morning," Chioma recalls. "My instructor, Mr. Adebayo, picked me up from my house. We did lessons early Saturday and Sunday mornings for six weeks. I passed my driving test on the first try."</p>
-      
-      <p>For Chioma, the flexibility and quality assurance of LocalDrive made the difference between perpetually postponing driving education and actually becoming a confident driver.</p>
-
-      <h3>Ibrahim''s Journey: Overcoming Geographic Barriers</h3>
-      <p>Ibrahim lives in Kubwa, a satellite town outside Abuja. The nearest reputable driving school was in Wuse, a 45-minute commute each way—before lessons even began. As a student at the University of Abuja, Ibrahim couldn''t afford the time or transportation costs.</p>
-      
-      <p>"LocalDrive connected me with Mrs. Aisha, a certified instructor who lives in Kubwa and teaches around the area," Ibrahim explains. "My lessons cost less because she didn''t have to travel far. I learned in the actual neighborhood where I''ll be driving, which was perfect. The app''s practice tests helped me pass the theory exam easily."</p>
-      
-      <p>LocalDrive''s geographic flexibility brought quality instruction to Ibrahim''s doorstep, turning an impossible dream into an affordable reality.</p>
-
-      <h3>The Okonkwo Family: Transparent Progress Tracking</h3>
-      <p>When Mr. and Mrs. Okonkwo decided their daughter Ngozi should learn to drive before heading to university, they wanted accountability. Traditional driving schools offered little visibility into what their daughter was actually learning.</p>
-      
-      <p>"With LocalDrive, I could see exactly what Ngozi was learning each week," Mrs. Okonkwo says. "The app showed her progress through the curriculum. Her instructor left notes after each lesson. When Ngozi said she needed extra practice with parking, I could see that reflected in the lesson logs. It gave us confidence that our money was being well spent."</p>
-      
-      <p>The transparency LocalDrive provides gives parents peace of mind and ensures learners receive comprehensive, structured training.</p>
-    </section>
-
-    <section class="future-vision">
-      <h2>The Future: Technology Transforming Nigerian Driver Education</h2>
-      
-      <p>LocalDrive is just the beginning. The technological transformation of driving education in Nigeria will continue to accelerate, bringing innovations we''re already developing:</p>
-
-      <h3>AI-Powered Personalized Learning</h3>
-      <p>Artificial intelligence will analyze individual learning patterns to create personalized lesson plans. If you struggle with parallel parking but excel at highway merging, the AI will recommend extra parking practice while efficiently moving you through areas you''ve mastered.</p>
-
-      <h3>Virtual Reality Practice Simulations</h3>
-      <p>VR technology will allow learners to practice challenging scenarios—navigating Third Mainland Bridge traffic, handling vehicle breakdowns, responding to emergencies—in safe, simulated environments before facing them on real roads.</p>
-
-      <h3>Integration with Government Systems</h3>
-      <p>Direct API connections with FRSC databases will enable seamless license processing. Complete your verified LocalDrive training, pass your test, and receive your digital driver''s license—all tracked in connected systems that prevent fraud and duplication.</p>
-
-      <h3>Advanced Telematics and In-Car Monitoring</h3>
-      <p>Sensor technology in training vehicles will provide objective data on driving performance—braking patterns, acceleration smoothness, lane positioning, and more. This data helps instructors give precise, targeted feedback while documenting skill development.</p>
-
+      <h2>Real Impact: LocalDrive</h2>
       <h3>Community-Driven Safety Features</h3>
       <p>LocalDrive graduates will form a community of safe, well-trained drivers. In-app features will allow sharing of road condition updates, accident alerts, and safe driving tips, creating a positive culture around road safety.</p>
 
