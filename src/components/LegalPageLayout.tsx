@@ -227,10 +227,11 @@ const LegalPageLayout = ({
         )}
       </main>
 
+      
+
+      <div className="container max-w-4xl mx-auto px-4">
       <Separator className="my-12" />
 
-      
-      <section className="container max-w-4xl mx-auto px-4">
       {/* Call to Action */}
       <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10 rounded-2xl p-10 text-center border-2 border-primary/20 shadow-brand-lg animate-fade-in">
         {/* Decorative elements */}
@@ -249,13 +250,17 @@ const LegalPageLayout = ({
                     Get Started Now
               </Button>
               </Link>
+          </div>
         </div>
       </div>
-      </section>
-
       <Footer />
     </div>
   );
 };
 
 export default LegalPageLayout;
+
+
+
+
+ 
