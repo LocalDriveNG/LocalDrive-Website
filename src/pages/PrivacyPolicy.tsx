@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
           At LocalDrive and its affiliates (collectively referred to as "LocalDrive"), we greatly value the trust you place in us by sharing your information. Protecting your privacy is a top priority. This Privacy Notice explains what Personal Information we collect, why we collect it, and how we use it.
         </p>
 
-        <h2 id="overview">Overview</h2>
+        <h1 id="overview">Overview</h1>
         <p>
           This Privacy Notice describes your privacy rights regarding why, how, and when we collect, use, store, share, and protect your information across our website, booking and payment platforms ("Platforms"), APIs, software applications ("Apps"), email notifications, and tools regardless of how you use or access them.
         </p>
@@ -42,8 +42,8 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="definitions">
-        <h2>Definitions</h2>
-        <ul>
+        <h1>Definitions</h1>
+        <ul style={{ listStyleType: "square", paddingLeft: "1rem" }}>
           <li><strong>Account:</strong> means a LocalDrive Account.</li>
           <li><strong>Cookies:</strong> A cookie is a small data file transferred to your computer or mobile device. It enables us to remember your account log-in information, IP address, web traffic, number of times you visit, browser type and version, device details, and date/time of visits.</li>
           <li><strong>LocalDrive:</strong> means LocalDrive Technologies LTD and subsidiaries or affiliates.</li>
@@ -55,7 +55,7 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="privacy-principles">
-        <h2>Our Privacy Principles</h2>
+        <h1>Our Privacy Principles</h1>
         <ol>
           <li><strong>Empower the individual</strong> – You should be in charge of your personal information and make voluntary choices about your data.</li>
           <li><strong>Secure personal information</strong> – We do not take your trust for granted. We ensure appropriate security measures are in place to protect your information.</li>
