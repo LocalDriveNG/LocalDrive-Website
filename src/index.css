@@ -304,6 +304,11 @@ html, body {
   }
 }
 
+.space {
+  padding top:0;
+  padding bottom: 3rem
+}
+
 /* Landscape orientation fixes for mobile devices */
 @media (max-height: 500px) and (orientation: landscape) {
   html {

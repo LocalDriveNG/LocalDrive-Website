@@ -212,7 +212,7 @@ const LegalPageLayout = ({
                 </div>
               </div>
 
-              <div className="container max-w-4xl mx-auto px-4">
+              <div className="container max-w-4xl mx-auto px-4 space">
                 <Separator className="my-12" />
 
                 {/* Call to Action */}
