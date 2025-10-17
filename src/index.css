@@ -305,8 +305,8 @@ html, body {
 }
 
 .containers {
-  padding top:0;
-  padding bottom: 3rem;
+  padding-top:0;
+  padding-bottom: 3rem;
 }
 
 /* Landscape orientation fixes for mobile devices */
