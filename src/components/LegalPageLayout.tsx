@@ -215,8 +215,6 @@ const LegalPageLayout = ({
           </div>
         </div>
 
-        
-
         {/* Back to Top Button */}
         {showBackToTop && (
           <button
@@ -229,30 +227,30 @@ const LegalPageLayout = ({
         )}
       </main>
 
- <div className="container max-w-4xl mx-auto px-4 space">
-                <Separator className="my-12" />
+      <div className="container max-w-4xl mx-auto px-4 space">
+      <Separator className="my-12" />
 
-                {/* Call to Action */}
-                <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10 rounded-2xl p-10 text-center border-2 border-primary/20 shadow-brand-lg animate-fade-in">
-                  {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 left-0 w-40 h-40 bg-secondary/10 rounded-full blur-3xl" />
-                        
-                      <div className="relative z-10">
-                        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gradient">
-                            Ready to Start Your Driving Journey?
-                        </h3>
-                          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
-                            Connect with certified driving instructors and begin learning with LocalDrive today. Your journey to confident driving starts here.
-                          </p>
-                        <Link to="/">
-                        <Button size="lg" className="hero-gradient hover:shadow-brand-lg transition-all hover:scale-105 text-lg px-8 py-6">
-                              Get Started Now
-                        </Button>
-                        </Link>
-                    </div>
-                  </div>
-                </div>     
+      {/* Call to Action */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10 rounded-2xl p-10 text-center border-2 border-primary/20 shadow-brand-lg animate-fade-in">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-40 h-40 bg-secondary/10 rounded-full blur-3xl" />
+              
+            <div className="relative z-10">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gradient">
+                  Ready to Start Your Driving Journey?
+              </h3>
+                <p className="text-muted-foreground mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+                  Connect with certified driving instructors and begin learning with LocalDrive today. Your journey to confident driving starts here.
+                </p>
+              <Link to="/">
+              <Button size="lg" className="hero-gradient hover:shadow-brand-lg transition-all hover:scale-105 text-lg px-8 py-6">
+                    Get Started Now
+              </Button>
+              </Link>
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );
