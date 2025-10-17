@@ -211,12 +211,25 @@ const LegalPageLayout = ({
                   </a>
                 </div>
               </div>
-
             </article>
           </div>
         </div>
 
-        <div className="container max-w-4xl mx-auto px-4 space">
+        
+
+        {/* Back to Top Button */}
+        {showBackToTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 bg-primary hover:bg-primary-hover text-primary-foreground p-3 rounded-full shadow-brand-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            aria-label="Back to top"
+          >
+            <ArrowUp className="h-5 w-5" />
+          </button>
+        )}
+      </main>
+
+ <div className="container max-w-4xl mx-auto px-4 space">
                 <Separator className="my-12" />
 
                 {/* Call to Action */}
@@ -239,19 +252,7 @@ const LegalPageLayout = ({
                         </Link>
                     </div>
                   </div>
-                </div>
-
-        {/* Back to Top Button */}
-        {showBackToTop && (
-          <button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 bg-primary hover:bg-primary-hover text-primary-foreground p-3 rounded-full shadow-brand-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-            aria-label="Back to top"
-          >
-            <ArrowUp className="h-5 w-5" />
-          </button>
-        )}
-      </main>
+                </div>     
       <Footer />
     </div>
   );
