@@ -135,7 +135,7 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="cookies">
-        <h2>7. Cookies and Advertising</h2>
+        <h2 className="text-2xl">7. Cookies and Advertising</h2>
         <p>
           Like many websites, we use cookies to distinguish you from other users, improve functionality, and customize your experience.
         </p>
@@ -174,7 +174,7 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="updates">
-        <h2 className="text-2xl">Updates to This Privacy Notice</h2>
+        <h2 className="text-2xl">8. Updates to This Privacy Notice</h2>
         <p>
           We may revise this Privacy Notice from time to time to reflect new features, services, or regulatory requirements. Updated versions will be posted on our website/app with a revised "Last Updated" date. If material changes affect your rights, we will notify you via email or platform notification.
         </p>

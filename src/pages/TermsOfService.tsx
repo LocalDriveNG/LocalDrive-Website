@@ -19,6 +19,7 @@ const sections: LegalSection[] = [
   { id: "indemnification", title: "Indemnification", level: 1 },
   { id: "dispute-resolution", title: "Dispute Resolution", level: 1 },
   { id: "force-majeure", title: "Force Majeure", level: 1 },
+  { id: "updates", title: "Updates to This Notice", level: 1 },
 ];
 
 const TermsOfService = () => {
