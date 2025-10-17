@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Users, MapPin, Award, Target, BookOpen, Shield, TabletSmartphone, ShieldCheck, CreditCard } from "lucide-react";
+import FAQSection from "@/components/FAQSection";
 
 const AboutUs = () => {
   return (
@@ -192,6 +193,7 @@ const AboutUs = () => {
         </section>
       </main>
       
+      <FAQSection />
       <Footer />
     </div>
   );
