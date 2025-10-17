@@ -29,7 +29,8 @@ const PrivacyPolicy = () => {
           At LocalDrive and its affiliates (collectively referred to as "LocalDrive"), we greatly value the trust you place in us by sharing your information. Protecting your privacy is a top priority. This Privacy Notice explains what Personal Information we collect, why we collect it, and how we use it.
         </p>
 
-        <h1 id="overview">Overview</h1>
+        <h1 id="overview"
+            className="text-2xl" >Overview</h1>
         <p>
           This Privacy Notice describes your privacy rights regarding why, how, and when we collect, use, store, share, and protect your information across our website, booking and payment platforms ("Platforms"), APIs, software applications ("Apps"), email notifications, and tools regardless of how you use or access them.
         </p>
