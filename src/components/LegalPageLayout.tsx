@@ -229,6 +229,8 @@ const LegalPageLayout = ({
 
       <Separator className="my-12" />
 
+      
+      <section className="py-12 md:py-20 relative">
       {/* Call to Action */}
       <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10 rounded-2xl p-10 text-center border-2 border-primary/20 shadow-brand-lg animate-fade-in">
         {/* Decorative elements */}
@@ -249,6 +251,7 @@ const LegalPageLayout = ({
               </Link>
         </div>
       </div>
+      </section>
 
       <Footer />
     </div>
