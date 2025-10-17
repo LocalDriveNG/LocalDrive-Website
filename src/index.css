@@ -304,9 +304,9 @@ html, body {
   }
 }
 
-.cta {
+.containers {
   padding top:0;
-  padding bottom: 3rem
+  padding bottom: 3rem;
 }
 
 /* Landscape orientation fixes for mobile devices */
