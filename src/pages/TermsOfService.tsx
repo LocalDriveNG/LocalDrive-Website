@@ -242,6 +242,13 @@ const TermsOfService = () => {
         </p>
       </section>
 
+      <section id="updates">
+        <h2 className="text-2xl">Updates to This Terms of Service</h2>
+        <p>
+          We may revise this Terms of Service from time to time to reflect new features, services, or regulatory requirements. Updated versions will be posted on our website/app with a revised "Last Updated" date. If material changes affect your rights, we will notify you via email or platform notification.
+        </p>
+      </section>
+
       <div className="mt-8 p-4 bg-primary/5 border-l-4 border-primary rounded">
         <p className="font-semibold text-foreground">
           🔹 Motto: "Your Journey to Confident Driving Starts Here 🚗 Learn, Book, Drive Smarter."

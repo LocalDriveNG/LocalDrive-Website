@@ -29,8 +29,8 @@ const PrivacyPolicy = () => {
           At LocalDrive and its affiliates (collectively referred to as "LocalDrive"), we greatly value the trust you place in us by sharing your information. Protecting your privacy is a top priority. This Privacy Notice explains what Personal Information we collect, why we collect it, and how we use it.
         </p>
 
-        <h1 id="overview"
-            className="text-2xl" >Overview</h1>
+        <h2 id="overview"
+            className="text-2xl" >Overview</h2>
         <p>
           This Privacy Notice describes your privacy rights regarding why, how, and when we collect, use, store, share, and protect your information across our website, booking and payment platforms ("Platforms"), APIs, software applications ("Apps"), email notifications, and tools regardless of how you use or access them.
         </p>
@@ -43,7 +43,7 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="definitions">
-        <h1>Definitions</h1>
+        <h2 className="text-2xl">Definitions</h2>
         <ul style={{ listStyleType: "square", paddingLeft: "1rem" }}>
           <li><strong>Account:</strong> means a LocalDrive Account.</li>
           <li><strong>Cookies:</strong> A cookie is a small data file transferred to your computer or mobile device. It enables us to remember your account log-in information, IP address, web traffic, number of times you visit, browser type and version, device details, and date/time of visits.</li>
@@ -56,19 +56,19 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="privacy-principles">
-        <h1>Our Privacy Principles</h1>
-        <ol>
+        <h2 className="text-2xl">1. Our Privacy Principles</h2>
+        <ul style={{ listStyleType: "square", paddingLeft: "1rem" }}>
           <li><strong>Empower the individual</strong> – You should be in charge of your personal information and make voluntary choices about your data.</li>
           <li><strong>Secure personal information</strong> – We do not take your trust for granted. We ensure appropriate security measures are in place to protect your information.</li>
           <li><strong>Transparency and education</strong> – We want you to clearly understand what personal information is collected, how, why, and how it is secured.</li>
           <li><strong>Abide by local laws</strong> – Our privacy practices comply with Nigerian Data Protection Act (NDPA 2023) and other applicable local regulations. If LocalDrive expands internationally, local laws will also be respected.</li>
           <li><strong>Collect only what is needed</strong> – We collect and store personal data only to provide our Services effectively, avoiding unnecessary or excessive data collection.</li>
-        </ol>
+        </ul>
       </section>
 
       <section id="personal-information">
-        <h2>Personal Information We May Collect About You</h2>
-        <ul>
+        <h2 className="text-2xl">2. Personal Information We May Collect About You</h2>
+        <ul style={{ listStyleType: "square", paddingLeft: "1rem" }}>
           <li><strong>Identity Data:</strong> Full name, government-issued identity number (such as driver's license or national ID), and date of birth (for learner verification).</li>
           <li><strong>Contact Data:</strong> Address, email, telephone number, device details, and billing details.</li>
           <li><strong>Instructor & Learner Data:</strong> Driving qualifications, lesson records, progress reports, scheduling, and feedback.</li>
@@ -84,8 +84,8 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="how-we-get-info">
-        <h2>How We Get Your Personal Information</h2>
-        <ul>
+        <h2 className="text-2xl">3. How We Get Your Personal Information</h2>
+        <ul style={{ listStyleType: "square", paddingLeft: "1rem" }}>
           <li>Sign up for a LocalDrive Account.</li>
           <li>Book or purchase lesson packages.</li>
           <li>Use any of our Services.</li>
@@ -96,8 +96,8 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="lawful-basis">
-        <h2>Lawful Basis for Processing</h2>
-        <ul>
+        <h2 className="text-2xl">4. Lawful Basis for Processing</h2>
+        <ul style={{ listStyleType: "square", paddingLeft: "1rem" }}>
           <li><strong>Consent –</strong> When you voluntarily provide information by using our Services.</li>
           <li><strong>Contractual necessity –</strong> To provide you with lesson booking, progress tracking, and payments.</li>
           <li><strong>Legal obligations –</strong> To comply with laws such as financial reporting, anti-fraud, or FRSC road safety requirements.</li>
@@ -106,8 +106,8 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="how-we-use">
-        <h2>How We May Use Your Personal Information</h2>
-        <ul>
+        <h2 className="text-2xl">5. How We May Use Your Personal Information</h2>
+        <ul style={{ listStyleType: "square", paddingLeft: "1rem" }}>
           <li>Create and manage user accounts (learners and instructors).</li>
           <li>Verify your identity and eligibility to use LocalDrive Services.</li>
           <li>Facilitate bookings, payments, cancellations, and refunds.</li>
@@ -121,7 +121,7 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="data-security">
-        <h2>Data Security and Retention</h2>
+        <h2 className="text-2xl">6. Data Security and Retention</h2>
         <p>The security of your Personal Information is important to us. We apply technical, administrative, and physical safeguards to protect your data, including:</p>
         <ul>
           <li>Secure servers and encryption protocols.</li>
@@ -135,7 +135,7 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="cookies">
-        <h2>Cookies and Advertising</h2>
+        <h2>7. Cookies and Advertising</h2>
         <p>
           Like many websites, we use cookies to distinguish you from other users, improve functionality, and customize your experience.
         </p>
@@ -174,7 +174,7 @@ const PrivacyPolicy = () => {
       </section>
 
       <section id="updates">
-        <h2>Updates to This Privacy Notice</h2>
+        <h2 className="text-2xl">Updates to This Privacy Notice</h2>
         <p>
           We may revise this Privacy Notice from time to time to reflect new features, services, or regulatory requirements. Updated versions will be posted on our website/app with a revised "Last Updated" date. If material changes affect your rights, we will notify you via email or platform notification.
         </p>
