@@ -212,7 +212,11 @@ const LegalPageLayout = ({
                 </div>
               </div>
 
-              <div className="container max-w-4xl mx-auto px-4 space">
+            </article>
+          </div>
+        </div>
+
+        <div className="container max-w-4xl mx-auto px-4 space">
                 <Separator className="my-12" />
 
                 {/* Call to Action */}
@@ -236,9 +240,6 @@ const LegalPageLayout = ({
                     </div>
                   </div>
                 </div>
-            </article>
-          </div>
-        </div>
 
         {/* Back to Top Button */}
         {showBackToTop && (
