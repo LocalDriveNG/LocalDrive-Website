@@ -4,6 +4,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SocialFollow from "@/components/SocialFollow";
+import RecentPosts from "@/components/RecentPosts";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -22,6 +24,7 @@ interface BlogPost {
   meta_title?: string | null;
   meta_description?: string | null;
   og_image?: string | null;
+  featured_image?: string | null;
 }
 
 const BlogPost = () => {
@@ -205,6 +208,17 @@ const BlogPost = () => {
 
             {/* Article Header */}
             <header className="mb-12 animate-fade-in">
+              {/* Featured Image */}
+              {post.featured_image && (
+                <div className="mb-10 overflow-hidden rounded-2xl border-2 border-border/50 shadow-xl">
+                  <img
+                    src={post.featured_image}
+                    alt={post.title}
+                    className="w-full h-auto max-h-[500px] object-cover"
+                  />
+                </div>
+              )}
+              
               {/* Title with gradient accent */}
               <div className="relative mb-6">
                 <div className="absolute -left-4 top-0 bottom-0 w-1.5 hero-gradient rounded-full" />
@@ -263,20 +277,36 @@ const BlogPost = () => {
             {/* Article Content */}
             <div
               className="prose prose-lg dark:prose-invert max-w-none animate-fade-in
-                prose-headings:font-bold prose-headings:text-foreground prose-headings:scroll-mt-20
-                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-primary/20
-                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-primary
-                prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6 prose-p:text-base
+                prose-headings:font-bold prose-headings:text-foreground prose-headings:scroll-mt-24
+                prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b prose-h2:border-primary/20
+                prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:text-primary
+                prose-h4:text-xl prose-h4:mt-8 prose-h4:mb-4
+                prose-p:text-muted-foreground prose-p:leading-[1.8] prose-p:mb-8 prose-p:text-lg
                 prose-a:text-primary prose-a:no-underline prose-a:font-medium hover:prose-a:underline prose-a:transition-all
-                prose-strong:text-foreground prose-strong:font-bold prose-strong:bg-primary/5 prose-strong:px-1 prose-strong:rounded
-                prose-ul:my-6 prose-ul:space-y-2 prose-ul:list-disc prose-ul:pl-6
-                prose-ol:my-6 prose-ol:space-y-2 prose-ol:list-decimal prose-ol:pl-6
-                prose-li:text-muted-foreground prose-li:leading-relaxed
-                prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:italic
+                prose-strong:text-foreground prose-strong:font-bold prose-strong:bg-primary/5 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded
+                prose-ul:my-8 prose-ul:space-y-3 prose-ul:list-disc prose-ul:pl-6
+                prose-ol:my-8 prose-ol:space-y-3 prose-ol:list-decimal prose-ol:pl-6
+                prose-li:text-muted-foreground prose-li:leading-[1.8] prose-li:mb-2
+                prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:my-8
                 prose-code:text-primary prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono
+                prose-pre:bg-muted prose-pre:p-6 prose-pre:rounded-lg prose-pre:my-8 prose-pre:overflow-x-auto
+                prose-img:rounded-xl prose-img:my-10 prose-img:shadow-lg prose-img:border prose-img:border-border
                 prose-lead:text-xl prose-lead:text-foreground prose-lead:font-medium prose-lead:mb-8"
+              style={{ scrollMarginTop: '80px' }}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
+
+            <Separator className="my-16" />
+
+            {/* Social Follow Section */}
+            <div className="mb-12 animate-fade-in">
+              <SocialFollow />
+            </div>
+
+            {/* Recent Posts Section */}
+            <div className="mb-12 animate-fade-in">
+              <RecentPosts currentSlug={slug} limit={4} />
+            </div>
 
             <Separator className="my-12" />
 

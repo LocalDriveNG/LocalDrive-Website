@@ -17,6 +17,7 @@ interface BlogPost {
   author: string;
   published_at: string | null;
   keywords: string[] | null;
+  featured_image?: string | null;
 }
 
 const Blog = () => {
@@ -28,7 +29,7 @@ const Blog = () => {
     const fetchPosts = async () => {
       const { data, error } = await supabase
         .from("blog_posts")
-        .select("slug, title, description, author, published_at, keywords")
+        .select("slug, title, description, author, published_at, keywords, featured_image")
         .order("published_at", { ascending: false });
 
       if (error) {
@@ -142,6 +143,17 @@ const Blog = () => {
                     <Card className="h-full overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-brand-lg hover:-translate-y-1 bg-card/50 backdrop-blur-sm">
                       {/* Decorative gradient bar */}
                       <div className="h-1.5 hero-gradient" />
+                      
+                      {/* Featured Image */}
+                      {post.featured_image && (
+                        <div className="overflow-hidden">
+                          <img
+                            src={post.featured_image}
+                            alt={post.title}
+                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        </div>
+                      )}
                       
                       <CardHeader className="space-y-4 pb-4">
                         <div className="flex items-start justify-between gap-2">

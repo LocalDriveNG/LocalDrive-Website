@@ -96,7 +96,7 @@ const Header = () => {
           </div>
 
           {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex md:items-center md:space-x-3">
+          <div className="hidden md:flex md:items-center md:gap-3">
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
