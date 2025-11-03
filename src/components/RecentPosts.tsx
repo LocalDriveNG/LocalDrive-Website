@@ -22,7 +22,7 @@ const RecentPosts = ({ currentSlug, limit = 4 }: RecentPostsProps) => {
 
   useEffect(() => {
     const fetchRecentPosts = async () => {
-      let query = supabase
+      const query = supabase
         .from("blog_posts")
         .select("slug, title, published_at, featured_image")
         .order("published_at", { ascending: false })
