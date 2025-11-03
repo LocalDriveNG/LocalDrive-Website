@@ -25,7 +25,6 @@ export type Database = {
           keywords: string[] | null
           meta_description: string | null
           meta_title: string | null
-          og_image: string | null
           published_at: string | null
           slug: string
           structured_data: Json | null
@@ -42,7 +41,6 @@ export type Database = {
           keywords?: string[] | null
           meta_description?: string | null
           meta_title?: string | null
-          og_image?: string | null
           published_at?: string | null
           slug: string
           structured_data?: Json | null
@@ -59,7 +57,6 @@ export type Database = {
           keywords?: string[] | null
           meta_description?: string | null
           meta_title?: string | null
-          og_image?: string | null
           published_at?: string | null
           slug?: string
           structured_data?: Json | null
