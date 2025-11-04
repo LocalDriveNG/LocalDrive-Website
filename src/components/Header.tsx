@@ -56,7 +56,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">
             <HashLink 
               to="/#how-it-works"
               className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
@@ -96,7 +96,7 @@ const Header = () => {
           </div>
 
           {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex md:items-center md:gap-3">
+          <div className="hidden lg:flex lg:items-center lg:gap-3">
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
@@ -118,7 +118,7 @@ const Header = () => {
           {/* Mobile Hamburger Button */}
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
+            className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200"
             aria-controls="mobile-menu"
             aria-expanded={isMenuOpen}
             aria-label="Toggle navigation menu"
@@ -134,9 +134,9 @@ const Header = () => {
 
         {/* Mobile Navigation Menu */}
         <div 
-          className={`md:hidden transition-all duration-200 ease-in-out ${
+          className={`lg:hidden transition-all duration-200 ease-in-out ${
             isMenuOpen 
-              ? 'max-h-96 opacity-100 visible' 
+              ? 'max-h-[500px] opacity-100 visible' 
               : 'max-h-0 opacity-0 invisible overflow-hidden'
           }`}
           id="mobile-menu"
