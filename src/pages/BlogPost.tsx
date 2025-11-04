@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
+import { marked } from "marked";
 
 interface BlogPost {
   slug: string;
@@ -32,6 +33,7 @@ const BlogPost = () => {
   const navigate = useNavigate();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
+  const [htmlContent, setHtmlContent] = useState<string>("");
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -55,6 +57,9 @@ const BlogPost = () => {
         navigate("/blog");
       } else {
         setPost(data);
+        // Convert markdown to HTML
+        const html = await marked(data.content);
+        setHtmlContent(html);
       }
       setLoading(false);
     };
@@ -293,7 +298,7 @@ const BlogPost = () => {
                 prose-img:rounded-xl prose-img:my-10 prose-img:shadow-lg prose-img:border prose-img:border-border
                 prose-lead:text-xl prose-lead:text-foreground prose-lead:font-medium prose-lead:mb-8"
               style={{ scrollMarginTop: '80px' }}
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
             />
 
             <Separator className="my-16" />
