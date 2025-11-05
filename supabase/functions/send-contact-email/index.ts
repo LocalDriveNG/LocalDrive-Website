@@ -29,7 +29,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Sending contact form email to support@localdriveapp.com");
 
     const emailResponse = await resend.emails.send({
-      from: "LocalDrive Contact <onboarding@resend.dev>",
+      from: "LocalDrive Contact <support@localdriveapp.com>",
       to: ["support@localdriveapp.com"],
       subject: `Contact Form: ${subject}`,
       html: `
