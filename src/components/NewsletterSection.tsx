@@ -55,6 +55,16 @@ const NewsletterSection = () => {
           throw error;
         }
       } else {
+        // Send welcome email
+        try {
+          await supabase.functions.invoke('send-newsletter-welcome', {
+            body: { email }
+          });
+        } catch (emailError) {
+          console.error('Error sending welcome email:', emailError);
+          // Don't fail the subscription if email fails
+        }
+        
         setIsSubscribed(true);
         toast({
           title: "Successfully subscribed!",
