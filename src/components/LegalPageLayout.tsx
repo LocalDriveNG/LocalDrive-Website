@@ -65,7 +65,7 @@ const LegalPageLayout = ({
     setTocOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -80;
+      const yOffset = -96; // Matches scroll-mt-24 (96px)
       const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }

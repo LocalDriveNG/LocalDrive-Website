@@ -33,12 +33,29 @@ const Contact = () => {
   const formElement = e.currentTarget;
 
   try {
+    // Save to database
     const { error } = await supabase
       .from('contact_submissions')
       .insert(contactData);
 
     if (error) {
       throw error;
+    }
+
+    // Send email notification to support
+    const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
+      body: {
+        name: `${contactData.first_name} ${contactData.last_name}`,
+        email: contactData.email,
+        phone: contactData.phone,
+        subject: contactData.subject,
+        message: contactData.message,
+      },
+    });
+
+    if (emailError) {
+      console.error('Error sending email notification:', emailError);
+      // Don't fail the submission if email fails
     }
 
     toast({
