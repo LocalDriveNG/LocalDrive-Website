@@ -1,6 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
-import NewsletterWelcome from "@/components/NewsletterWelcome";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -29,8 +28,7 @@ const handler = async (req: Request): Promise<Response> => {
       from: "LocalDrive <noreply@localdrive.com>",
       to: [email],
       subject: "Welcome to LocalDrive Newsletter!",
-      react: NewsletterWelcome({ 
-    }),
+      react: "newsletter-welcome",
     });
 
     console.log("Newsletter welcome email sent successfully:", emailResponse);
