@@ -43,7 +43,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 z-50 w-full bg-background/95 dark:bg-background/98 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 dark:supports-[backdrop-filter]:bg-background/80 border-b border-border dark:border-neutral-700 shadow-sm dark:shadow-md">
       <div className="container mx-auto px-4">
-        <nav className="flex items-center justify-between h-16" role="navigation" aria-label="Main navigation">
+        <nav className="flex items-center justify-between h-20" role="navigation" aria-label="Main navigation">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center" aria-label="LocalDrive Home">
