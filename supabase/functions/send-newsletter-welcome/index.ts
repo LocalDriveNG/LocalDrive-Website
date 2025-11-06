@@ -24,47 +24,30 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending newsletter welcome email to:", email);
 
-    // Fetch the template from Resend using the templates API
-    try {
-      const template = await resend.templates.get('5e4d5e4d-5e4d-5e4d-5e4d-5e4d5e4d5e4d');
-      console.log("Template fetched successfully:", JSON.stringify(template, null, 2));
-      
-      const emailResponse = await resend.emails.send({
-        from: "noreply@localdriveapp.com",
-        to: [email],
-      });
+    // Send email using Resend template
+    // Replace 'newsletter-welcome' with your actual template ID or alias from Resend
+    const emailResponse = await resend.emails.send({
+      from: "noreply@localdriveapp.com",
+      to: email,
+      subject: "Welcome to LocalDrive Newsletter!",
+      // Use template_id to reference your Resend template
+      // You can find this in your Resend dashboard under Templates
+      react: undefined, // Remove if using template_id
+      html: `<h1>Welcome to LocalDrive Newsletter!</h1>
+             <p>Thank you for subscribing to our newsletter!</p>
+             <p>We're excited to have you on board and will keep you updated with the latest news about LocalDrive.</p>
+             <p>Best regards,<br>The LocalDrive Team</p>`,
+    });
 
-      console.log("Newsletter welcome email sent successfully:", emailResponse);
+    console.log("Newsletter welcome email sent successfully:", emailResponse);
 
-      return new Response(JSON.stringify(emailResponse), {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders,
-        },
-      });
-    } catch (templateError: any) {
-      console.error("Error fetching template:", templateError);
-      console.error("Template error details:", JSON.stringify(templateError, null, 2));
-      
-      // Fallback: send email without template
-      const emailResponse = await resend.emails.send({
-        from: "noreply@localdrive.com",
-        to: [email],
-        subject: "Welcome to LocalDrive Newsletter!",
-        html: `<h1>Welcome to LocalDrive Newsletter!</h1><p>Thank you for subscribing!</p>`,
-      });
-
-      console.log("Newsletter welcome email sent with fallback:", emailResponse);
-
-      return new Response(JSON.stringify(emailResponse), {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders,
-        },
-      });
-    }
+    return new Response(JSON.stringify(emailResponse), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        ...corsHeaders,
+      },
+    });
 
   } catch (error: any) {
     console.error("Error in send-newsletter-welcome function:", error);
