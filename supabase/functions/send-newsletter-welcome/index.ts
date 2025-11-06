@@ -28,7 +28,11 @@ const handler = async (req: Request): Promise<Response> => {
     const emailResponse = await resend.emails.send({
       from: "noreply@localdriveapp.com",
       to: email,
-      template_id: "b9a99cd0-74f3-4311-ad6a-47b539ffe895",
+      subject: "Welcome to LocalDrive Newsletter!",
+      template: {
+        id: "b9a99cd0-74f3-4311-ad6a-47b539ffe895",
+        variables: {}
+      }
     });
 
     console.log("Newsletter welcome email sent successfully:", emailResponse);
