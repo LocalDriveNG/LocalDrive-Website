@@ -24,16 +24,16 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending newsletter welcome email to:", email);
 
-    // Fetch the template from Resend
-    const templates = await resend.emails.get({
-      id: "newsletter-welcome",
-    });
+    // Fetch the template from Resend using the templates API
+    const template = await resend.templates.get("newsletter-welcome");
+    
+    console.log("Template fetched successfully:", template);
 
     const emailResponse = await resend.emails.send({
       from: "noreply@localdrive.com",
       to: [email],
       subject: "Welcome to LocalDrive Newsletter!",
-      html: templates.html || `<h1>Welcome to LocalDrive Newsletter!</h1><p>Thank you for subscribing!</p>`,
+      html: template.html || `<h1>Welcome to LocalDrive Newsletter!</h1><p>Thank you for subscribing!</p>`,
     });
 
     console.log("Newsletter welcome email sent successfully:", emailResponse);
