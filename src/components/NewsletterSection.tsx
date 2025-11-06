@@ -7,7 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isSubscribed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -65,12 +65,12 @@ const NewsletterSection = () => {
           // Don't fail the subscription if email fails
         }
         
-        setIsSubscribed(true);
-        toast({
-          title: "Successfully subscribed!",
-          description: "Thank you for subscribing to our newsletter.",
-          className: "bg-green-600 border-black-200 text-white",
-        });
+        // setIsSubscribed(true);
+        // toast({
+        //   title: "Successfully subscribed!",
+        //   description: "Thank you for subscribing to our newsletter.",
+        //   className: "bg-green-600 border-black-200 text-white",
+        // });
       }
       
       setEmail("");
