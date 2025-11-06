@@ -25,18 +25,10 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Sending newsletter welcome email to:", email);
 
     // Send email using Resend template
-    // Replace 'newsletter-welcome' with your actual template ID or alias from Resend
     const emailResponse = await resend.emails.send({
       from: "noreply@localdriveapp.com",
       to: email,
-      subject: "Welcome to LocalDrive Newsletter!",
-      // Use template_id to reference your Resend template
-      // You can find this in your Resend dashboard under Templates
-      react: undefined, // Remove if using template_id
-      html: `<h1>Welcome to LocalDrive Newsletter!</h1>
-             <p>Thank you for subscribing to our newsletter!</p>
-             <p>We're excited to have you on board and will keep you updated with the latest news about LocalDrive.</p>
-             <p>Best regards,<br>The LocalDrive Team</p>`,
+      template_id: "b9a99cd0-74f3-4311-ad6a-47b539ffe895",
     });
 
     console.log("Newsletter welcome email sent successfully:", emailResponse);
