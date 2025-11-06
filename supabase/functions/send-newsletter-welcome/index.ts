@@ -25,30 +25,54 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Sending newsletter welcome email to:", email);
 
     // Fetch the template from Resend using the templates API
-    const template = await resend.templates.get("newsletter-welcome");
-    
-    console.log("Template fetched successfully:", template);
+    try {
+      const template = await resend.templates.get("newsletter-welcome");
+      console.log("Template fetched successfully:", JSON.stringify(template, null, 2));
+      
+      const emailResponse = await resend.emails.send({
+        from: "noreply@localdrive.com",
+        to: [email],
+        subject: "Welcome to LocalDrive Newsletter!",
+        html: template.html || `<h1>Welcome to LocalDrive Newsletter!</h1><p>Thank you for subscribing!</p>`,
+      });
 
-    const emailResponse = await resend.emails.send({
-      from: "noreply@localdrive.com",
-      to: [email],
-      subject: "Welcome to LocalDrive Newsletter!",
-      html: template.html || `<h1>Welcome to LocalDrive Newsletter!</h1><p>Thank you for subscribing!</p>`,
-    });
+      console.log("Newsletter welcome email sent successfully:", emailResponse);
 
-    console.log("Newsletter welcome email sent successfully:", emailResponse);
+      return new Response(JSON.stringify(emailResponse), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          ...corsHeaders,
+        },
+      });
+    } catch (templateError: any) {
+      console.error("Error fetching template:", templateError);
+      console.error("Template error details:", JSON.stringify(templateError, null, 2));
+      
+      // Fallback: send email without template
+      const emailResponse = await resend.emails.send({
+        from: "noreply@localdrive.com",
+        to: [email],
+        subject: "Welcome to LocalDrive Newsletter!",
+        html: `<h1>Welcome to LocalDrive Newsletter!</h1><p>Thank you for subscribing!</p>`,
+      });
 
-    return new Response(JSON.stringify(emailResponse), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-        ...corsHeaders,
-      },
-    });
+      console.log("Newsletter welcome email sent with fallback:", emailResponse);
+
+      return new Response(JSON.stringify(emailResponse), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          ...corsHeaders,
+        },
+      });
+    }
+
   } catch (error: any) {
     console.error("Error in send-newsletter-welcome function:", error);
+    console.error("Error details:", JSON.stringify(error, null, 2));
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: error.message, details: error }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
