@@ -66,11 +66,6 @@ const NewsletterSection = () => {
         }
         
         setIsSubscribed(true);
-        toast({
-          title: "Successfully subscribed!",
-          description: "Thank you for subscribing to our newsletter.",
-          className: "bg-green-600 border-black-200 text-white",
-        });
       }
       
       setEmail("");
