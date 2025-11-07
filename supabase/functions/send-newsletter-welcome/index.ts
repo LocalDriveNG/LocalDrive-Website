@@ -59,7 +59,7 @@ const handler = async (req: Request): Promise<Response> => {
               color: #0064a9;
             }
             .header img {
-              width: 120px;
+              width: 420px;
               margin-bottom: 10px;
             }
             .header h1 {
@@ -87,7 +87,7 @@ const handler = async (req: Request): Promise<Response> => {
               margin: 12px 0;
             }
             .content a {
-              color: #0d9db9;
+              color: #0062a8;
               text-decoration: none;
             }
             .highlight {
@@ -145,7 +145,7 @@ const handler = async (req: Request): Promise<Response> => {
                 font-size: 20px;
               }
               .header img {
-                width: 100px;
+                width: 300px;
               }
               .social-icons a {
                 margin: 0 8px;
@@ -204,8 +204,8 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
 
             <div class="footer">
-              <p>Your Journey to Confident Driving Starts Here 🚗 Learn, Book, Drive Smarter.</p>
-              <p>© {new Date().getFullYear()} LocalDrive. All rights reserved. | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
+              <p>Your Journey to Confident Driving Starts Here 🚗 </br>Learn, Book, Drive Smarter.</p>
+              <p>© LocalDrive Technologies LTD. All rights reserved. | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
             </div>
           </div>
         </body>
