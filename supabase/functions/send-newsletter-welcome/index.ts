@@ -105,26 +105,22 @@ const handler = async (req: Request): Promise<Response> => {
             .social p {
               font-weight: 600;
               color: #0064a9;
-              margin-bottom: 12px;
+              margin-bottom: 15px;
+              font-size: 16px;
             }
             .social-icons {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              gap: 20px;
+              display: inline-block;
+              text-align: center;
             }
             .social-icons a {
               display: inline-block;
               text-decoration: none;
+              margin: 0 12px;
             }
             .social-icons img {
-              width: 30px;
-              height: 30px;
+              width: 32px;
+              height: 32px;
               vertical-align: middle;
-              transition: transform 0.2s ease;
-            }
-            .social-icons img:hover {
-              transform: scale(1.1);
             }
             .footer {
               background-color: #0064a9;
@@ -147,9 +143,12 @@ const handler = async (req: Request): Promise<Response> => {
               .header img {
                 width: 100px;
               }
+              .social-icons a {
+                margin: 0 8px;
+              }
               .social-icons img {
-                width: 26px;
-                height: 26px;
+                width: 28px;
+                height: 28px;
               }
             }
           </style>
@@ -157,8 +156,8 @@ const handler = async (req: Request): Promise<Response> => {
         <body>
           <div class="container">
             <div class="header">
-              <img src="https://files.oaiusercontent.com/file-566MbkB3aqLVwnDYuoDaMz" alt="LocalDrive Logo" />
-              <h1>💌 You're Officially Subscribed!</h1>
+              <img src="https://ctnfanskgvojcfqjxcon.supabase.co/storage/v1/object/public/assets/localdrive-logo.png" alt="LocalDrive Logo" />
+              <h1>You're Officially Subscribed!</h1>
               <p>Welcome to the LocalDrive Newsletter 🚗</p>
             </div>
 
