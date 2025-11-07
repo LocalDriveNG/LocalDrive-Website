@@ -174,11 +174,11 @@ const handler = async (req: Request): Promise<Response> => {
               <p>At LocalDrive, we don't just teach driving, we empower confidence behind the wheel with real-life lessons that fit your lifestyle.</p>
 
               <h2>Here's what you'll get from us:</h2>
-              <ul>
-                <p>✅ Driving tips tailored for Nigerian roads</p>
-                <p>✅ Exclusive updates on our app launch</p>
-                <p>✅ Stories from real learners and instructors</p>
-                <p>✅ Early invites to LocalDrive events & offers</p>
+              <ul style="list-style-type: none; padding-left: 0;">
+                <li>✅ Driving tips tailored for Nigerian roads</li>
+                <li>✅ Exclusive updates on our app launch</li>
+                <li>✅ Stories from real learners and instructors</li>
+                <li>✅ Early invites to LocalDrive events & offers</li>
               </ul>
 
               <p>
