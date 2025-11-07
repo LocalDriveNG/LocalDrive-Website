@@ -118,7 +118,7 @@ const NewsletterSection = () => {
               </div>
             </form>
           ) : (
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto">
+            <div className="bg-green-600 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto">
               <p className="text-white font-medium">
                 ✓ Thank you for subscribing! Check your email for confirmation.
               </p>
