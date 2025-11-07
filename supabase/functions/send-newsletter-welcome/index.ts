@@ -160,7 +160,7 @@ const handler = async (req: Request): Promise<Response> => {
         <body>
           <div class="container">
             <div class="header">
-              <img src="/src/assets/localdrive-logo.png" alt="LocalDrive Logo" />
+              <img src="https://localdriveapp.com/assets/localdrive-logo.png" alt="LocalDrive Logo" />
               <h1>💌 You're Officially Subscribed!</h1>
               <p>Welcome to the LocalDrive Newsletter 🚗</p>
             </div>
