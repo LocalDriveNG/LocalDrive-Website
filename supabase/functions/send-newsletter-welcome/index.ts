@@ -86,6 +86,10 @@ const handler = async (req: Request): Promise<Response> => {
               color: #333333;
               margin: 12px 0;
             }
+            .content a {
+              color: #0d9db9;
+              text-decoration: none;
+            }
             .highlight {
               color: #0d9db9;
               font-weight: 600;
@@ -156,8 +160,8 @@ const handler = async (req: Request): Promise<Response> => {
         <body>
           <div class="container">
             <div class="header">
-              <img src="https://ctnfanskgvojcfqjxcon.supabase.co/storage/v1/object/public/assets/localdrive-logo.png" alt="LocalDrive Logo" />
-              <h1>You're Officially Subscribed!</h1>
+              <img src="/src/assets/localdrive-logo.png" alt="LocalDrive Logo" />
+              <h1>💌 You're Officially Subscribed!</h1>
               <p>Welcome to the LocalDrive Newsletter 🚗</p>
             </div>
 
@@ -165,21 +169,23 @@ const handler = async (req: Request): Promise<Response> => {
               <p>Hi there, 👋</p>
               <p>Thanks for subscribing to the <span class="highlight">LocalDrive Newsletter!</span></p>
               <p>
-                You're now part of a growing community that's redefining how Nigerians learn to drive — smarter, safer, and stress-free.
+                You're now part of a growing community that's redefining how Nigerians learn to drive; smarter, safer, and stress-free.
               </p>
-              <p>At LocalDrive, we don't just teach driving — we empower confidence behind the wheel with real-life lessons that fit your lifestyle.</p>
+              <p>At LocalDrive, we don't just teach driving, we empower confidence behind the wheel with real-life lessons that fit your lifestyle.</p>
 
               <h2>Here's what you'll get from us:</h2>
               <ul>
-                <li>✅ Driving tips tailored for Nigerian roads</li>
-                <li>✅ Exclusive updates on our app launch</li>
-                <li>✅ Stories from real learners and instructors</li>
-                <li>✅ Early invites to LocalDrive events & offers</li>
+                <p>✅ Driving tips tailored for Nigerian roads</p>
+                <p>✅ Exclusive updates on our app launch</p>
+                <p>✅ Stories from real learners and instructors</p>
+                <p>✅ Early invites to LocalDrive events & offers</p>
               </ul>
 
               <p>
-                We'll drop fresh insights, product updates, and opportunities straight to your inbox — no spam, just value 🚀
+                We'll drop fresh insights, product updates, and opportunities straight to your inbox; no spam, just value 🚀
               </p>
+              <p>
+                Explore more exciting insights about driving; you can check out our blog posts <a href="https://localdriveapp.com/blog">here</a></p>
             </div>
 
             <div class="social">
@@ -192,14 +198,14 @@ const handler = async (req: Request): Promise<Response> => {
                   <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn" />
                 </a>
                 <a href="https://x.com/getlocaldrive?s=21">
-                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="Twitter X" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="X" />
                 </a>
               </div>
             </div>
 
             <div class="footer">
-              <p>Your Journey Starts Here 🚗 Learn, Book, Drive Smarter.</p>
-              <p>© 2025 LocalDrive | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
+              <p>Your Journey to Confident Driving Starts Here 🚗 Learn, Book, Drive Smarter.</p>
+              <p>© {new Date().getFullYear()} LocalDrive. All rights reserved. | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
             </div>
           </div>
         </body>
