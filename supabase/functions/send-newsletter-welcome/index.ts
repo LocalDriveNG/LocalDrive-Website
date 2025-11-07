@@ -30,7 +30,7 @@ const handler = async (req: Request): Promise<Response> => {
       to: [email],
       subject: "Welcome to LocalDrive Newsletter",
       html: `
-        <!DOCTYPE html>
+                <!DOCTYPE html>
         <html lang="en">
         <head>
           <meta charset="UTF-8" />
@@ -58,8 +58,8 @@ const handler = async (req: Request): Promise<Response> => {
               padding: 40px 20px 30px;
               color: #0064a9;
             }
-            .header img {
-              width: 420px;
+            .header .logo {
+              width: 250px;
               margin-bottom: 10px;
             }
             .header h1 {
@@ -89,6 +89,7 @@ const handler = async (req: Request): Promise<Response> => {
             .content a {
               color: #0062a8;
               text-decoration: none;
+              font-weight: 600;
             }
             .highlight {
               color: #0d9db9;
@@ -137,6 +138,9 @@ const handler = async (req: Request): Promise<Response> => {
               color: #d9ecff;
               text-decoration: none;
             }
+            .footer p {
+              color: #ffffff;
+            }
             @media (max-width: 600px) {
               .content {
                 padding: 25px 18px;
@@ -144,8 +148,8 @@ const handler = async (req: Request): Promise<Response> => {
               .header h1 {
                 font-size: 20px;
               }
-              .header img {
-                width: 300px;
+              .header .logo {
+                width: 200px;
               }
               .social-icons a {
                 margin: 0 8px;
@@ -160,7 +164,7 @@ const handler = async (req: Request): Promise<Response> => {
         <body>
           <div class="container">
             <div class="header">
-              <img src="https://localdriveapp.com/assets/localdrive-logo.png" alt="LocalDrive Logo" />
+              <img src="https://localdriveapp.com/assets/localdrive-logo.png" alt="LocalDrive Logo" class="logo"/>
               <h1>💌 You're Officially Subscribed!</h1>
               <p>Welcome to the LocalDrive Newsletter 🚗</p>
             </div>
@@ -185,7 +189,8 @@ const handler = async (req: Request): Promise<Response> => {
                 We'll drop fresh insights, product updates, and opportunities straight to your inbox; no spam, just value 🚀
               </p>
               <p>
-                Explore more exciting insights about driving; you can check out our blog posts <a href="https://localdriveapp.com/blog">here</a></p>
+                Explore more exciting insights about driving; you can check out our blog posts <a href="https://localdriveapp.com/blog">here</a>
+              </p>
             </div>
 
             <div class="social">
@@ -204,8 +209,8 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
 
             <div class="footer">
-              <p>Your Journey to Confident Driving Starts Here 🚗 </br>Learn, Book, Drive Smarter.</p>
-              <p>© LocalDrive Technologies LTD. All rights reserved. | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
+              <p>Your Journey to Confident Driving Starts Here 🚗 <br>Learn, Book, Drive Smarter.</p>
+              <p>© LocalDrive Technologies LTD. | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
             </div>
           </div>
         </body>
