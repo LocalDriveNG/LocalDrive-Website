@@ -36,6 +36,11 @@ const metaConfig = {
     description:
       "Read LocalDrive's Cookies Policy to understand how we use cookies to enhance your experience on our driving lessons platform.",
   },
+  "/waitlist": {
+    title: "Join the LocalDrive Waitlist - Be First to Drive with Us",
+    description:
+      "Join the LocalDrive waitlist and be among the first to experience our revolutionary driving education platform in Nigeria. Get early access and exclusive updates.",
+  },
 }
 
 export default metaConfig
