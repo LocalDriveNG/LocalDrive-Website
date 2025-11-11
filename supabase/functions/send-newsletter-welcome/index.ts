@@ -211,6 +211,9 @@ const handler = async (req: Request): Promise<Response> => {
             <div class="footer">
               <p>Your Journey to Confident Driving Starts Here 🚗 <br>Learn, Book, Drive Smarter.</p>
               <p>© LocalDrive Technologies LTD. | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
+              <p style="margin-top: 10px; font-size: 12px;">
+                <a href="https://localdriveapp.com/unsubscribe?email=${encodeURIComponent(email)}" style="color: #d9ecff; text-decoration: underline;">Unsubscribe from this newsletter</a>
+              </p>
             </div>
           </div>
         </body>
