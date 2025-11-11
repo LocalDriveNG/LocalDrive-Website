@@ -19,6 +19,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const CookiesPolicy = lazy(() => import("./pages/CookiesPolicy"));
 const Unsubscribe = lazy(() => import("./pages/Unsubscribe"));
+const Waitlist = lazy(() => import("./pages/Waitlist"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Loading components
@@ -115,6 +116,7 @@ const App = () => (
                 <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
                 <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
                 <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
+                <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
                 <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
               </Routes>
               </div>
