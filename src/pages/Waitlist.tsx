@@ -71,7 +71,7 @@ const Waitlist = () => {
       setFirstName("");
       setLastName("");
       setEmail("");
-    } catch (error: any) {
+      } catch (error: unknown) {
       console.error("Error joining waitlist:", error);
       toast({
         title: "Something went wrong",
