@@ -35,6 +35,14 @@ const handler = async (req)=>{
               margin: 0 auto;
               padding: 20px;
             }
+            .container {
+              max-width: 600px;
+              margin: 40px auto;
+              background-color: #ffffff;
+              border-radius: 16px;
+              box-shadow: 0 2px 12px rgba(0, 100, 169, 0.08);
+              overflow: hidden;
+            }
             .header {
               text-align: center;
               padding: 20px 0;
@@ -111,9 +119,25 @@ const handler = async (req)=>{
             .footer p {
               color: #ffffff;
             }
+            @media (max-width: 600px) {
+              .content {
+                padding: 25px 18px;
+              }
+              .header h1 {
+                font-size: 20px;
+              }
+              .social-icons a {
+                margin: 0 8px;
+              }
+              .social-icons img {
+                width: 28px;
+                height: 28px;
+              }
+            }
           </style>
         </head>
         <body>
+        <div class="container">
           <div class="header">
             <img src="https://localdriveapp.com/assets/localdrive-logo.png" alt="LocalDrive Logo" class="logo" />
           </div>
@@ -172,6 +196,7 @@ const handler = async (req)=>{
               <p>Your Journey to Confident Driving Starts Here 🚗 <br>Learn, Book, Drive Smarter.</p>
               <p>&copy; ${new Date().getFullYear()} LocalDrive Technologies LTD. | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
             </div>
+          </div>
         </body>
         </html>
       `
