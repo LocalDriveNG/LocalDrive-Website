@@ -1,33 +1,26 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@6.4.1";
-
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
-
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type"
 };
-
-interface WelcomeEmailRequest {
-  email: string;
-}
-
-const handler = async (req: Request): Promise<Response> => {
+const handler = async (req)=>{
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, {
+      headers: corsHeaders
+    });
   }
-
   try {
-    const { email }: WelcomeEmailRequest = await req.json();
-
+    const { email } = await req.json();
     console.log("Sending newsletter welcome email to:", email);
-
     // Send welcome email
     const emailResponse = await resend.emails.send({
       from: "LocalDrive <noreply@localdriveapp.com>",
-      to: [email],
+      to: [
+        email
+      ],
       subject: "Welcome to LocalDrive Newsletter",
       html: `
                 <!DOCTYPE html>
@@ -59,7 +52,7 @@ const handler = async (req: Request): Promise<Response> => {
               color: #0064a9;
             }
             .header .logo {
-              width: 250px;
+              max-width: 150px;
               margin-bottom: 10px;
             }
             .header h1 {
@@ -210,7 +203,7 @@ const handler = async (req: Request): Promise<Response> => {
 
             <div class="footer">
               <p>Your Journey to Confident Driving Starts Here 🚗 <br>Learn, Book, Drive Smarter.</p>
-              <p>© LocalDrive Technologies LTD. | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
+              <p>&copy; ${new Date().getFullYear()} LocalDrive Technologies LTD. | <a href="https://localdriveapp.com">localdriveapp.com</a></p>
               <p style="margin-top: 10px; font-size: 12px;">
                 <a href="https://localdriveapp.com/unsubscribe?email=${encodeURIComponent(email)}" style="color: #d9ecff; text-decoration: underline;">Unsubscribe from this newsletter</a>
               </p>
@@ -218,35 +211,32 @@ const handler = async (req: Request): Promise<Response> => {
           </div>
         </body>
         </html>
-      `,
+      `
     });
-
     if (emailResponse.error) {
       throw new Error(`Email sending failed: ${JSON.stringify(emailResponse.error)}`);
     }
-
     console.log("Newsletter welcome email sent successfully:", emailResponse);
-
     return new Response(JSON.stringify(emailResponse), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
-        ...corsHeaders,
-      },
+        ...corsHeaders
+      }
     });
-
-
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error in send-newsletter-welcome function:", error);
     console.error("Error details:", JSON.stringify(error, null, 2));
-    return new Response(
-      JSON.stringify({ error: error.message, details: error }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
+    return new Response(JSON.stringify({
+      error: error.message,
+      details: error
+    }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+        ...corsHeaders
       }
-    );
+    });
   }
 };
-
 serve(handler);
