@@ -155,7 +155,7 @@ const handler = async (req)=>{
             
             <div class="highlight">
               <p><strong>Here’s what you can expect: </strong></p>
-              <ul>
+              <ul style="list-style-type: none; padding-left: 0;>
                 <li>✅ One-on-one lessons with professionals near you </li>
                 <li>✅ Practical training built for Nigerian traffic realities </li>
                 <li>✅ Flexible schedules that work for you</li>
@@ -165,7 +165,7 @@ const handler = async (req)=>{
 
             <div class="highlight">
               <p><strong>As a waitlist member, you’ll get: </strong></p>
-              <ul>
+              <ul style="list-style-type: none; padding-left: 0;>
                 <li>🔹 Early access when we launch</li>
                 <li>🔹 Exclusive pre-launch updates & offers</li>
                 <li>🔹 A first look at our mobile learning platform</li>
