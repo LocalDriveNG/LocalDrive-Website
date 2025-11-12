@@ -31,11 +31,12 @@ const handler = async (req)=>{
           <title>Welcome to LocalDrive Newsletter</title>
           <style>
             body {
-              font-family: 'Poppins', Arial, sans-serif;
-              background-color: #fffeff;
-              margin: 0;
-              padding: 0;
-              color: #333333;
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+              line-height: 1.6;
+              color: #333;
+              max-width: 600px;
+              margin: 0 auto;
+              padding: 20px;
             }
             .container {
               max-width: 600px;
@@ -46,21 +47,21 @@ const handler = async (req)=>{
               overflow: hidden;
             }
             .header {
-              background-color: #ffffff;
               text-align: center;
-              padding: 40px 20px 30px;
+              padding: 20px 0;
+              border-bottom: 2px solid #2563eb;
               color: #0064a9;
             }
             .header .logo {
               max-width: 150px;
-              margin-bottom: 10px;
+              height: auto;
             }
-            .header h1 {
+            .official {
               margin: 10px 0 5px;
               font-size: 24px;
               color: #0064a9;
             }
-            .header p {
+            .welcome {
               font-size: 14px;
               margin-top: 4px;
               color: #0064a9;
@@ -158,11 +159,11 @@ const handler = async (req)=>{
           <div class="container">
             <div class="header">
               <img src="https://localdriveapp.com/assets/localdrive-logo.png" alt="LocalDrive Logo" class="logo"/>
-              <h1>💌 You're Officially Subscribed!</h1>
-              <p>Welcome to the LocalDrive Newsletter 🚗</p>
             </div>
 
             <div class="content">
+            <h1 class="official">💌 You're Officially Subscribed!</h1>
+            <p class="welcome">Welcome to the LocalDrive Newsletter 🚗</p>
               <p>Hi there, 👋</p>
               <p>Thanks for subscribing to the <span class="highlight">LocalDrive Newsletter!</span></p>
               <p>

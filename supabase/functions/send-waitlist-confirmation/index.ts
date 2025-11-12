@@ -48,7 +48,7 @@ const handler = async (req)=>{
               padding: 20px 0;
               border-bottom: 2px solid #2563eb;
             }
-            .logo {
+            .header .logo {
               max-width: 150px;
               height: auto;
             }
@@ -143,8 +143,8 @@ const handler = async (req)=>{
           </div>
           
           <div class="content">
-            <h1 class="official">💌 You're Officially Subscribed!</h1>
-            <p class="welcome">Welcome to the LocalDrive Newsletter 🚗</p>
+            <h1 class="official">💌 You're Officially Waitlisted!</h1>
+            <p class="welcome">Welcome to the LocalDrive Waitlist 🚗</p>
             <h1>Hi ${firstName}! 👋</h1>
             
             <p>Thank you for joining our waitlist! We're thrilled to have you as part of our community.</p>
