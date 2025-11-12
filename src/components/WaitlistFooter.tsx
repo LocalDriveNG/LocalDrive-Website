@@ -15,7 +15,7 @@ const WaitlistFooter = () => {
         <div className="border-t border-neutral-700 pt-8">
           <div className="flex flex-col justify-between items-center gap-4">            
             <div className="flex gap-4">
-            <div className="space-y-2 flex items-center gap-3">
+            <div className="space-y-2 flex items-center gap-3 pb-1.5">
               <img 
                 src={logoIcon} 
                 alt="LocalDrive Icon" 
