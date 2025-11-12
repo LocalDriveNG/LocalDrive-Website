@@ -12,8 +12,8 @@ const WaitlistFooter = () => {
   return (
     <footer className="bg-neutral-800 dark:bg-transparent text-white dark:text-white py-16">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
-          <div className="col-span-1 md:col-span-2 space-y-4">
+        <div className="flex flex-col justify-between items-center gap-4">
+          <div className="flex gap-4">
             <div className="space-y-2 flex items-center gap-3">
               <img 
                 src={logoIcon} 
