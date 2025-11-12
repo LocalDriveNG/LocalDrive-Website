@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
-import WaitlistHeader from "@/components/Header";
+import WaitlistHeader from "@/components/WaitlistHeader";
 import WaitlistFooter from "@/components/WaitlistFooter";
 
 const Waitlist = () => {
