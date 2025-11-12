@@ -12,8 +12,9 @@ const WaitlistFooter = () => {
   return (
     <footer className="bg-neutral-800 dark:bg-transparent text-white dark:text-white py-16">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col justify-between items-center gap-4">
-          <div className="flex gap-4">
+        <div className="border-t border-neutral-700 pt-8">
+          <div className="flex flex-col justify-between items-center gap-4">            
+            <div className="flex gap-4">
             <div className="space-y-2 flex items-center gap-3">
               <img 
                 src={logoIcon} 
@@ -25,12 +26,6 @@ const WaitlistFooter = () => {
                 <p className="text-neutral-300 dark:text-neutral-300 text-sm mt-1">Your Journey to Confident Driving Start Here.</p>
               </div>
             </div>
-          </div>
-        </div>
-        
-        <div className="border-t border-neutral-700 pt-8">
-          <div className="flex flex-col justify-between items-center gap-4">            
-            <div className="flex gap-4">
               <a 
                 href="https://x.com/getlocaldrive" 
                 target="_blank" 
