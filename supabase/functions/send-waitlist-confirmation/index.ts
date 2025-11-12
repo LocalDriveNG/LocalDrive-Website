@@ -80,7 +80,7 @@ const handler = async (req)=>{
               border-radius: 8px;
               margin: 20px 0;
             }
-            .list {
+            .order {
               list-style-type: none;
               padding-left: 0;
             }
@@ -159,7 +159,7 @@ const handler = async (req)=>{
             
             <div class="highlight">
               <p><strong>Here’s what you can expect: </strong></p>
-              <ul class="list">
+              <ul class="order">
                 <li>✅ One-on-one lessons with professionals near you </li>
                 <li>✅ Practical training built for Nigerian traffic realities </li>
                 <li>✅ Flexible schedules that work for you</li>
@@ -169,7 +169,7 @@ const handler = async (req)=>{
 
             <div class="highlight">
               <p><strong>As a waitlist member, you’ll get: </strong></p>
-              <ul class="list">
+              <ul class="order">
                 <li>🔹 Early access when we launch</li>
                 <li>🔹 Exclusive pre-launch updates & offers</li>
                 <li>🔹 A first look at our mobile learning platform</li>
