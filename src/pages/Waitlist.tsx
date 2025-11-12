@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
-import Header from "@/components/Header";
+import WaitlistHeader from "@/components/Header";
 import WaitlistFooter from "@/components/WaitlistFooter";
 
 const Waitlist = () => {
@@ -105,7 +105,7 @@ const Waitlist = () => {
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <Header />
+      <WaitlistHeader />
 
       <main className="min-h-screen bg-gradient-to-b from-background to-secondary/10">
         <section className="container mx-auto px-4 py-16 md:py-24">
