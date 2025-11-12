@@ -53,22 +53,6 @@ const WaitlistHeader = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <Link 
-              to="/waitlist" 
-              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-            >
-              Home
-            </Link>
-            <Link 
-              to="/about" 
-              className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-            >
-              About Us
-            </Link>
-          </div>
-
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex lg:items-center lg:gap-3">
             <button
@@ -111,20 +95,6 @@ const WaitlistHeader = () => {
           id="mobile-menu"
         >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
-            <Link
-              to="/waitlist"
-              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About Us
-            </Link>
             <div className="pt-4 pb-2 border-t border-border mt-4">
               <div className="flex flex-col space-y-2">
                 <div className="flex items-center justify-between mb-2">

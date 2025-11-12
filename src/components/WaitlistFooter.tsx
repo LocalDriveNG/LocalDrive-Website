@@ -25,15 +25,11 @@ const WaitlistFooter = () => {
                 <p className="text-neutral-300 dark:text-neutral-300 text-sm mt-1">Your Journey to Confident Driving Start Here.</p>
               </div>
             </div>
-            <p className="text-neutral-400 dark:text-neutral-400 max-w-md">
-              Connecting learners with certified instructors for a modern, 
-              efficient driving education experience.
-            </p>
           </div>
         </div>
         
         <div className="border-t border-neutral-700 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">            
+          <div className="flex flex-col justify-between items-center gap-4">            
             <div className="flex gap-4">
               <a 
                 href="https://x.com/getlocaldrive" 
