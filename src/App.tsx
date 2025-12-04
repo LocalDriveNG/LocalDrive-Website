@@ -7,7 +7,8 @@ import { useEffect, lazy, Suspense } from "react";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
-import SEO from "@/components/SEO"
+import SEO from "@/components/SEO";
+import { AuthProvider } from "@/hooks/useAuth";
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -20,6 +21,8 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const CookiesPolicy = lazy(() => import("./pages/CookiesPolicy"));
 const Unsubscribe = lazy(() => import("./pages/Unsubscribe"));
 const Waitlist = lazy(() => import("./pages/Waitlist"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Loading components
@@ -97,33 +100,35 @@ const App = () => (
     </div>
   }>
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <CookieConsent />
-        {/* <BrowserRouter> */}
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <CookieConsent />
           <Suspense fallback={<MainLoading />}>
             <PageTransition>
               <div className="min-h-screen pt-16">
-              <SEO />
-              <Routes>
-                <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
-                <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
-                <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
-                <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
-                <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
-                <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
-                <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
-                <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
-                <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
-                <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
-                <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
-              </Routes>
+                <SEO />
+                <Routes>
+                  <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
+                  <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
+                  <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                  <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+                  <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
+                  <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
+                  <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
+                  <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
+                  <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
+                  <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
+                  <Route path="/admin" element={<PageWrapper><AdminLogin /></PageWrapper>} />
+                  <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>} />
+                  <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
+                </Routes>
               </div>
             </PageTransition>
           </Suspense>
-        {/* </BrowserRouter> */}
-      </TooltipProvider>
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   </ErrorBoundary>
 );
