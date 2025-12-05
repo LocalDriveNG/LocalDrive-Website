@@ -21,32 +21,6 @@ const NewsletterTable = ({ isSuperAdmin }: NewsletterTableProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { toast } = useToast();
 
-  useEffect(() => {
-    const fetchSubscribers = async () => {
-      setLoading(true);
-      try {
-        const { data, error } = await supabase
-          .from('newsletter_subscribers')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (error) throw error;
-        setSubscribers(data || []);
-      } catch (error: unknown) {
-        const message = error instanceof Error ? error.message : "Failed to fetch subscribers";
-        toast({
-          title: "Error",
-          description: message,
-          variant: "destructive",
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSubscribers();
-  }, [toast]);
-
   const fetchSubscribers = async () => {
     setLoading(true);
     try {
@@ -57,17 +31,20 @@ const NewsletterTable = ({ isSuperAdmin }: NewsletterTableProps) => {
 
       if (error) throw error;
       setSubscribers(data || []);
-    } catch (error: unknown) {
-      const message = error instanceof Error ? error.message : "Failed to fetch subscribers";
+    } catch (error: any) {
       toast({
         title: "Error",
-        description: message,
+        description: error.message || "Failed to fetch subscribers",
         variant: "destructive",
       });
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchSubscribers();
+  }, []);
 
   const handleDelete = async (id: string, email: string) => {
     if (!confirm(`Are you sure you want to delete ${email}?`)) return;
@@ -85,11 +62,10 @@ const NewsletterTable = ({ isSuperAdmin }: NewsletterTableProps) => {
         title: "Deleted",
         description: `${email} has been removed from the newsletter.`,
       });
-    } catch (error: unknown) {
-      const message = error instanceof Error ? error.message : "Failed to delete subscriber";
+    } catch (error: any) {
       toast({
         title: "Error",
-        description: message,
+        description: error.message || "Failed to delete subscriber",
         variant: "destructive",
       });
     }

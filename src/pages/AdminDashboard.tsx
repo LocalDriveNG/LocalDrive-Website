@@ -19,31 +19,6 @@ const AdminDashboard = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const checkAdminAccess = async (userId: string) => {
-      try {
-        const { data: isAdmin, error: adminError } = await supabase.rpc('is_admin', { 
-          _user_id: userId 
-        });
-
-        if (adminError || !isAdmin) {
-          await supabase.auth.signOut();
-          navigate('/admin');
-          return;
-        }
-
-        const { data: superAdmin } = await supabase.rpc('has_role', { 
-          _user_id: userId,
-          _role: 'super_admin'
-        });
-
-        setIsSuperAdmin(superAdmin === true);
-      } catch (error) {
-        console.error('Error checking admin access:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setUser(session?.user ?? null);
@@ -70,6 +45,31 @@ const AdminDashboard = () => {
 
     return () => subscription.unsubscribe();
   }, [navigate]);
+
+  const checkAdminAccess = async (userId: string) => {
+    try {
+      const { data: isAdmin, error: adminError } = await supabase.rpc('is_admin', { 
+        _user_id: userId 
+      });
+
+      if (adminError || !isAdmin) {
+        await supabase.auth.signOut();
+        navigate('/admin');
+        return;
+      }
+
+      const { data: superAdmin } = await supabase.rpc('has_role', { 
+        _user_id: userId,
+        _role: 'super_admin'
+      });
+
+      setIsSuperAdmin(superAdmin === true);
+    } catch (error) {
+      console.error('Error checking admin access:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
