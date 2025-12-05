@@ -18,14 +18,6 @@ const AdminAuth = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const checkAdminAndRedirect = async (userId: string) => {
-      const { data } = await supabase.rpc('is_admin', { _user_id: userId });
-      
-      if (data === true) {
-        navigate('/admin/dashboard');
-      }
-    };
-
     // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, session) => {
@@ -46,7 +38,15 @@ const AdminAuth = () => {
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, []);
+
+  const checkAdminAndRedirect = async (userId: string) => {
+    const { data } = await supabase.rpc('is_admin', { _user_id: userId });
+    
+    if (data === true) {
+      navigate('/admin/dashboard');
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
