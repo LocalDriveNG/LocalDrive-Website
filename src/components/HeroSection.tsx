@@ -50,6 +50,7 @@ const HeroSection = () => {
                 alt="Nigerian driving instructor and student during a driving lesson in Lagos"
                 className="w-full h-auto object-cover"
                 loading="eager"
+                fetchPriority="high"
               />
             </div>
             <div className="absolute -top-3 -right-3 bg-gradient-to-r from-primary to-secondary text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg animate-pulse">

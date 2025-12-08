@@ -21,8 +21,6 @@ const CookiesPolicy = lazy(() => import("./pages/CookiesPolicy"));
 const Unsubscribe = lazy(() => import("./pages/Unsubscribe"));
 const Waitlist = lazy(() => import("./pages/Waitlist"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const AdminAuth = lazy(() => import("./pages/AdminAuth"));
-const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
 // Loading components
 const MainLoading = () => (
@@ -119,8 +117,6 @@ const App = () => (
                 <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
                 <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
                 <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
-                <Route path="/admin" element={<PageWrapper><AdminAuth /></PageWrapper>} />
-                <Route path="/admin/dashboard" element={<PageWrapper><AdminDashboard /></PageWrapper>} />
                 <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
               </Routes>
               </div>
