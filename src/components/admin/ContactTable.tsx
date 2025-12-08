@@ -6,9 +6,11 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Trash2, Search, RefreshCw, MessageSquare, Eye } from "lucide-react";
+import { Trash2, Search, RefreshCw, MessageSquare, Eye, Download } from "lucide-react";
 import { format } from "date-fns";
 import type { Tables } from "@/integrations/supabase/types";
+import { useTableFilters, exportToCSV } from "@/hooks/useTableFilters";
+import DateRangeFilter from "./DateRangeFilter";
 
 type ContactSubmission = Tables<"contact_submissions">;
 
@@ -19,9 +21,12 @@ interface ContactTableProps {
 const ContactTable = ({ isSuperAdmin }: ContactTableProps) => {
   const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
-  
   const { toast } = useToast();
+
+  const { searchQuery, setSearchQuery, dateRange, setDateRange, filteredData } = useTableFilters(
+    submissions,
+    ["email", "first_name", "last_name", "subject"] as (keyof ContactSubmission)[]
+  );
 
   const fetchSubmissions = async () => {
     setLoading(true);
@@ -33,10 +38,11 @@ const ContactTable = ({ isSuperAdmin }: ContactTableProps) => {
 
       if (error) throw error;
       setSubmissions(data || []);
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Failed to fetch contact submissions";
       toast({
         title: "Error",
-        description: error.message || "Failed to fetch contact submissions",
+        description: message,
         variant: "destructive",
       });
     } finally {
@@ -64,44 +70,64 @@ const ContactTable = ({ isSuperAdmin }: ContactTableProps) => {
         title: "Deleted",
         description: "Contact submission has been removed.",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Failed to delete submission";
       toast({
         title: "Error",
-        description: error.message || "Failed to delete submission",
+        description: message,
         variant: "destructive",
       });
     }
   };
 
-  const filteredSubmissions = submissions.filter(s =>
-    s.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    s.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    s.last_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    s.subject.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const handleExport = () => {
+    exportToCSV(
+      filteredData,
+      [
+        { key: "first_name", header: "First Name" },
+        { key: "last_name", header: "Last Name" },
+        { key: "email", header: "Email" },
+        { key: "phone", header: "Phone" },
+        { key: "subject", header: "Subject" },
+        { key: "message", header: "Message" },
+        { key: "created_at", header: "Submitted At" },
+      ],
+      "contact_submissions"
+    );
+    toast({
+      title: "Exported",
+      description: `${filteredData.length} submissions exported to CSV.`,
+    });
+  };
 
   return (
     <Card>
       <CardHeader>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
             <CardTitle className="flex items-center gap-2">
               <MessageSquare className="w-5 h-5" />
               Contact Submissions
             </CardTitle>
             <CardDescription>
-              {submissions.length} total submissions
+              {filteredData.length} of {submissions.length} submissions
             </CardDescription>
           </div>
-          <Button variant="outline" size="sm" onClick={fetchSubmissions} disabled={loading}>
-            <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
-            Refresh
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={handleExport} disabled={filteredData.length === 0}>
+              <Download className="w-4 h-4 mr-2" />
+              Export
+            </Button>
+            <Button variant="outline" size="sm" onClick={fetchSubmissions} disabled={loading}>
+              <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
+              Refresh
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent>
-        <div className="mb-4">
-          <div className="relative">
+        <div className="mb-4 flex flex-col sm:flex-row gap-4">
+          <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               placeholder="Search by name, email, or subject..."
@@ -110,15 +136,16 @@ const ContactTable = ({ isSuperAdmin }: ContactTableProps) => {
               className="pl-10"
             />
           </div>
+          <DateRangeFilter dateRange={dateRange} onDateRangeChange={setDateRange} />
         </div>
 
         {loading ? (
           <div className="flex justify-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
           </div>
-        ) : filteredSubmissions.length === 0 ? (
+        ) : filteredData.length === 0 ? (
           <div className="text-center py-8 text-muted-foreground">
-            {searchQuery ? "No submissions found matching your search." : "No contact submissions yet."}
+            {searchQuery || dateRange.from || dateRange.to ? "No submissions found matching your filters." : "No contact submissions yet."}
           </div>
         ) : (
           <div className="rounded-md border">
@@ -133,7 +160,7 @@ const ContactTable = ({ isSuperAdmin }: ContactTableProps) => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredSubmissions.map((submission) => (
+                {filteredData.map((submission) => (
                   <TableRow key={submission.id}>
                     <TableCell className="font-medium">
                       {submission.first_name} {submission.last_name}
@@ -147,10 +174,7 @@ const ContactTable = ({ isSuperAdmin }: ContactTableProps) => {
                       <div className="flex gap-1">
                         <Dialog>
                           <DialogTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                            >
+                            <Button variant="ghost" size="sm">
                               <Eye className="w-4 h-4" />
                             </Button>
                           </DialogTrigger>

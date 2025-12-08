@@ -5,9 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Trash2, Search, RefreshCw, Mail } from "lucide-react";
+import { Trash2, Search, RefreshCw, Mail, Download } from "lucide-react";
 import { format } from "date-fns";
 import type { Tables } from "@/integrations/supabase/types";
+import { useTableFilters, exportToCSV } from "@/hooks/useTableFilters";
+import DateRangeFilter from "./DateRangeFilter";
 
 type NewsletterSubscriber = Tables<"newsletter_subscribers">;
 
@@ -18,8 +20,12 @@ interface NewsletterTableProps {
 const NewsletterTable = ({ isSuperAdmin }: NewsletterTableProps) => {
   const [subscribers, setSubscribers] = useState<NewsletterSubscriber[]>([]);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
   const { toast } = useToast();
+
+  const { searchQuery, setSearchQuery, dateRange, setDateRange, filteredData } = useTableFilters(
+    subscribers,
+    ["email"] as (keyof NewsletterSubscriber)[]
+  );
 
   const fetchSubscribers = async () => {
     setLoading(true);
@@ -31,10 +37,11 @@ const NewsletterTable = ({ isSuperAdmin }: NewsletterTableProps) => {
 
       if (error) throw error;
       setSubscribers(data || []);
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Failed to fetch subscribers";
       toast({
         title: "Error",
-        description: error.message || "Failed to fetch subscribers",
+        description: message,
         variant: "destructive",
       });
     } finally {
@@ -62,41 +69,59 @@ const NewsletterTable = ({ isSuperAdmin }: NewsletterTableProps) => {
         title: "Deleted",
         description: `${email} has been removed from the newsletter.`,
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Failed to delete subscriber";
       toast({
         title: "Error",
-        description: error.message || "Failed to delete subscriber",
+        description: message,
         variant: "destructive",
       });
     }
   };
 
-  const filteredSubscribers = subscribers.filter(s =>
-    s.email.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const handleExport = () => {
+    exportToCSV(
+      filteredData,
+      [
+        { key: "email", header: "Email" },
+        { key: "created_at", header: "Subscribed At" },
+      ],
+      "newsletter_subscribers"
+    );
+    toast({
+      title: "Exported",
+      description: `${filteredData.length} subscribers exported to CSV.`,
+    });
+  };
 
   return (
     <Card>
       <CardHeader>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
             <CardTitle className="flex items-center gap-2">
               <Mail className="w-5 h-5" />
               Newsletter Subscribers
             </CardTitle>
             <CardDescription>
-              {subscribers.length} total subscribers
+              {filteredData.length} of {subscribers.length} subscribers
             </CardDescription>
           </div>
-          <Button variant="outline" size="sm" onClick={fetchSubscribers} disabled={loading}>
-            <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
-            Refresh
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={handleExport} disabled={filteredData.length === 0}>
+              <Download className="w-4 h-4 mr-2" />
+              Export
+            </Button>
+            <Button variant="outline" size="sm" onClick={fetchSubscribers} disabled={loading}>
+              <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
+              Refresh
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent>
-        <div className="mb-4">
-          <div className="relative">
+        <div className="mb-4 flex flex-col sm:flex-row gap-4">
+          <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               placeholder="Search by email..."
@@ -105,15 +130,16 @@ const NewsletterTable = ({ isSuperAdmin }: NewsletterTableProps) => {
               className="pl-10"
             />
           </div>
+          <DateRangeFilter dateRange={dateRange} onDateRangeChange={setDateRange} />
         </div>
 
         {loading ? (
           <div className="flex justify-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
           </div>
-        ) : filteredSubscribers.length === 0 ? (
+        ) : filteredData.length === 0 ? (
           <div className="text-center py-8 text-muted-foreground">
-            {searchQuery ? "No subscribers found matching your search." : "No subscribers yet."}
+            {searchQuery || dateRange.from || dateRange.to ? "No subscribers found matching your filters." : "No subscribers yet."}
           </div>
         ) : (
           <div className="rounded-md border">
@@ -126,7 +152,7 @@ const NewsletterTable = ({ isSuperAdmin }: NewsletterTableProps) => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredSubscribers.map((subscriber) => (
+                {filteredData.map((subscriber) => (
                   <TableRow key={subscriber.id}>
                     <TableCell className="font-medium">{subscriber.email}</TableCell>
                     <TableCell>
