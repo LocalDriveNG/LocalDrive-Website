@@ -7,7 +7,7 @@ import { useEffect, lazy, Suspense } from "react";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
-import SEO from "@/components/SEO";
+import SEO from "@/components/SEO"
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -21,8 +21,6 @@ const CookiesPolicy = lazy(() => import("./pages/CookiesPolicy"));
 const Unsubscribe = lazy(() => import("./pages/Unsubscribe"));
 const Waitlist = lazy(() => import("./pages/Waitlist"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const AdminLogin = lazy(() => import("./pages/AdminLogin"));
-const Dashboard = lazy(() => import("./pages/Dashboard"));
 
 // Loading components
 const MainLoading = () => (
@@ -36,7 +34,7 @@ const MainLoading = () => (
 
 const PageLoading = () => (
   <div className="flex justify-center items-center min-h-[60vh]">
-    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
   </div>
 );
 
@@ -50,7 +48,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
         <p className="text-muted-foreground mb-4">There was an error loading this page.</p>
         <button 
           onClick={() => window.location.reload()}
-          className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
+          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
         >
           Reload Page
         </button>
@@ -63,7 +61,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   </ErrorBoundary>
 );
 
-// Page transition wrapper for public pages
+// Page transition wrapper
 const PageTransition = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   
@@ -82,43 +80,6 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
 
 const queryClient = new QueryClient();
 
-const AppRoutes = () => {
-  const location = useLocation();
-  const isAdminRoute = location.pathname === "/admin" || location.pathname === "/dashboard";
-
-  // Admin routes - no header padding, no page transitions
-  if (isAdminRoute) {
-    return (
-      <Routes>
-        <Route path="/admin" element={<PageWrapper><AdminLogin /></PageWrapper>} />
-        <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>} />
-      </Routes>
-    );
-  }
-
-  // Public routes with page transition and header padding
-  return (
-    <PageTransition>
-      <div className="min-h-screen pt-16">
-        <SEO />
-        <Routes>
-          <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
-          <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
-          <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
-          <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
-          <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
-          <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
-          <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
-          <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
-          <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
-          <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
-          <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
-        </Routes>
-      </div>
-    </PageTransition>
-  );
-};
-
 const App = () => (
   <ErrorBoundary fallback={
     <div className="min-h-screen flex items-center justify-center bg-background">
@@ -128,7 +89,7 @@ const App = () => (
         <p className="text-muted-foreground mb-4">Something went wrong with the application.</p>
         <button 
           onClick={() => window.location.reload()}
-          className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
+          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
         >
           Restart Application
         </button>
@@ -140,9 +101,28 @@ const App = () => (
         <Toaster />
         <Sonner />
         <CookieConsent />
-        <Suspense fallback={<MainLoading />}>
-          <AppRoutes />
-        </Suspense>
+        {/* <BrowserRouter> */}
+          <Suspense fallback={<MainLoading />}>
+            <PageTransition>
+              <div className="min-h-screen pt-16">
+              <SEO />
+              <Routes>
+                <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
+                <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
+                <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+                <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
+                <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
+                <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
+                <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
+                <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
+                <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
+                <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
+              </Routes>
+              </div>
+            </PageTransition>
+          </Suspense>
+        {/* </BrowserRouter> */}
       </TooltipProvider>
     </QueryClientProvider>
   </ErrorBoundary>
