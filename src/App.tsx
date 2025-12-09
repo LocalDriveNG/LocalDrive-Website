@@ -2,14 +2,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
 import SEO from "@/components/SEO";
 
-// Lazy load pages
+// Lazy-loaded pages
 const Index = lazy(() => import("./pages/Index"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -24,7 +24,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 
-// Loading components
+// Global loading components
 const MainLoading = () => (
   <div className="flex justify-center items-center min-h-screen bg-background">
     <div className="text-center">
@@ -40,7 +40,7 @@ const PageLoading = () => (
   </div>
 );
 
-// Page wrapper with error boundary
+// Error boundary wrapper for pages
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <ErrorBoundary
     fallback={
@@ -48,9 +48,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
         <div className="text-center p-6">
           <div className="text-6xl mb-4">😕</div>
           <h2 className="text-xl font-semibold mb-2">Page failed to load</h2>
-          <p className="text-muted-foreground mb-4">
-            There was an error loading this page.
-          </p>
+          <p className="text-muted-foreground mb-4">There was an error loading this page.</p>
           <button
             onClick={() => window.location.reload()}
             className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
@@ -65,10 +63,9 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   </ErrorBoundary>
 );
 
-// Page transition wrapper for public pages
+// Page transition wrapper
 const PageTransition = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
-
   usePageTracking();
 
   useEffect(() => {
@@ -82,174 +79,36 @@ const queryClient = new QueryClient();
 
 const AppRoutes = () => {
   const location = useLocation();
+  const isAdminRoute = location.pathname === "/admin" || location.pathname === "/dashboard";
+
+  if (isAdminRoute) {
+    return (
+      <Routes>
+        <Route path="/admin" element={<PageWrapper><AdminLogin /></PageWrapper>} />
+        <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>} />
+      </Routes>
+    );
+  }
 
   return (
-    <Routes>
-      {/* Public pages with page transitions */}
-      <Route
-        path="/"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <Index />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-      <Route
-        path="/about"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <AboutUs />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-      <Route
-        path="/contact"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <Contact />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-      <Route
-        path="/blog"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <Blog />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-      <Route
-        path="/blog/:slug"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <BlogPost />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-      <Route
-        path="/privacy-policy"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <PrivacyPolicy />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-      <Route
-        path="/terms-of-service"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <TermsOfService />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-      <Route
-        path="/cookies-policy"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <CookiesPolicy />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-      <Route
-        path="/unsubscribe"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <Unsubscribe />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-      <Route
-        path="/waitlist"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <Waitlist />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-
-      {/* Admin routes */}
-      <Route
-        path="/admin"
-        element={
-          <PageWrapper>
-            <AdminLogin />
-          </PageWrapper>
-        }
-      />
-      <Route
-        path="/dashboard"
-        element={
-          <PageWrapper>
-            <Dashboard />
-          </PageWrapper>
-        }
-      />
-
-      {/* Fallback for unmatched public routes */}
-      <Route
-        path="*"
-        element={
-          <PageTransition>
-            <div className="min-h-screen pt-16">
-              <SEO />
-              <PageWrapper>
-                <NotFound />
-              </PageWrapper>
-            </div>
-          </PageTransition>
-        }
-      />
-    </Routes>
+    <PageTransition>
+      <div className="min-h-screen pt-16">
+        <SEO />
+        <Routes>
+          <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
+          <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
+          <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+          <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+          <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
+          <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
+          <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
+          <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
+          <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
+          <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
+          <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
+        </Routes>
+      </div>
+    </PageTransition>
   );
 };
 
@@ -260,9 +119,7 @@ const App = () => (
         <div className="text-center p-6">
           <div className="text-6xl mb-4">⚠️</div>
           <h1 className="text-2xl font-bold mb-2">Application Error</h1>
-          <p className="text-muted-foreground mb-4">
-            Something went wrong with the application.
-          </p>
+          <p className="text-muted-foreground mb-4">Something went wrong with the application.</p>
           <button
             onClick={() => window.location.reload()}
             className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
