@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -12,11 +12,20 @@ interface NewsletterSubscriber {
   subscription_preferences: any;
 }
 
+const SORT_OPTIONS = [
+  { value: "created_at_desc", label: "Newest First" },
+  { value: "created_at_asc", label: "Oldest First" },
+  { value: "email_asc", label: "Email (A-Z)" },
+  { value: "email_desc", label: "Email (Z-A)" },
+];
+
 const NewsletterTab = () => {
   const [subscribers, setSubscribers] = useState<NewsletterSubscriber[]>([]);
   const [loading, setLoading] = useState(true);
   const [startDate, setStartDate] = useState(format(subDays(new Date(), 30), "yyyy-MM-dd"));
   const [endDate, setEndDate] = useState(format(new Date(), "yyyy-MM-dd"));
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortValue, setSortValue] = useState("created_at_desc");
   const { toast } = useToast();
 
   const fetchSubscribers = async () => {
@@ -52,8 +61,38 @@ const NewsletterTab = () => {
     fetchSubscribers();
   }, [startDate, endDate]);
 
+  const filteredAndSortedSubscribers = useMemo(() => {
+    let result = [...subscribers];
+
+    // Filter by search
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter((sub) =>
+        sub.email.toLowerCase().includes(query)
+      );
+    }
+
+    // Sort
+    result.sort((a, b) => {
+      switch (sortValue) {
+        case "created_at_asc":
+          return new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime();
+        case "created_at_desc":
+          return new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime();
+        case "email_asc":
+          return a.email.localeCompare(b.email);
+        case "email_desc":
+          return b.email.localeCompare(a.email);
+        default:
+          return 0;
+      }
+    });
+
+    return result;
+  }, [subscribers, searchQuery, sortValue]);
+
   const exportToCSV = () => {
-    if (subscribers.length === 0) {
+    if (filteredAndSortedSubscribers.length === 0) {
       toast({
         title: "No data",
         description: "No subscribers to export.",
@@ -65,7 +104,7 @@ const NewsletterTab = () => {
     const headers = ["Email", "Subscribed At"];
     const csvContent = [
       headers.join(","),
-      ...subscribers.map((sub) =>
+      ...filteredAndSortedSubscribers.map((sub) =>
         [
           `"${sub.email}"`,
           sub.created_at ? format(new Date(sub.created_at), "yyyy-MM-dd HH:mm:ss") : "",
@@ -83,7 +122,7 @@ const NewsletterTab = () => {
 
     toast({
       title: "Export successful",
-      description: `Exported ${subscribers.length} subscribers.`,
+      description: `Exported ${filteredAndSortedSubscribers.length} subscribers.`,
     });
   };
 
@@ -91,7 +130,7 @@ const NewsletterTab = () => {
     <DataTableCard
       title="Newsletter Subscribers"
       description="Manage your newsletter subscriber list"
-      totalCount={subscribers.length}
+      totalCount={filteredAndSortedSubscribers.length}
       startDate={startDate}
       endDate={endDate}
       onStartDateChange={setStartDate}
@@ -99,6 +138,12 @@ const NewsletterTab = () => {
       onExport={exportToCSV}
       onRefresh={fetchSubscribers}
       loading={loading}
+      searchValue={searchQuery}
+      onSearchChange={setSearchQuery}
+      searchPlaceholder="Search by email..."
+      sortOptions={SORT_OPTIONS}
+      sortValue={sortValue}
+      onSortChange={setSortValue}
     >
       <div className="rounded-md border overflow-x-auto">
         <Table>
@@ -115,14 +160,14 @@ const NewsletterTab = () => {
                   <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mx-auto"></div>
                 </TableCell>
               </TableRow>
-            ) : subscribers.length === 0 ? (
+            ) : filteredAndSortedSubscribers.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={2} className="text-center py-8 text-muted-foreground">
-                  No subscribers found for the selected date range.
+                  No subscribers found for the selected criteria.
                 </TableCell>
               </TableRow>
             ) : (
-              subscribers.map((subscriber) => (
+              filteredAndSortedSubscribers.map((subscriber) => (
                 <TableRow key={subscriber.id}>
                   <TableCell className="font-medium">{subscriber.email}</TableCell>
                   <TableCell>

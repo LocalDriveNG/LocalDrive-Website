@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -13,11 +13,22 @@ interface WaitlistSubscriber {
   created_at: string;
 }
 
+const SORT_OPTIONS = [
+  { value: "created_at_desc", label: "Newest First" },
+  { value: "created_at_asc", label: "Oldest First" },
+  { value: "name_asc", label: "Name (A-Z)" },
+  { value: "name_desc", label: "Name (Z-A)" },
+  { value: "email_asc", label: "Email (A-Z)" },
+  { value: "email_desc", label: "Email (Z-A)" },
+];
+
 const WaitlistTab = () => {
   const [subscribers, setSubscribers] = useState<WaitlistSubscriber[]>([]);
   const [loading, setLoading] = useState(true);
   const [startDate, setStartDate] = useState(format(subDays(new Date(), 30), "yyyy-MM-dd"));
   const [endDate, setEndDate] = useState(format(new Date(), "yyyy-MM-dd"));
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortValue, setSortValue] = useState("created_at_desc");
   const { toast } = useToast();
 
   const fetchSubscribers = async () => {
@@ -53,8 +64,48 @@ const WaitlistTab = () => {
     fetchSubscribers();
   }, [startDate, endDate]);
 
+  const filteredAndSortedSubscribers = useMemo(() => {
+    let result = [...subscribers];
+
+    // Filter by search
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter((sub) =>
+        sub.email.toLowerCase().includes(query) ||
+        sub.first_name.toLowerCase().includes(query) ||
+        sub.last_name.toLowerCase().includes(query) ||
+        `${sub.first_name} ${sub.last_name}`.toLowerCase().includes(query)
+      );
+    }
+
+    // Sort
+    result.sort((a, b) => {
+      const nameA = `${a.first_name} ${a.last_name}`;
+      const nameB = `${b.first_name} ${b.last_name}`;
+      
+      switch (sortValue) {
+        case "created_at_asc":
+          return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+        case "created_at_desc":
+          return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        case "name_asc":
+          return nameA.localeCompare(nameB);
+        case "name_desc":
+          return nameB.localeCompare(nameA);
+        case "email_asc":
+          return a.email.localeCompare(b.email);
+        case "email_desc":
+          return b.email.localeCompare(a.email);
+        default:
+          return 0;
+      }
+    });
+
+    return result;
+  }, [subscribers, searchQuery, sortValue]);
+
   const exportToCSV = () => {
-    if (subscribers.length === 0) {
+    if (filteredAndSortedSubscribers.length === 0) {
       toast({
         title: "No data",
         description: "No waitlist entries to export.",
@@ -66,7 +117,7 @@ const WaitlistTab = () => {
     const headers = ["First Name", "Last Name", "Email", "Signed Up At"];
     const csvContent = [
       headers.join(","),
-      ...subscribers.map((sub) =>
+      ...filteredAndSortedSubscribers.map((sub) =>
         [
           `"${sub.first_name}"`,
           `"${sub.last_name}"`,
@@ -86,7 +137,7 @@ const WaitlistTab = () => {
 
     toast({
       title: "Export successful",
-      description: `Exported ${subscribers.length} waitlist entries.`,
+      description: `Exported ${filteredAndSortedSubscribers.length} waitlist entries.`,
     });
   };
 
@@ -94,7 +145,7 @@ const WaitlistTab = () => {
     <DataTableCard
       title="Waitlist Subscribers"
       description="Manage your waitlist subscriber list"
-      totalCount={subscribers.length}
+      totalCount={filteredAndSortedSubscribers.length}
       startDate={startDate}
       endDate={endDate}
       onStartDateChange={setStartDate}
@@ -102,6 +153,12 @@ const WaitlistTab = () => {
       onExport={exportToCSV}
       onRefresh={fetchSubscribers}
       loading={loading}
+      searchValue={searchQuery}
+      onSearchChange={setSearchQuery}
+      searchPlaceholder="Search by name or email..."
+      sortOptions={SORT_OPTIONS}
+      sortValue={sortValue}
+      onSortChange={setSortValue}
     >
       <div className="rounded-md border overflow-x-auto">
         <Table>
@@ -119,14 +176,14 @@ const WaitlistTab = () => {
                   <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mx-auto"></div>
                 </TableCell>
               </TableRow>
-            ) : subscribers.length === 0 ? (
+            ) : filteredAndSortedSubscribers.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={3} className="text-center py-8 text-muted-foreground">
-                  No waitlist entries found for the selected date range.
+                  No waitlist entries found for the selected criteria.
                 </TableCell>
               </TableRow>
             ) : (
-              subscribers.map((subscriber) => (
+              filteredAndSortedSubscribers.map((subscriber) => (
                 <TableRow key={subscriber.id}>
                   <TableCell className="font-medium">
                     {subscriber.first_name} {subscriber.last_name}

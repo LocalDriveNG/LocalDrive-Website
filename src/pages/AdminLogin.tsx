@@ -121,7 +121,11 @@ const AdminLogin = () => {
       <Card className="w-full max-w-md shadow-brand">
         <CardHeader className="text-center space-y-4">
           <div className="mx-auto">
-            <img src={localDriveLogo} alt="LocalDrive" className="h-12" />
+            <img 
+              src={localDriveLogo} 
+              alt="LocalDrive" 
+              className="h-14 w-auto object-contain drop-shadow-md" 
+            />
           </div>
           <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
           <CardDescription>

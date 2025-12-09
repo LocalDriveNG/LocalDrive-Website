@@ -3,7 +3,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Download, Calendar, RefreshCw } from "lucide-react";
+import { Download, Calendar, RefreshCw, Search, ArrowUpDown } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+interface SortOption {
+  value: string;
+  label: string;
+}
 
 interface DataTableCardProps {
   title: string;
@@ -17,6 +29,12 @@ interface DataTableCardProps {
   onExport: () => void;
   onRefresh: () => void;
   loading?: boolean;
+  searchValue?: string;
+  onSearchChange?: (value: string) => void;
+  searchPlaceholder?: string;
+  sortOptions?: SortOption[];
+  sortValue?: string;
+  onSortChange?: (value: string) => void;
 }
 
 const DataTableCard = ({
@@ -31,10 +49,16 @@ const DataTableCard = ({
   onExport,
   onRefresh,
   loading = false,
+  searchValue = "",
+  onSearchChange,
+  searchPlaceholder = "Search...",
+  sortOptions = [],
+  sortValue = "",
+  onSortChange,
 }: DataTableCardProps) => {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <CardTitle className="text-xl">{title}</CardTitle>
@@ -53,7 +77,42 @@ const DataTableCard = ({
             </Button>
           </div>
         </div>
-        <div className="flex flex-wrap items-end gap-4 mt-4">
+
+        {/* Search and Sort Row */}
+        <div className="flex flex-wrap items-center gap-4">
+          {onSearchChange && (
+            <div className="relative flex-1 min-w-[200px] max-w-sm">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder={searchPlaceholder}
+                value={searchValue}
+                onChange={(e) => onSearchChange(e.target.value)}
+                className="pl-9"
+              />
+            </div>
+          )}
+
+          {sortOptions.length > 0 && onSortChange && (
+            <div className="flex items-center gap-2">
+              <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
+              <Select value={sortValue} onValueChange={onSortChange}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Sort by..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {sortOptions.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+        </div>
+
+        {/* Date Filters Row */}
+        <div className="flex flex-wrap items-end gap-4">
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="startDate" className="text-xs flex items-center gap-1">
               <Calendar className="h-3 w-3" />

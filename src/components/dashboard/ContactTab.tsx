@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -19,12 +19,23 @@ interface ContactSubmission {
   created_at: string;
 }
 
+const SORT_OPTIONS = [
+  { value: "created_at_desc", label: "Newest First" },
+  { value: "created_at_asc", label: "Oldest First" },
+  { value: "name_asc", label: "Name (A-Z)" },
+  { value: "name_desc", label: "Name (Z-A)" },
+  { value: "subject_asc", label: "Subject (A-Z)" },
+  { value: "subject_desc", label: "Subject (Z-A)" },
+];
+
 const ContactTab = () => {
   const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
   const [loading, setLoading] = useState(true);
   const [startDate, setStartDate] = useState(format(subDays(new Date(), 30), "yyyy-MM-dd"));
   const [endDate, setEndDate] = useState(format(new Date(), "yyyy-MM-dd"));
   const [selectedSubmission, setSelectedSubmission] = useState<ContactSubmission | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortValue, setSortValue] = useState("created_at_desc");
   const { toast } = useToast();
 
   const fetchSubmissions = async () => {
@@ -60,8 +71,50 @@ const ContactTab = () => {
     fetchSubmissions();
   }, [startDate, endDate]);
 
+  const filteredAndSortedSubmissions = useMemo(() => {
+    let result = [...submissions];
+
+    // Filter by search
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter((sub) =>
+        sub.email.toLowerCase().includes(query) ||
+        sub.first_name.toLowerCase().includes(query) ||
+        sub.last_name.toLowerCase().includes(query) ||
+        sub.subject.toLowerCase().includes(query) ||
+        sub.message.toLowerCase().includes(query) ||
+        `${sub.first_name} ${sub.last_name}`.toLowerCase().includes(query)
+      );
+    }
+
+    // Sort
+    result.sort((a, b) => {
+      const nameA = `${a.first_name} ${a.last_name}`;
+      const nameB = `${b.first_name} ${b.last_name}`;
+      
+      switch (sortValue) {
+        case "created_at_asc":
+          return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+        case "created_at_desc":
+          return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        case "name_asc":
+          return nameA.localeCompare(nameB);
+        case "name_desc":
+          return nameB.localeCompare(nameA);
+        case "subject_asc":
+          return a.subject.localeCompare(b.subject);
+        case "subject_desc":
+          return b.subject.localeCompare(a.subject);
+        default:
+          return 0;
+      }
+    });
+
+    return result;
+  }, [submissions, searchQuery, sortValue]);
+
   const exportToCSV = () => {
-    if (submissions.length === 0) {
+    if (filteredAndSortedSubmissions.length === 0) {
       toast({
         title: "No data",
         description: "No contact submissions to export.",
@@ -73,7 +126,7 @@ const ContactTab = () => {
     const headers = ["First Name", "Last Name", "Email", "Phone", "Subject", "Message", "Submitted At"];
     const csvContent = [
       headers.join(","),
-      ...submissions.map((sub) =>
+      ...filteredAndSortedSubmissions.map((sub) =>
         [
           `"${sub.first_name}"`,
           `"${sub.last_name}"`,
@@ -96,7 +149,7 @@ const ContactTab = () => {
 
     toast({
       title: "Export successful",
-      description: `Exported ${submissions.length} contact submissions.`,
+      description: `Exported ${filteredAndSortedSubmissions.length} contact submissions.`,
     });
   };
 
@@ -105,7 +158,7 @@ const ContactTab = () => {
       <DataTableCard
         title="Contact Submissions"
         description="View messages from your contact form"
-        totalCount={submissions.length}
+        totalCount={filteredAndSortedSubmissions.length}
         startDate={startDate}
         endDate={endDate}
         onStartDateChange={setStartDate}
@@ -113,6 +166,12 @@ const ContactTab = () => {
         onExport={exportToCSV}
         onRefresh={fetchSubmissions}
         loading={loading}
+        searchValue={searchQuery}
+        onSearchChange={setSearchQuery}
+        searchPlaceholder="Search by name, email, subject..."
+        sortOptions={SORT_OPTIONS}
+        sortValue={sortValue}
+        onSortChange={setSortValue}
       >
         <div className="rounded-md border overflow-x-auto">
           <Table>
@@ -132,14 +191,14 @@ const ContactTab = () => {
                     <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mx-auto"></div>
                   </TableCell>
                 </TableRow>
-              ) : submissions.length === 0 ? (
+              ) : filteredAndSortedSubmissions.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={5} className="text-center py-8 text-muted-foreground">
-                    No contact submissions found for the selected date range.
+                    No contact submissions found for the selected criteria.
                   </TableCell>
                 </TableRow>
               ) : (
-                submissions.map((submission) => (
+                filteredAndSortedSubmissions.map((submission) => (
                   <TableRow key={submission.id}>
                     <TableCell className="font-medium">
                       {submission.first_name} {submission.last_name}
