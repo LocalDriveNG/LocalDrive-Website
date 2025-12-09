@@ -14,7 +14,7 @@ type AppRole = "super_admin" | "admin";
 
 const Dashboard = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [, setSession] = useState<Session | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [userRole, setUserRole] = useState<AppRole | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("newsletter");
@@ -22,57 +22,47 @@ const Dashboard = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        setTimeout(() => {
-          fetchUserRole(session.user.id);
-        }, 0);
-      } else {
-        setLoading(false);
+    if (!supabase) return navigate("/admin");
+
+    const fetchUserRole = async (userId: string) => {
+      const { data: roles, error } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId);
+
+      if (error || !roles || roles.length === 0) {
+        navigate("/admin");
+        return;
       }
+
+      const isSuperAdmin = roles.some((r) => r.role === "super_admin");
+      setUserRole(isSuperAdmin ? "super_admin" : "admin");
+      setLoading(false);
+    };
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session ?? null);
+      setUser(session?.user ?? null);
+      if (session?.user) fetchUserRole(session.user.id);
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
+      setSession(session ?? null);
       setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        fetchUserRole(session.user.id);
-      } else {
+      if (session?.user) fetchUserRole(session.user.id);
+      else {
         setLoading(false);
         navigate("/admin");
       }
     });
 
-    return () => subscription.unsubscribe();
+    return () => subscription?.unsubscribe();
   }, [navigate]);
 
-  const fetchUserRole = async (userId: string) => {
-    const { data: roles, error } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", userId);
-
-    if (error || !roles || roles.length === 0) {
-      navigate("/admin");
-      return;
-    }
-
-    // Get the highest role (super_admin > admin)
-    const isSuperAdmin = roles.some(r => r.role === "super_admin");
-    setUserRole(isSuperAdmin ? "super_admin" : "admin");
-    setLoading(false);
-  };
-
   const handleLogout = async () => {
+    if (!supabase) return;
     await supabase.auth.signOut();
-    toast({
-      title: "Logged out",
-      description: "You have been logged out successfully.",
-    });
+    toast({ title: "Logged out", description: "You have been logged out successfully." });
     navigate("/admin");
   };
 
@@ -84,9 +74,7 @@ const Dashboard = () => {
     );
   }
 
-  if (!user || !userRole) {
-    return null;
-  }
+  if (!user || !userRole) return null;
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -113,9 +101,7 @@ const Dashboard = () => {
           onTabChange={setActiveTab}
           onLogout={handleLogout}
         />
-        
         <SidebarInset className="flex-1">
-          {/* Header with trigger */}
           <header className="sticky top-0 z-40 flex h-14 items-center gap-4 border-b border-border bg-background px-4">
             <SidebarTrigger className="-ml-1" />
             <div className="flex-1">
@@ -124,11 +110,7 @@ const Dashboard = () => {
               </h1>
             </div>
           </header>
-
-          {/* Main Content */}
-          <main className="p-6">
-            {renderTabContent()}
-          </main>
+          <main className="p-6">{renderTabContent()}</main>
         </SidebarInset>
       </div>
     </SidebarProvider>
