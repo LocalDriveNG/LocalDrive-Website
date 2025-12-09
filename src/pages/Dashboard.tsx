@@ -14,7 +14,7 @@ type AppRole = "super_admin" | "admin";
 
 const Dashboard = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
+  const [, setSession] = useState<Session | null>(null);
   const [userRole, setUserRole] = useState<AppRole | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("newsletter");
