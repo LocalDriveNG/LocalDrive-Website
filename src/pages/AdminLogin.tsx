@@ -19,16 +19,15 @@ const AdminLogin = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (!supabase) return setCheckingAuth(false);
-
     const checkExistingSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
+        // Check if user has admin role
         const { data: roles } = await supabase
           .from("user_roles")
           .select("role")
           .eq("user_id", session.user.id);
-
+        
         if (roles && roles.length > 0) {
           navigate("/dashboard");
           return;
@@ -39,38 +38,44 @@ const AdminLogin = () => {
 
     checkExistingSession();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      if (_event === "SIGNED_IN" && session) {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === "SIGNED_IN" && session) {
         const { data: roles } = await supabase
           .from("user_roles")
           .select("role")
           .eq("user_id", session.user.id);
-
+        
         if (roles && roles.length > 0) {
           navigate("/dashboard");
         }
       }
     });
 
-    return () => subscription?.unsubscribe();
+    return () => subscription.unsubscribe();
   }, [navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!supabase) return;
-
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
       if (error) {
-        toast({ title: "Login Failed", description: error.message, variant: "destructive" });
+        toast({
+          title: "Login Failed",
+          description: error.message,
+          variant: "destructive",
+        });
         setLoading(false);
         return;
       }
 
       if (data.user) {
+        // Check if user has admin role
         const { data: roles, error: rolesError } = await supabase
           .from("user_roles")
           .select("role")
@@ -87,17 +92,19 @@ const AdminLogin = () => {
           return;
         }
 
-        toast({ title: "Login Successful", description: "Welcome to the admin dashboard." });
+        toast({
+          title: "Login Successful",
+          description: "Welcome to the admin dashboard.",
+        });
         navigate("/dashboard");
       }
-    } catch {
+    } catch (err) {
       toast({
         title: "Error",
         description: "An unexpected error occurred.",
         variant: "destructive",
       });
     }
-
     setLoading(false);
   };
 
@@ -114,10 +121,16 @@ const AdminLogin = () => {
       <Card className="w-full max-w-md shadow-brand">
         <CardHeader className="text-center space-y-4">
           <div className="mx-auto">
-            <img src={localDriveLogo} alt="LocalDrive" className="h-14 w-auto object-contain drop-shadow-md" />
+            <img 
+              src={localDriveLogo} 
+              alt="LocalDrive" 
+              className="h-14 w-auto object-contain drop-shadow-md" 
+            />
           </div>
           <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
-          <CardDescription>Sign in to access the admin dashboard</CardDescription>
+          <CardDescription>
+            Sign in to access the admin dashboard
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">

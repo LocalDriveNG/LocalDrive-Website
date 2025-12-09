@@ -9,7 +9,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
 import SEO from "@/components/SEO";
 
-// Lazy-loaded pages
+// Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -24,7 +24,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 
-// Global loading components
+// Loading components
 const MainLoading = () => (
   <div className="flex justify-center items-center min-h-screen bg-background">
     <div className="text-center">
@@ -40,39 +40,44 @@ const PageLoading = () => (
   </div>
 );
 
-// Error boundary wrapper for pages
+// Page wrapper with error boundary
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <ErrorBoundary
-    fallback={
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="text-center p-6">
-          <div className="text-6xl mb-4">😕</div>
-          <h2 className="text-xl font-semibold mb-2">Page failed to load</h2>
-          <p className="text-muted-foreground mb-4">There was an error loading this page.</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
-          >
-            Reload Page
-          </button>
-        </div>
+  <ErrorBoundary fallback={
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <div className="text-center p-6">
+        <div className="text-6xl mb-4">😕</div>
+        <h2 className="text-xl font-semibold mb-2">Page failed to load</h2>
+        <p className="text-muted-foreground mb-4">There was an error loading this page.</p>
+        <button 
+          onClick={() => window.location.reload()}
+          className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
+        >
+          Reload Page
+        </button>
       </div>
-    }
-  >
-    <Suspense fallback={<PageLoading />}>{children}</Suspense>
+    </div>
+  }>
+    <Suspense fallback={<PageLoading />}>
+      {children}
+    </Suspense>
   </ErrorBoundary>
 );
 
-// Page transition wrapper
+// Page transition wrapper for public pages
 const PageTransition = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
+  
   usePageTracking();
-
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  return <div className="animate-fade-in">{children}</div>;
+  return (
+    <div className="animate-fade-in">
+      {children}
+    </div>
+  );
 };
 
 const queryClient = new QueryClient();
@@ -81,6 +86,7 @@ const AppRoutes = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname === "/admin" || location.pathname === "/dashboard";
 
+  // Admin routes - no header padding, no page transitions
   if (isAdminRoute) {
     return (
       <Routes>
@@ -90,6 +96,7 @@ const AppRoutes = () => {
     );
   }
 
+  // Public routes with page transition and header padding
   return (
     <PageTransition>
       <div className="min-h-screen pt-16">
@@ -113,23 +120,21 @@ const AppRoutes = () => {
 };
 
 const App = () => (
-  <ErrorBoundary
-    fallback={
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="text-center p-6">
-          <div className="text-6xl mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold mb-2">Application Error</h1>
-          <p className="text-muted-foreground mb-4">Something went wrong with the application.</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
-          >
-            Restart Application
-          </button>
-        </div>
+  <ErrorBoundary fallback={
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="text-center p-6">
+        <div className="text-6xl mb-4">⚠️</div>
+        <h1 className="text-2xl font-bold mb-2">Application Error</h1>
+        <p className="text-muted-foreground mb-4">Something went wrong with the application.</p>
+        <button 
+          onClick={() => window.location.reload()}
+          className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
+        >
+          Restart Application
+        </button>
       </div>
-    }
-  >
+    </div>
+  }>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
