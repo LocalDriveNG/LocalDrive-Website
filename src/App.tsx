@@ -8,7 +8,6 @@ import { usePageTracking } from "@/hooks/usePageTracking";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
 import SEO from "@/components/SEO"
-import { AdminAuthProvider } from "@/contexts/AdminAuthContext";
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -23,32 +22,23 @@ const Unsubscribe = lazy(() => import("./pages/Unsubscribe"));
 const Waitlist = lazy(() => import("./pages/Waitlist"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-// Admin pages
-const AdminLogin = lazy(() => import("./pages/AdminLogin"));
-const Dashboard = lazy(() => import("./pages/Dashboard"));
-const DashboardOverview = lazy(() => import("./pages/dashboard/DashboardOverview"));
-const NewsletterPage = lazy(() => import("./pages/dashboard/NewsletterPage"));
-const WaitlistPage = lazy(() => import("./pages/dashboard/WaitlistPage"));
-const ContactsPage = lazy(() => import("./pages/dashboard/ContactsPage"));
-const UserManagementPage = lazy(() => import("./pages/dashboard/UserManagementPage"));
-
 // Loading components
 const MainLoading = () => (
   <div className="flex justify-center items-center min-h-screen bg-background">
     <div className="text-center">
       <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto mb-4"></div>
-      <p className="text-muted-foreground">Loading...</p>
+      <p className="text-muted-foreground">Loading application...</p>
     </div>
   </div>
 );
 
 const PageLoading = () => (
   <div className="flex justify-center items-center min-h-[60vh]">
-    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
   </div>
 );
 
-// Page wrapper with error boundary and suspense
+// Page wrapper with error boundary
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <ErrorBoundary fallback={
     <div className="min-h-[60vh] flex items-center justify-center">
@@ -58,7 +48,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
         <p className="text-muted-foreground mb-4">There was an error loading this page.</p>
         <button 
           onClick={() => window.location.reload()}
-          className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
         >
           Reload Page
         </button>
@@ -108,40 +98,31 @@ const App = () => (
   }>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <AdminAuthProvider>
-          <Toaster />
-          <Sonner />
-          <CookieConsent />
+        <Toaster />
+        <Sonner />
+        <CookieConsent />
+        {/* <BrowserRouter> */}
           <Suspense fallback={<MainLoading />}>
             <PageTransition>
+              <div className="min-h-screen pt-16">
+              <SEO />
               <Routes>
-                {/* Public routes */}
-                <Route path="/" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Index /></PageWrapper></div>} />
-                <Route path="/about" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><AboutUs /></PageWrapper></div>} />
-                <Route path="/contact" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Contact /></PageWrapper></div>} />
-                <Route path="/blog" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Blog /></PageWrapper></div>} />
-                <Route path="/blog/:slug" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><BlogPost /></PageWrapper></div>} />
-                <Route path="/privacy-policy" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><PrivacyPolicy /></PageWrapper></div>} />
-                <Route path="/terms-of-service" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><TermsOfService /></PageWrapper></div>} />
-                <Route path="/cookies-policy" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><CookiesPolicy /></PageWrapper></div>} />
-                <Route path="/unsubscribe" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Unsubscribe /></PageWrapper></div>} />
-                <Route path="/waitlist" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Waitlist /></PageWrapper></div>} />
-                
-                {/* Admin routes */}
-                <Route path="/admin" element={<PageWrapper><AdminLogin /></PageWrapper>} />
-                <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>}>
-                  <Route index element={<DashboardOverview />} />
-                  <Route path="newsletter" element={<NewsletterPage />} />
-                  <Route path="waitlist" element={<WaitlistPage />} />
-                  <Route path="contacts" element={<ContactsPage />} />
-                  <Route path="users" element={<UserManagementPage />} />
-                </Route>
-                
-                <Route path="*" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><NotFound /></PageWrapper></div>} />
+                <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
+                <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
+                <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+                <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
+                <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
+                <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
+                <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
+                <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
+                <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
+                <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
               </Routes>
+              </div>
             </PageTransition>
           </Suspense>
-        </AdminAuthProvider>
+        {/* </BrowserRouter> */}
       </TooltipProvider>
     </QueryClientProvider>
   </ErrorBoundary>
