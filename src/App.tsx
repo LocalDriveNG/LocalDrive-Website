@@ -8,6 +8,7 @@ import { usePageTracking } from "@/hooks/usePageTracking";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
 import SEO from "@/components/SEO"
+import { AdminAuthProvider } from "@/contexts/AdminAuthContext";
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -21,6 +22,15 @@ const CookiesPolicy = lazy(() => import("./pages/CookiesPolicy"));
 const Unsubscribe = lazy(() => import("./pages/Unsubscribe"));
 const Waitlist = lazy(() => import("./pages/Waitlist"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+
+// Admin pages
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const DashboardOverview = lazy(() => import("./pages/dashboard/DashboardOverview"));
+const NewsletterPage = lazy(() => import("./pages/dashboard/NewsletterPage"));
+const WaitlistPage = lazy(() => import("./pages/dashboard/WaitlistPage"));
+const ContactsPage = lazy(() => import("./pages/dashboard/ContactsPage"));
+const UserManagementPage = lazy(() => import("./pages/dashboard/UserManagementPage"));
 
 // Loading components
 const MainLoading = () => (
@@ -98,31 +108,40 @@ const App = () => (
   }>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <CookieConsent />
-        {/* <BrowserRouter> */}
+        <AdminAuthProvider>
+          <Toaster />
+          <Sonner />
+          <CookieConsent />
           <Suspense fallback={<MainLoading />}>
             <PageTransition>
-              <div className="min-h-screen pt-16">
-              <SEO />
               <Routes>
-                <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
-                <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
-                <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
-                <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
-                <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
-                <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
-                <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
-                <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
-                <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
-                <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
-                <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
+                {/* Public routes */}
+                <Route path="/" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Index /></PageWrapper></div>} />
+                <Route path="/about" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><AboutUs /></PageWrapper></div>} />
+                <Route path="/contact" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Contact /></PageWrapper></div>} />
+                <Route path="/blog" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Blog /></PageWrapper></div>} />
+                <Route path="/blog/:slug" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><BlogPost /></PageWrapper></div>} />
+                <Route path="/privacy-policy" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><PrivacyPolicy /></PageWrapper></div>} />
+                <Route path="/terms-of-service" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><TermsOfService /></PageWrapper></div>} />
+                <Route path="/cookies-policy" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><CookiesPolicy /></PageWrapper></div>} />
+                <Route path="/unsubscribe" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Unsubscribe /></PageWrapper></div>} />
+                <Route path="/waitlist" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Waitlist /></PageWrapper></div>} />
+                
+                {/* Admin routes */}
+                <Route path="/admin" element={<PageWrapper><AdminLogin /></PageWrapper>} />
+                <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>}>
+                  <Route index element={<DashboardOverview />} />
+                  <Route path="newsletter" element={<NewsletterPage />} />
+                  <Route path="waitlist" element={<WaitlistPage />} />
+                  <Route path="contacts" element={<ContactsPage />} />
+                  <Route path="users" element={<UserManagementPage />} />
+                </Route>
+                
+                <Route path="*" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><NotFound /></PageWrapper></div>} />
               </Routes>
-              </div>
             </PageTransition>
           </Suspense>
-        {/* </BrowserRouter> */}
+        </AdminAuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   </ErrorBoundary>
