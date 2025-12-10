@@ -37,18 +37,18 @@ const MainLoading = () => (
   <div className="flex justify-center items-center min-h-screen bg-background">
     <div className="text-center">
       <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto mb-4"></div>
-      <p className="text-muted-foreground">Loading application...</p>
+      <p className="text-muted-foreground">Loading...</p>
     </div>
   </div>
 );
 
 const PageLoading = () => (
   <div className="flex justify-center items-center min-h-[60vh]">
-    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
   </div>
 );
 
-// Page wrapper with error boundary
+// Page wrapper with error boundary and suspense
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <ErrorBoundary fallback={
     <div className="min-h-[60vh] flex items-center justify-center">
@@ -58,7 +58,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
         <p className="text-muted-foreground mb-4">There was an error loading this page.</p>
         <button 
           onClick={() => window.location.reload()}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
         >
           Reload Page
         </button>
