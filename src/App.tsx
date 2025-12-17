@@ -22,14 +22,6 @@ const Unsubscribe = lazy(() => import("./pages/Unsubscribe"));
 const Waitlist = lazy(() => import("./pages/Waitlist"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-// Admin pages
-const AdminAuth = lazy(() => import("./pages/AdminAuth"));
-const DashboardOverview = lazy(() => import("./pages/dashboard/DashboardOverview"));
-const NewsletterDashboard = lazy(() => import("./pages/dashboard/NewsletterDashboard"));
-const WaitlistDashboard = lazy(() => import("./pages/dashboard/WaitlistDashboard"));
-const ContactsDashboard = lazy(() => import("./pages/dashboard/ContactsDashboard"));
-const UserManagement = lazy(() => import("./pages/dashboard/UserManagement"));
-
 // Loading components
 const MainLoading = () => (
   <div className="flex justify-center items-center min-h-screen bg-background">
@@ -109,32 +101,28 @@ const App = () => (
         <Toaster />
         <Sonner />
         <CookieConsent />
+        {/* <BrowserRouter> */}
           <Suspense fallback={<MainLoading />}>
             <PageTransition>
+              <div className="min-h-screen pt-16">
+              <SEO />
               <Routes>
-                {/* Admin Routes - no pt-16 */}
-                <Route path="/admin" element={<PageWrapper><AdminAuth /></PageWrapper>} />
-                <Route path="/dashboard" element={<PageWrapper><DashboardOverview /></PageWrapper>} />
-                <Route path="/dashboard/newsletter" element={<PageWrapper><NewsletterDashboard /></PageWrapper>} />
-                <Route path="/dashboard/waitlist" element={<PageWrapper><WaitlistDashboard /></PageWrapper>} />
-                <Route path="/dashboard/contacts" element={<PageWrapper><ContactsDashboard /></PageWrapper>} />
-                <Route path="/dashboard/users" element={<PageWrapper><UserManagement /></PageWrapper>} />
-                
-                {/* Public Routes */}
-                <Route path="/" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Index /></PageWrapper></div>} />
-                <Route path="/about" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><AboutUs /></PageWrapper></div>} />
-                <Route path="/contact" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Contact /></PageWrapper></div>} />
-                <Route path="/blog" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Blog /></PageWrapper></div>} />
-                <Route path="/blog/:slug" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><BlogPost /></PageWrapper></div>} />
-                <Route path="/privacy-policy" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><PrivacyPolicy /></PageWrapper></div>} />
-                <Route path="/terms-of-service" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><TermsOfService /></PageWrapper></div>} />
-                <Route path="/cookies-policy" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><CookiesPolicy /></PageWrapper></div>} />
-                <Route path="/unsubscribe" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Unsubscribe /></PageWrapper></div>} />
-                <Route path="/waitlist" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><Waitlist /></PageWrapper></div>} />
-                <Route path="*" element={<div className="min-h-screen pt-16"><SEO /><PageWrapper><NotFound /></PageWrapper></div>} />
+                <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
+                <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
+                <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+                <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
+                <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
+                <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
+                <Route path="/cookies-policy" element={<PageWrapper><CookiesPolicy /></PageWrapper>} />
+                <Route path="/unsubscribe" element={<PageWrapper><Unsubscribe /></PageWrapper>} />
+                <Route path="/waitlist" element={<PageWrapper><Waitlist /></PageWrapper>} />
+                <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
               </Routes>
+              </div>
             </PageTransition>
           </Suspense>
+        {/* </BrowserRouter> */}
       </TooltipProvider>
     </QueryClientProvider>
   </ErrorBoundary>
