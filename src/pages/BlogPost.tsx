@@ -13,6 +13,7 @@ import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 interface BlogPost {
   slug: string;
@@ -57,9 +58,16 @@ const BlogPost = () => {
         navigate("/blog");
       } else {
         setPost(data);
-        // Convert markdown to HTML
+        // Convert markdown to HTML and sanitize to prevent XSS
         const html = await marked(data.content);
-        setHtmlContent(html);
+        const sanitizedHtml = DOMPurify.sanitize(html, {
+          ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'hr', 'ul', 'ol', 'li', 
+            'blockquote', 'pre', 'code', 'em', 'strong', 'a', 'img', 'table', 'thead', 'tbody', 
+            'tr', 'th', 'td', 'del', 'sup', 'sub', 'span', 'div'],
+          ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'id', 'target', 'rel'],
+          ALLOW_DATA_ATTR: false,
+        });
+        setHtmlContent(sanitizedHtml);
       }
       setLoading(false);
     };
